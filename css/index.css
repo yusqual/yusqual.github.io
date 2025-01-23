@@ -3317,8 +3317,8 @@ figure.highlight pre .javascript .function {
 }
 #article-container code {
   padding: 2px 4px;
-  background: var(--anzhiyu-code-stress);
-  color: #fff;
+  background: rgba(255,255,255,0.071);
+  color: #e99014;
 }
 #article-container pre {
   padding: 10px 20px;
@@ -20701,8 +20701,8 @@ body:has(.post-bg) #he-plugin-simple .s-sticker div {
   position: absolute;
   top: 0px;
   left: 0px;
-  background: var(--anzhiyu-main);
-  color: rgb(255, 255, 255);
+  background: #FFFFFF12;
+  color: var(--anzhiyu-lighttext);
   transition: all 0.3s ease-out 0s;
 }
 #article-container ol > li::before {
