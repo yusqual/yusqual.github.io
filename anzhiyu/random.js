@@ -1,3 +1,3 @@
-var posts=["/leetcode/lc_day2.html","/leetcode/lc_day3.html","/leetcode/lc_day4_summary.html","/leetcode/lc_day4.html","/leetcode/lc_day5.html","/leetcode/lc_day1.html","/games/speedrun_ext.html","/leetcode/lc_day6.html","/leetcode/lc_day7.html","/leetcode/lc_day8.html","/leetcode/lc_day9.html","/leetcode/lc_day10.html","/leetcode/lc_day11.html"];function toRandomPost(){
+var posts=["/leetcode/lc_day2.html","/leetcode/lc_day3.html","/leetcode/lc_day4_summary.html","/leetcode/lc_day4.html","/leetcode/lc_day5.html","/leetcode/lc_day1.html","/games/speedrun_ext.html","/leetcode/lc_day6.html","/leetcode/lc_day7.html","/leetcode/lc_day8.html","/leetcode/lc_day9.html","/leetcode/lc_day10.html","/leetcode/lc_day11.html","/leetcode/lc_day12.html","/leetcode/lc_day13.html","/leetcode/lc_day14.html","/leetcode/lc_day15.html"];function toRandomPost(){
     pjax.loadUrl('/'+posts[Math.floor(Math.random() * posts.length)]);
   };
