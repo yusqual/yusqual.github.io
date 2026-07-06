@@ -1,0 +1,2461 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>L4D2 ST-API文档 | Suyu</title><meta name="keywords" content="l4d2"><meta name="author" content="Yusqual"><meta name="copyright" content="Yusqual"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#18171d"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="L4D2 ST-API文档"><meta name="application-name" content="L4D2 ST-API文档"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#18171d"><meta property="og:type" content="article"><meta property="og:title" content="L4D2 ST-API文档"><meta property="og:url" content="https://yusqual.github.io/games/st_api_reference.html"><meta property="og:site_name" content="Suyu"><meta property="og:description" content="ST Squirrel 函数参考版本: 5.5 (VScript) &amp;#x2F; 1.4.20 (SourceMod 主插件)作者: noa1mbot说明: Speedrunner Tools 提供的所有全局 Squirrel 函数完整参考。  目录 核心全局变量 物品与实体生成 物品管理 玩家控制"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://yusqual.github.io/images/Ausnty.jpg"><meta property="article:author" content="Yusqual"><meta property="article:tag"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://yusqual.github.io/images/Ausnty.jpg"><meta name="description" content="ST Squirrel 函数参考版本: 5.5 (VScript) &amp;#x2F; 1.4.20 (SourceMod 主插件)作者: noa1mbot说明: Speedrunner Tools 提供的所有全局 Squirrel 函数完整参考。  目录 核心全局变量 物品与实体生成 物品管理 玩家控制"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="https://yusqual.github.io/games/st_api_reference.html"><link rel="preconnect" href="//cdn.cbd.int"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: {"enable":true,"img":"https://linux.do/uploads/default/optimized/3X/7/3/7344591d7035ceeed5823f9a6eea7f93f5705438_2_1035x651.png"},
+  postHeadAiDescription: {"enable":true,"gptName":"AnZhiYu","mode":"local","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"xxxx","Referer":"https://xx.xx/"},
+  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w 不要走！再看看嘛！","backTitle":"♪(^∇^*)欢迎肥来！"},
+  LA51: undefined,
+  greetingBox: undefined,
+  twikooEnvId: '',
+  commentBarrageConfig:undefined,
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: false,
+  mainTone: undefined,
+  authorStatus: {"skills":null},
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: Yusqual","link":"链接: ","source":"来源: Suyu","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  shortcutKey: undefined,
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: 'Suyu',
+  title: 'L4D2 ST-API文档',
+  postAI: '',
+  pageFillDescription: 'ST Squirrel 函数参考, 目录, 1. 核心全局变量, 1.1 g_ST, 1.2 g_RTA, 1.3 g_STLib, 2. 物品与实体生成, 2.1 SpawnItem(sName vecPos vecAng iCount sTarget fRadius), 2.2 SpawnZombie(sName vecPos idle), 2.3 SpawnZombieEx(sName vecPos vecAng AttackOnSpawn spawnTime), 2.4 SpawnZombieForCB(vecPos vecAng startTime hPlayer bNotSolid sName), 2.5 SpawnCommon(sName vecPos vecAng flags), 2.6 SpawnTrigger(sName vecPos vecMaxs vecMins sFunc iType output sClass), 3. 物品管理, 3.1 RemoveItem(sName), 3.2 RemoveItemEx(vecPos fRadius), 3.3 RemoveSlot(hPlayer slot), 3.4 RemoveCI(), 4. 玩家控制, 4.1 ST_Idle(hPlayer bMode), 4.2 ST_PlayerReplace(hPlayer hPlayer2), 4.3 PlayerKill(hPlayer), 4.4 PlayerKillFromWeapon(hPlayer hAttacker iShots bWaitForWeaponReady fTime), 4.5 PlayerGod(hPlayer bGod), 4.6 ST_MR(hPlayer eMode sFileName bNoTeleport), 4.7 ST_MRStop(hPlayer), 5. 地图与导演控制, 5.1 DirectorStop(bMode), 5.2 AutoOpen(bValue), 5.3 ScriptedTP(hPlayer hLeader fTime bStuckTeleport eMode), 5.4 ScriptedShots(hPlayer fDistance), 5.5 NavMark(vecPos flags), 6. AutoFire 系统, 6.1 AutoFire(hPlayer vecAng vecPos bLoop bUp fRadius hClient delayTime data method3D vecVel), 6.2 AutoFire2(hPlayer vecAng vecPos bLoop bUp fRadius hClient delayTime data method3D bScripted), 6.3 AutoFire3(hPlayer aPlayers fPitch sWeapon bScripted data), 6.4 AFStop(), 7. 计时器与 HUD, 7.1 SpeedrunStart(isHUD), 7.2 SpeedrunRestart(bAllowFastRestarts), 7.3 Timer(value), 7.4 HUDLoad(value), 7.5 PrintTime(), 7.6 CPTime(sValue hPlayer), 7.7 CPSetTime(fValue), 7.8 CPGetTime(), 8. 工具函数, 8.1 TeleportEntity(hEntity vecPos vecAng vecVel bOriginKV), 8.2 GetPicker(hPlayer tr_len tr_mask), 8.3 GetPickerPos(hPlayer tr_len tr_mask), 8.4 GetPlayer(model checkObs), 8.5 GetOwner(client), 8.6 GetDistance(hEntity hEntity2), 8.7 GetSpeed(hPlayer), 8.8 GetDisplayTime(value sValue), 8.9 GetEpoch(), 8.10 GetDate(unix), 8.11 IsPlayer(hPlayer), 8.12 IsFakeClient(hPlayer), 8.13 Ent(entity), 8.14 EmitSound(vecPos sSound iRadius), 8.15 EmitSoundEx(hEntity sndName sndRadius flags), 8.16 OnGameFrame(funcName fTime fDuration), 8.17 ClearEvent(sEvent hTable), 9. 数学与辅助函数, 9.1 AngNorm(ang u_ang), 9.2 Clamp(x min max), 9.3 Lerp(a b t), 9.4 EaseInOut(a b t), 9.5 EaseIn(a b t), 9.6 EaseOut(a b t), 9.7 FEqual(a b deviation), 9.8 absf(x), 9.9 GetVecAng(vec), 9.10 GetFinaleType(), 10. SM 命令 VScript 封装, 10.1 ClientCommand(hPlayer sCmd), 10.2 SetClientName(hPlayer sName), 10.3 SetAmmo(hPlayer iSlot iClip iAmmo iUpgrade), 10.4 SetTeam(survName), 10.5 CallVote(hCaller sCmd), 10.6 PlayerReplace(hPlayer hPlayer2), 10.7 AutoKick(hCaller hPlayer bRootKey), 11. 调试函数, 11.1 DebugItems(itemName withDelay), 11.2 CheckMoving(fTime bChat bLocalTime), 11.3 ZDump(fTime), 11.4 MobListener(flags mobMax), 11.5 ppos(vecPos sName), 11.6 ppos2(vecPos), 11.7 ptp(hPlayer), 11.8 pvel(hPlayer), 11.9 pdist(hPlayer hPlayer2), 11.10 DebugTrace(vStart vEnd autoPurge), 11.11 find(name findex)函数参考版本主插件作者说明提供的所有全局函数完整参考目录核心全局变量物品与实体生成物品管理玩家控制地图与导演控制系统计时器与工具函数数学与辅助函数命令封装调试函数核心全局变量全局配置和运行时状态表定义在字段类型默认值说明倒计时秒数自定义事件数据可见性坠落伤害报告游戏模式模式全局本地模式模式是否正在重启快速更新每个玩家的开关当前游戏平均速度累计最大速度总距离跳跃数击杀数持久化保存于模式计时数据表定义在字段类型默认值说明当前累积时间兼容时间游戏内时间时间戳难度每关分段时间统计数据核心库表定义在字段类型说明物品定义表核心功能函数运行时变量时间等物品与实体生成在指定位置生成物品定义参数类型默认值说明物品名称生成位置生成角度数量物品清除半径若则先移除范围内同名物品返回值生成的示例生成手枪个土制生成名为的武士刀物品表见的节简易生成特感普通感染者定义参数类型默认值说明僵尸类型生成位置是否闲置不攻击可选值返回值生成的失败返回示例生成生成闲置生成普通感染者精确生成特感普通感染者使用定义参数类型默认值说明僵尸类型或模型名生成位置随机生成角度是否立刻攻击专用生成延迟秒数特殊说明时随机从种模型中选择或时会设置示例生成面向的秒后生成生成随机生成用于的僵尸定义参数类型默认值说明生成位置随机生成角度开始计时时间目标玩家是否非实体僵尸返回值生成的该函数会注册事件监听当和提供时僵尸会在指定时间后朝玩家移动生成普通感染者支持堕落幸存者定义参数类型默认值说明模型名随机堕落随机生成位置随机生成角度组合值值值常量说明携带胆汁燃烧瓶携带土制携带药丸携带医疗包坐姿躺姿示例堕落幸存者指定角度坐姿携带药丸生成实体定义参数类型默认值说明中心位置最大偏移最小偏移触发时调用的回调函数名触发的名逗号分隔多个类名返回值示例物品管理移除所有匹配的生成物品定义参数类型默认值说明物品名称移除全部返回值移除的物品数量移除所有土制炸弹移除地图上所有物品移除指定半径内的所有物品和武器定义参数类型默认值说明中心位置搜索半径返回值移除的物品数量移除指定玩家的装备槽物品定义参数类型说明玩家槽位主武器副武器药丸投掷物等移除主武器移除药丸肾上腺素移除所有普通感染者定义清空所有玩家控制让玩家闲置或接管定义参数类型默认值说明玩家闲置接管闲置当前玩家接管交换两个玩家的角色控制权定义参数类型说明玩家玩家击杀指定玩家定义参数类型说明目标玩家使用霰弹枪武器击杀玩家用于团队击杀定义参数类型默认值说明被击杀者攻击者射击次数等待武器就绪等待时间支持武器需要难度专家发击杀队友设置玩家无敌状态定义参数类型说明玩家无敌取消无敌控制录制回放定义参数类型默认值说明玩家目标玩家录制回放回放分割文件名不回传起始位置录制到回放回放分割停止定义参数类型默认值说明指定玩家停止所有停止所有玩家的停止指定玩家的地图与导演控制控制导演系统定义参数类型默认值说明禁用导演恢复导演禁用时移除所有现存感染者恢复时恢复默认导演参数禁用导演系统清除所有感染者恢复导演系统自动开门安全门定义参数类型默认值说明开门一次持续自动开门自动打开最近的安全门持续自动开门每秒检测脚本传送玩家定义参数类型默认值说明被传送的玩家目标玩家时可为延迟秒数是否卡住传送自动找最近队友传送跟随远距离跟随秒后将传到位置秒后自动卡住传送立即传送自动射击普通感染者定义参数类型默认值说明玩家射击距离停止自动射击开始自动射击半径内的停止自动射击标记区域定义参数类型默认值说明标记位置属性标记值等普通标记标记系统榴弹发射器定义参数类型默认值说明发射玩家传送视角角度传送位置是否循环攻击是否向上不蹲下触发半径指定触发玩家任意人类延迟秒数自定义数据传给使用距离榴弹速度向量回调解发和胆汁投掷物定义参数类型默认值说明脚本模式记录向量其余参数同默认火瓶团队定义参数类型默认值说明投掷玩家要的玩家数组视角俯仰武器限制脚本模式自定义数据注册方式通过事件监听停止所有定义停止计时器与启动或停止计时器定义参数类型默认值说明启动并显示停止计时启动计时停止计时重启速通关卡定义参数类型默认值说明投票换图重启快速标准重启快速重启保留装备三段式倒计时系统定义参数类型默认值说明开始倒计时倒数倒数结束冻结并调用使用默认秒倒计时流程加载计时器定义参数类型默认值说明初始时间值从开始从秒开始接着上次时间打印当前计时结果到控制台含完整统计信息定义打印带时间戳的消息到聊天框定义参数类型默认值说明消息文本目标玩家所有人输出输出设置当前时间基准定义参数类型默认值说明新的时间值重置计时器为设置为秒获取当前经过时间定义返回值从到现在的秒数工具函数传送实体到指定位置定义参数类型默认值说明目标实体位置不变角度不变速度不变是否用方式设置原点获取准星指向的实体定义参数类型默认值说明玩家玩家追踪距离追踪掩码返回值或获取准星指向的位置定义返回值射线击中的坐标查找指定角色的生还者定义参数类型默认值说明角色索引等是否包括观察者返回值或找找找任意生还者获取的所有者使其闲置的人类玩家定义参数类型说明实体索引名称计算两个实体间的距离定义返回值距离获取玩家速度定义返回值速率标量长度将秒数转换为分秒格式定义参数类型默认值说明秒数分隔符返回值格式化的时间字符串获取当前时间戳定义获取日期时间信息定义参数类型默认值说明时间戳当前时间返回值包含检查是否为有效的玩家实体定义返回值检查是否为假客户端创建的定义返回值统一化实体查找函数定义参数类型说明实体索引名称返回值或索引名称查找有效性检查在指定位置播放音效定义参数类型默认值说明音效位置音效名传播半径在实体上播放音效支持跟随定义参数类型默认值说明音效源实体对所有人类播放音效名半径标记创建定时器定期执行函数定义参数类型默认值说明函数名可带参数执行间隔持续时间永久返回值每帧执行秒后执行一次每秒执行持续秒每帧执行秒后停止取消注册游戏事件监听定义参数类型默认值说明事件名自动从调用帧检测要移除的监听表数学与辅助函数角度归一化定义参数类型默认值说明角度返回返回限定数值范围定义线性插值定义平滑插值缓入缓出定义缓入插值二次方定义缓出插值二次方定义浮点数近似相等比较定义参数类型默认值说明值值允许误差范围浮点数绝对值定义从向量计算欧拉角定义参数类型说明方向向量返回值获取当前关卡的最终战类型定义返回值命令封装通过与插件通信让指定玩家执行控制台命令定义参数类型说明玩家命令修改玩家名称定义设置玩家弹药量定义参数类型默认值说明玩家武器槽位主武器副武器弹夹子弹数备弹数升级弹药主武器发弹夹备弹高爆弹药设置队伍角色需要在场定义参数类型说明角色名发起投票更改难度定义参数类型说明发起者难度交换两个玩家的名称和角色控制权定义投票踢出并补充新定义参数类型默认值说明投票发起者要踢的是否注册事件调试函数标记地图上所有可生成物品并输出代码定义参数类型默认值说明过滤物品名全部延迟执行输出文件标记所有物品仅标记燃烧瓶监听按键输入并输出到控制台定义参数类型默认值说明监听时长聊天输出控制台输出使用本地时间而非监听秒聊天窗口输出转储当前地图所有僵尸的位置和生成代码定义参数类型默认值说明延迟秒数立即输出文件立即转储秒后转储监听普通感染者数量定义参数类型默认值说明显示聊天输出控制台输出最大数仅显示聊天控制台自定义上限在指定位置创建标记实体并打印代码定义参数类型默认值说明标记位置标记名称后缀小尺寸位置标记模型定义打印玩家当前位置角度速度的代码定义参数类型默认值说明玩家或索引打印玩家的位置代码打印指定玩家打印玩家速度定义打印两个玩家之间的距离定义在两点之间创建可视化绳索追踪线定义参数类型默认值说明起点终点自动清除时间显示秒标记所有匹配名称或类名的实体定义参数类型默认值说明搜索文本空清除标记精确匹配类名或名称标记所有含的实体清除所有标记',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2026-07-06 17:33:40',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://npm.elemecdn.com/anzhiyu-blog-static@1.0.4/img/avatar.jpg"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><a id="site-name" href="/" accesskey="h"><div class="title">Suyu</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li></ul></div></div></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" target="_blank"><img class="post-qr-code-img" alt="微信" src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" target="_blank"><img class="post-qr-code-img" alt="支付宝" src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/l4d2/" style="font-size: 1.05rem;">l4d2<sup>5</sup></a><a href="/tags/notes/" style="font-size: 1.05rem;">notes<sup>4</sup></a><a href="/tags/qt/" style="font-size: 1.05rem;">qt<sup>1</sup></a></div></div><hr/></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/07/"><span class="card-archive-list-date">七月 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">4</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/05/"><span class="card-archive-list-date">五月 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/05/"><span class="card-archive-list-date">五月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/04/"><span class="card-archive-list-date">四月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/03/"><span class="card-archive-list-date">三月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/01/"><span class="card-archive-list-date">一月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%85%B6%E4%BB%96/" itemprop="url">其他</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/l4d2/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>l4d2</span></a></span></div></div><h1 class="post-title" itemprop="name headline">L4D2 ST-API文档</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2026-07-06T06:00:01.000Z" title="发表于 2026-07-06 14:00:01">2026-07-06</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2026-07-06T09:33:40.760Z" title="更新于 2026-07-06 17:33:40">2026-07-06</time></span></div><div class="meta-secondline"><span class="post-meta-separator"></span><span class="post-meta-wordcount"><i class="anzhiyufont anzhiyu-icon-file-word post-meta-icon" title="文章字数"></i><span class="post-meta-label" title="文章字数">字数总计:</span><span class="word-count" title="文章字数">5.5k</span><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-clock post-meta-icon" title="阅读时长"></i><span class="post-meta-label" title="阅读时长">阅读时长:</span><span>23分钟</span></span><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为湖北"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>湖北</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src=""></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="https://yusqual.github.io/games/st_api_reference.html"><header><a class="post-meta-categories" href="/categories/%E5%85%B6%E4%BB%96/" itemprop="url">其他</a><a href="/tags/l4d2/" tabindex="-1" itemprop="url">l4d2</a><h1 id="CrawlerTitle" itemprop="name headline">L4D2 ST-API文档</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">Yusqual</span><time itemprop="dateCreated datePublished" datetime="2026-07-06T06:00:01.000Z" title="发表于 2026-07-06 14:00:01">2026-07-06</time><time itemprop="dateCreated datePublished" datetime="2026-07-06T09:33:40.760Z" title="更新于 2026-07-06 17:33:40">2026-07-06</time></header><h1 id="ST-Squirrel-函数参考"><a href="#ST-Squirrel-函数参考" class="headerlink" title="ST Squirrel 函数参考"></a>ST Squirrel 函数参考</h1><p><strong>版本</strong>: 5.5 (VScript) &#x2F; 1.4.20 (SourceMod 主插件)<br><strong>作者</strong>: noa1mbot<br><strong>说明</strong>: Speedrunner Tools 提供的所有全局 Squirrel 函数完整参考。</p>
+<hr>
+<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ol>
+<li><a href="#1-%E6%A0%B8%E5%BF%83%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F">核心全局变量</a></li>
+<li><a href="#2-%E7%89%A9%E5%93%81%E4%B8%8E%E5%AE%9E%E4%BD%93%E7%94%9F%E6%88%90">物品与实体生成</a></li>
+<li><a href="#3-%E7%89%A9%E5%93%81%E7%AE%A1%E7%90%86">物品管理</a></li>
+<li><a href="#4-%E7%8E%A9%E5%AE%B6%E6%8E%A7%E5%88%B6">玩家控制</a></li>
+<li><a href="#5-%E5%9C%B0%E5%9B%BE%E4%B8%8E%E5%AF%BC%E6%BC%94%E6%8E%A7%E5%88%B6">地图与导演控制</a></li>
+<li><a href="#6-autofire-%E7%B3%BB%E7%BB%9F">AutoFire 系统</a></li>
+<li><a href="#7-%E8%AE%A1%E6%97%B6%E5%99%A8%E4%B8%8E-hud">计时器与 HUD</a></li>
+<li><a href="#8-%E5%B7%A5%E5%85%B7%E5%87%BD%E6%95%B0">工具函数</a></li>
+<li><a href="#9-%E6%95%B0%E5%AD%A6%E4%B8%8E%E8%BE%85%E5%8A%A9%E5%87%BD%E6%95%B0">数学与辅助函数</a></li>
+<li><a href="#10-sm-%E5%91%BD%E4%BB%A4-vscript-%E5%B0%81%E8%A3%85">SM 命令 VScript 封装</a></li>
+<li><a href="#11-%E8%B0%83%E8%AF%95%E5%87%BD%E6%95%B0">调试函数</a></li>
+</ol>
+<hr>
+<h2 id="1-核心全局变量"><a href="#1-核心全局变量" class="headerlink" title="1. 核心全局变量"></a>1. 核心全局变量</h2><h3 id="1-1-g-ST"><a href="#1-1-g-ST" class="headerlink" title="1.1 g_ST"></a>1.1 <code>g_ST</code></h3><p>全局配置和运行时状态表。定义在 <code>vs_st_ems.nut:60-87</code>。</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>timer_value</code></td>
+<td>float</td>
+<td>3.0</td>
+<td>倒计时秒数</td>
+</tr>
+<tr>
+<td><code>event</code></td>
+<td>string</td>
+<td>“0”</td>
+<td>自定义事件数据</td>
+</tr>
+<tr>
+<td><code>hud</code></td>
+<td>bool</td>
+<td>true</td>
+<td>HUD 可见性</td>
+</tr>
+<tr>
+<td><code>falldmg</code></td>
+<td>bool</td>
+<td>false</td>
+<td>坠落伤害报告</td>
+</tr>
+<tr>
+<td><code>mode</code></td>
+<td>int</td>
+<td>1</td>
+<td>游戏模式 (0&#x3D;Nerd, 1&#x3D;RTA, 2&#x3D;SP)</td>
+</tr>
+<tr>
+<td><code>full_legit</code></td>
+<td>bool</td>
+<td>false</td>
+<td>Full Legit 模式</td>
+</tr>
+<tr>
+<td><code>bhop</code></td>
+<td>bool</td>
+<td>true</td>
+<td>全局 AutoBhop</td>
+</tr>
+<tr>
+<td><code>bhop_local</code></td>
+<td>bool</td>
+<td>false</td>
+<td>本地 Bhop</td>
+</tr>
+<tr>
+<td><code>unpatch</code></td>
+<td>bool</td>
+<td>false</td>
+<td>Unpatch 模式</td>
+</tr>
+<tr>
+<td><code>rd</code></td>
+<td>bool</td>
+<td>false</td>
+<td>RocketDude 模式</td>
+</tr>
+<tr>
+<td><code>restart</code></td>
+<td>bool</td>
+<td>false</td>
+<td>是否正在重启</td>
+</tr>
+<tr>
+<td><code>var_fast_update</code></td>
+<td>bool</td>
+<td>false</td>
+<td>快速 HUD 更新</td>
+</tr>
+<tr>
+<td><code>var_bhoppers</code></td>
+<td>array</td>
+<td>33×true</td>
+<td>每个玩家的 Bhop 开关</td>
+</tr>
+<tr>
+<td><code>tick</code></td>
+<td>int</td>
+<td>-1</td>
+<td>当前游戏 tick</td>
+</tr>
+<tr>
+<td><code>var_stats_fAvgSpeed</code></td>
+<td>float</td>
+<td>0.0</td>
+<td>平均速度累计</td>
+</tr>
+<tr>
+<td><code>var_stats_fMaxSpeed</code></td>
+<td>float</td>
+<td>0.0</td>
+<td>最大速度</td>
+</tr>
+<tr>
+<td><code>var_stats_fDist</code></td>
+<td>float</td>
+<td>0.0</td>
+<td>总距离</td>
+</tr>
+<tr>
+<td><code>var_stats_iJumps</code></td>
+<td>int</td>
+<td>0</td>
+<td>跳跃数</td>
+</tr>
+<tr>
+<td><code>var_stats_iKills</code></td>
+<td>int</td>
+<td>0</td>
+<td>击杀数</td>
+</tr>
+</tbody></table>
+<p>持久化保存于 <code>ems/st_config/st_data.txt</code>。</p>
+<h3 id="1-2-g-RTA"><a href="#1-2-g-RTA" class="headerlink" title="1.2 g_RTA"></a>1.2 <code>g_RTA</code></h3><p>RTA 模式计时数据表。定义在 <code>vs_st_ems.nut:88-97</code>。</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>time</code></td>
+<td>float</td>
+<td>0.0</td>
+<td>当前累积时间</td>
+</tr>
+<tr>
+<td><code>time_livesplit</code></td>
+<td>float</td>
+<td>0.0</td>
+<td>LiveSplit 兼容时间</td>
+</tr>
+<tr>
+<td><code>time_igt</code></td>
+<td>float</td>
+<td>0.0</td>
+<td>IGT 游戏内时间</td>
+</tr>
+<tr>
+<td><code>time_real</code></td>
+<td>int</td>
+<td>0</td>
+<td>Unix 时间戳</td>
+</tr>
+<tr>
+<td><code>difficulty</code></td>
+<td>string</td>
+<td>0</td>
+<td>难度</td>
+</tr>
+<tr>
+<td><code>maps</code></td>
+<td>table</td>
+<td>{}</td>
+<td>每关分段时间</td>
+</tr>
+<tr>
+<td><code>stats</code></td>
+<td>table</td>
+<td>{…}</td>
+<td>统计数据</td>
+</tr>
+</tbody></table>
+<h3 id="1-3-g-STLib"><a href="#1-3-g-STLib" class="headerlink" title="1.3 g_STLib"></a>1.3 <code>g_STLib</code></h3><p>ST API 核心库表。定义在 <code>speedrunner_tools.nut:7-56</code>。</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>g_STLib.Items</code></td>
+<td>table</td>
+<td>物品定义表 (item0~item41)</td>
+</tr>
+<tr>
+<td><code>g_STLib.Funcs</code></td>
+<td>table</td>
+<td>核心功能函数</td>
+</tr>
+<tr>
+<td><code>g_STLib.Vars</code></td>
+<td>table</td>
+<td>运行时变量 (HUD, 时间等)</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="2-物品与实体生成"><a href="#2-物品与实体生成" class="headerlink" title="2. 物品与实体生成"></a>2. 物品与实体生成</h2><h3 id="2-1-SpawnItem-sName-vecPos-vecAng-iCount-sTarget-fRadius"><a href="#2-1-SpawnItem-sName-vecPos-vecAng-iCount-sTarget-fRadius" class="headerlink" title="2.1 SpawnItem(sName, vecPos, vecAng, iCount, sTarget, fRadius)"></a>2.1 <code>SpawnItem(sName, vecPos, vecAng, iCount, sTarget, fRadius)</code></h3><p>在指定位置生成物品。</p>
+<p><strong>定义</strong>: <code>speedrunner_tools.nut:74-103</code></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>sName</code></td>
+<td>string</td>
+<td>—</td>
+<td>物品名称 (item0~item41)</td>
+</tr>
+<tr>
+<td><code>vecPos</code></td>
+<td>Vector</td>
+<td>—</td>
+<td>生成位置</td>
+</tr>
+<tr>
+<td><code>vecAng</code></td>
+<td>Vector</td>
+<td>null → <code>Vector()</code></td>
+<td>生成角度</td>
+</tr>
+<tr>
+<td><code>iCount</code></td>
+<td>int</td>
+<td>null → 1</td>
+<td>数量</td>
+</tr>
+<tr>
+<td><code>sTarget</code></td>
+<td>string</td>
+<td>null → <code>&quot;ent_speedrun_item&quot;</code></td>
+<td>物品 targetname</td>
+</tr>
+<tr>
+<td><code>fRadius</code></td>
+<td>float</td>
+<td>0</td>
+<td>清除半径 (若 &gt;0 则先移除范围内同名物品)</td>
+</tr>
+</tbody></table>
+<p><strong>返回值</strong>: 生成的 entity handle。</p>
+<p><strong>示例</strong>:</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SpawnItem(<span class="string">&quot;item4&quot;</span>, Vector(<span class="number">100</span>, <span class="number">200</span>, <span class="number">50</span>));               // 生成手枪</span><br><span class="line">SpawnItem(<span class="string">&quot;item9&quot;</span>, Vector(<span class="number">100</span>, <span class="number">200</span>, <span class="number">50</span>), Vector(<span class="number">0</span>, <span class="number">90</span>, <span class="number">0</span>), <span class="number">3</span>); // <span class="number">3</span> 个土制</span><br><span class="line">SpawnItem(<span class="string">&quot;item38&quot;</span>, Vector(...), null, <span class="number">1</span>, <span class="string">&quot;my_katana&quot;</span>);  // 生成名为 my_katana 的武士刀</span><br></pre></td></tr></table></figure>
+
+<p>物品表见 speedrunner-tools-guide.md 的 7.3 节。</p>
+<h3 id="2-2-SpawnZombie-sName-vecPos-idle"><a href="#2-2-SpawnZombie-sName-vecPos-idle" class="headerlink" title="2.2 SpawnZombie(sName, vecPos, idle)"></a>2.2 <code>SpawnZombie(sName, vecPos, idle)</code></h3><p>简易生成特感&#x2F;普通感染者。</p>
+<p><strong>定义</strong>: <code>speedrunner_tools.nut:108-152</code></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>sName</code></td>
+<td>string</td>
+<td>—</td>
+<td>僵尸类型</td>
+</tr>
+<tr>
+<td><code>vecPos</code></td>
+<td>Vector</td>
+<td>null</td>
+<td>生成位置</td>
+</tr>
+<tr>
+<td><code>idle</code></td>
+<td>bool</td>
+<td>false</td>
+<td>是否闲置 (不攻击)</td>
+</tr>
+</tbody></table>
+<p><strong>sName 可选值</strong>: <code>&quot;smoker&quot;</code>, <code>&quot;hunter&quot;</code>, <code>&quot;boomer&quot;</code>, <code>&quot;jockey&quot;</code>, <code>&quot;charger&quot;</code>, <code>&quot;spitter&quot;</code>, <code>&quot;tank&quot;</code>, <code>&quot;witch&quot;</code>, <code>&quot;witch_bride&quot;</code>, <code>&quot;infected&quot;</code>, <code>&quot;mob&quot;</code></p>
+<p><strong>返回值</strong>: 生成的 entity handle，失败返回 null。</p>
+<p><strong>示例</strong>:</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SpawnZombie(<span class="string">&quot;tank&quot;</span>, Vector(<span class="number">100</span>, <span class="number">200</span>, <span class="number">50</span>));              // 生成 Tank</span><br><span class="line">SpawnZombie(<span class="string">&quot;hunter&quot;</span>, Vector(...), <span class="literal">true</span>);                // 生成闲置 Hunter</span><br><span class="line">SpawnZombie(<span class="string">&quot;infected&quot;</span>);                                 // 生成普通感染者</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-3-SpawnZombieEx-sName-vecPos-vecAng-AttackOnSpawn-spawnTime"><a href="#2-3-SpawnZombieEx-sName-vecPos-vecAng-AttackOnSpawn-spawnTime" class="headerlink" title="2.3 SpawnZombieEx(sName, vecPos, vecAng, AttackOnSpawn, spawnTime)"></a>2.3 <code>SpawnZombieEx(sName, vecPos, vecAng, AttackOnSpawn, spawnTime)</code></h3><p>精确生成特感&#x2F;普通感染者 (使用 commentary_zombie_spawner)。</p>
+<p><strong>定义</strong>: <code>speedrunner_tools.nut:157-181</code></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>sName</code></td>
+<td>string</td>
+<td>—</td>
+<td>僵尸类型或 common 模型名</td>
+</tr>
+<tr>
+<td><code>vecPos</code></td>
+<td>Vector</td>
+<td>—</td>
+<td>生成位置</td>
+</tr>
+<tr>
+<td><code>vecAng</code></td>
+<td>Vector</td>
+<td>null → 随机 Yaw</td>
+<td>生成角度</td>
+</tr>
+<tr>
+<td><code>AttackOnSpawn</code></td>
+<td>bool</td>
+<td>false</td>
+<td>是否立刻攻击 (Tank&#x2F;Spitter 专用)</td>
+</tr>
+<tr>
+<td><code>spawnTime</code></td>
+<td>float</td>
+<td>0.0</td>
+<td>生成延迟秒数</td>
+</tr>
+</tbody></table>
+<p><strong>特殊说明</strong>:</p>
+<ul>
+<li><code>sName = &quot;infected&quot;</code> 时，随机从 5 种 common 模型中选择</li>
+<li><code>sName = &quot;tank&quot;</code> 或 <code>&quot;spitter&quot;</code> 时，会设置 <code>cm_AggressiveSpecials</code></li>
+</ul>
+<p><strong>示例</strong>:</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SpawnZombieEx(<span class="string">&quot;tank&quot;</span>, Vector(...), Vector(<span class="number">0</span>, <span class="number">180</span>, <span class="number">0</span>), <span class="literal">true</span>);   // 生成面向 <span class="number">180</span>° 的 Tank</span><br><span class="line">SpawnZombieEx(<span class="string">&quot;spitter&quot;</span>, Vector(...), null, <span class="literal">true</span>, <span class="number">1.0</span>);         // <span class="number">1</span> 秒后生成 Spitter</span><br><span class="line">SpawnZombieEx(<span class="string">&quot;infected&quot;</span>, Vector(...));                          // 生成随机 common</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-4-SpawnZombieForCB-vecPos-vecAng-startTime-hPlayer-bNotSolid-sName"><a href="#2-4-SpawnZombieForCB-vecPos-vecAng-startTime-hPlayer-bNotSolid-sName" class="headerlink" title="2.4 SpawnZombieForCB(vecPos, vecAng, startTime, hPlayer, bNotSolid, sName)"></a>2.4 <code>SpawnZombieForCB(vecPos, vecAng, startTime, hPlayer, bNotSolid, sName)</code></h3><p>生成用于 Commonboost 的僵尸。</p>
+<p><strong>定义</strong>: <code>speedrunner_tools.nut:186-249</code></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>vecPos</code></td>
+<td>Vector</td>
+<td>—</td>
+<td>生成位置</td>
+</tr>
+<tr>
+<td><code>vecAng</code></td>
+<td>Vector</td>
+<td>null → 随机 Yaw</td>
+<td>生成角度</td>
+</tr>
+<tr>
+<td><code>startTime</code></td>
+<td>float</td>
+<td>0</td>
+<td>开始计时时间</td>
+</tr>
+<tr>
+<td><code>hPlayer</code></td>
+<td>entity</td>
+<td>null</td>
+<td>目标玩家</td>
+</tr>
+<tr>
+<td><code>bNotSolid</code></td>
+<td>bool</td>
+<td>false</td>
+<td>是否非实体</td>
+</tr>
+<tr>
+<td><code>sName</code></td>
+<td>string</td>
+<td><code>&quot;ent_zombie_for_cb&quot;</code></td>
+<td>僵尸 targetname</td>
+</tr>
+</tbody></table>
+<p><strong>返回值</strong>: 生成的 infected entity handle。</p>
+<p>该函数会注册 <code>OnGameEvent_weapon_fire</code> 事件监听。当 <code>startTime</code> 和 <code>hPlayer</code> 提供时，僵尸会在指定时间后朝玩家移动。</p>
+<h3 id="2-5-SpawnCommon-sName-vecPos-vecAng-flags"><a href="#2-5-SpawnCommon-sName-vecPos-vecAng-flags" class="headerlink" title="2.5 SpawnCommon(sName, vecPos, vecAng, flags)"></a>2.5 <code>SpawnCommon(sName, vecPos, vecAng, flags)</code></h3><p>生成普通感染者 (支持堕落幸存者)。</p>
+<p><strong>定义</strong>: <code>speedrunner_tools.nut:255-343</code></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>sName</code></td>
+<td>string</td>
+<td>null</td>
+<td>common 模型名 (null&#x3D;随机堕落, false&#x3D;随机 CEDA)</td>
+</tr>
+<tr>
+<td><code>vecPos</code></td>
+<td>Vector</td>
+<td>null</td>
+<td>生成位置</td>
+</tr>
+<tr>
+<td><code>vecAng</code></td>
+<td>Vector</td>
+<td>null → 随机 Yaw</td>
+<td>生成角度</td>
+</tr>
+<tr>
+<td><code>flags</code></td>
+<td>int</td>
+<td>1</td>
+<td>FallenFlags 组合值</td>
+</tr>
+</tbody></table>
+<p><strong>flags 值</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>常量</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>FALLEN_VJAR_OR_MOLOTOV</td>
+<td>携带胆汁&#x2F;燃烧瓶</td>
+</tr>
+<tr>
+<td>2</td>
+<td>FALLEN_PIPE</td>
+<td>携带土制</td>
+</tr>
+<tr>
+<td>4</td>
+<td>FALLEN_PILLS</td>
+<td>携带药丸</td>
+</tr>
+<tr>
+<td>8</td>
+<td>FALLEN_MEDKIT</td>
+<td>携带医疗包</td>
+</tr>
+<tr>
+<td>16</td>
+<td>FALLEN_SIT</td>
+<td>坐姿</td>
+</tr>
+<tr>
+<td>32</td>
+<td>FALLEN_LYING</td>
+<td>躺姿</td>
+</tr>
+</tbody></table>
+<p><strong>示例</strong>:</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SpawnCommon(<span class="string">&quot;common_male_fallen_survivor&quot;</span>, Vector(...));           // 堕落幸存者</span><br><span class="line">SpawnCommon(<span class="string">&quot;common_male_ceda&quot;</span>, Vector(...), Vector(<span class="number">0</span>, <span class="number">90</span>, <span class="number">0</span>));   // 指定角度</span><br><span class="line">SpawnCommon(null, Vector(...), null, FALLEN_SIT | FALLEN_PILLS);  // 坐姿携带药丸</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-6-SpawnTrigger-sName-vecPos-vecMaxs-vecMins-sFunc-iType-output-sClass"><a href="#2-6-SpawnTrigger-sName-vecPos-vecMaxs-vecMins-sFunc-iType-output-sClass" class="headerlink" title="2.6 SpawnTrigger(sName, vecPos, vecMaxs, vecMins, sFunc, iType, output, sClass)"></a>2.6 <code>SpawnTrigger(sName, vecPos, vecMaxs, vecMins, sFunc, iType, output, sClass)</code></h3><p>生成 Trigger 实体。</p>
+<p><strong>定义</strong>: <code>speedrunner_tools.nut:348-368</code></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>sName</code></td>
+<td>string</td>
+<td>—</td>
+<td>trigger targetname</td>
+</tr>
+<tr>
+<td><code>vecPos</code></td>
+<td>Vector</td>
+<td>—</td>
+<td>中心位置</td>
+</tr>
+<tr>
+<td><code>vecMaxs</code></td>
+<td>Vector</td>
+<td><code>Vector(64, 64, 128)</code></td>
+<td>最大偏移</td>
+</tr>
+<tr>
+<td><code>vecMins</code></td>
+<td>Vector</td>
+<td><code>Vector(-64, -64, 0)</code></td>
+<td>最小偏移</td>
+</tr>
+<tr>
+<td><code>sFunc</code></td>
+<td>string</td>
+<td><code>&quot;OnEntityOutput&quot;</code></td>
+<td>触发时调用的回调函数名</td>
+</tr>
+<tr>
+<td><code>iType</code></td>
+<td>int</td>
+<td>TR_CLIENTS (1)</td>
+<td>spawnflags</td>
+</tr>
+<tr>
+<td><code>output</code></td>
+<td>string</td>
+<td><code>&quot;OnStartTouch&quot;</code></td>
+<td>触发的 output 名 (逗号分隔多个)</td>
+</tr>
+<tr>
+<td><code>sClass</code></td>
+<td>string</td>
+<td><code>&quot;trigger_multiple&quot;</code></td>
+<td>trigger 类名</td>
+</tr>
+</tbody></table>
+<p><strong>返回值</strong>: trigger entity handle。</p>
+<p><strong>示例</strong>:</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SpawnTrigger(<span class="string">&quot;area1&quot;</span>, Vector(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>), Vector(<span class="number">100</span>, <span class="number">100</span>, <span class="number">200</span>), Vector(<span class="number">-100</span>, <span class="number">-100</span>, <span class="number">0</span>));</span><br><span class="line">SpawnTrigger(<span class="string">&quot;finish&quot;</span>, Vector(...), null, null, <span class="string">&quot;OnFinish&quot;</span>, TR_CLIENTS, <span class="string">&quot;OnStartTouch,OnEndTouch&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="3-物品管理"><a href="#3-物品管理" class="headerlink" title="3. 物品管理"></a>3. 物品管理</h2><h3 id="3-1-RemoveItem-sName"><a href="#3-1-RemoveItem-sName" class="headerlink" title="3.1 RemoveItem(sName)"></a>3.1 <code>RemoveItem(sName)</code></h3><p>移除所有匹配的生成物品。</p>
+<p><strong>定义</strong>: <code>speedrunner_tools.nut:373-392</code></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>sName</code></td>
+<td>string</td>
+<td>null</td>
+<td>物品名称 (null&#x3D;移除全部)</td>
+</tr>
+</tbody></table>
+<p><strong>返回值</strong>: 移除的物品数量。</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">RemoveItem(<span class="string">&quot;item9&quot;</span>);    // 移除所有土制炸弹</span><br><span class="line">RemoveItem();           // 移除地图上所有 ST 物品</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-2-RemoveItemEx-vecPos-fRadius"><a href="#3-2-RemoveItemEx-vecPos-fRadius" class="headerlink" title="3.2 RemoveItemEx(vecPos, fRadius)"></a>3.2 <code>RemoveItemEx(vecPos, fRadius)</code></h3><p>移除指定半径内的所有物品和武器。</p>
+<p><strong>定义</strong>: <code>speedrunner_tools.nut:397-421</code></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>vecPos</code></td>
+<td>Vector</td>
+<td>—</td>
+<td>中心位置</td>
+</tr>
+<tr>
+<td><code>fRadius</code></td>
+<td>float</td>
+<td>5.0</td>
+<td>搜索半径</td>
+</tr>
+</tbody></table>
+<p><strong>返回值</strong>: 移除的物品数量。</p>
+<h3 id="3-3-RemoveSlot-hPlayer-slot"><a href="#3-3-RemoveSlot-hPlayer-slot" class="headerlink" title="3.3 RemoveSlot(hPlayer, slot)"></a>3.3 <code>RemoveSlot(hPlayer, slot)</code></h3><p>移除指定玩家的装备槽物品。</p>
+<p><strong>定义</strong>: <code>speedrunner_tools.nut:426-433</code></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>hPlayer</code></td>
+<td>entity</td>
+<td>玩家 handle</td>
+</tr>
+<tr>
+<td><code>slot</code></td>
+<td>int</td>
+<td>槽位 (0&#x3D;主武器, 1&#x3D;副武器, 2&#x3D;药丸, 3&#x3D;投掷物等)</td>
+</tr>
+</tbody></table>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">RemoveSlot(hPlayer, <span class="number">0</span>);   // 移除主武器</span><br><span class="line">RemoveSlot(hPlayer, <span class="number">2</span>);   // 移除药丸/肾上腺素</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-4-RemoveCI"><a href="#3-4-RemoveCI" class="headerlink" title="3.4 RemoveCI()"></a>3.4 <code>RemoveCI()</code></h3><p>移除所有普通感染者 (infected)。</p>
+<p><strong>定义</strong>: <code>speedrunner_tools.nut:438-445</code></p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RemoveCI();   // 清空所有 common</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="4-玩家控制"><a href="#4-玩家控制" class="headerlink" title="4. 玩家控制"></a>4. 玩家控制</h2><h3 id="4-1-ST-Idle-hPlayer-bMode"><a href="#4-1-ST-Idle-hPlayer-bMode" class="headerlink" title="4.1 ST_Idle(hPlayer, bMode)"></a>4.1 <code>ST_Idle(hPlayer, bMode)</code></h3><p>让玩家闲置或接管 Bot。</p>
+<p><strong>定义</strong>: <code>sm_commands.nut:143-147</code></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>hPlayer</code></td>
+<td>entity</td>
+<td>—</td>
+<td>玩家 handle</td>
+</tr>
+<tr>
+<td><code>bMode</code></td>
+<td>bool</td>
+<td>false</td>
+<td>false&#x3D;闲置, true&#x3D;接管</td>
+</tr>
+</tbody></table>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ST_Idle(hPlayer);          // 闲置当前玩家</span><br><span class="line">ST_Idle(hPlayer, <span class="literal">true</span>);    // 接管 Bot</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-2-ST-PlayerReplace-hPlayer-hPlayer2"><a href="#4-2-ST-PlayerReplace-hPlayer-hPlayer2" class="headerlink" title="4.2 ST_PlayerReplace(hPlayer, hPlayer2)"></a>4.2 <code>ST_PlayerReplace(hPlayer, hPlayer2)</code></h3><p>交换两个玩家的角色控制权。</p>
+<p><strong>定义</strong>: <code>sm_commands.nut:152-156</code></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>hPlayer</code></td>
+<td>entity</td>
+<td>玩家 1</td>
+</tr>
+<tr>
+<td><code>hPlayer2</code></td>
+<td>entity</td>
+<td>玩家 2</td>
+</tr>
+</tbody></table>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ST_PlayerReplace(hPlayer1, hPlayer2);</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-3-PlayerKill-hPlayer"><a href="#4-3-PlayerKill-hPlayer" class="headerlink" title="4.3 PlayerKill(hPlayer)"></a>4.3 <code>PlayerKill(hPlayer)</code></h3><p>击杀指定玩家。</p>
+<p><strong>定义</strong>: <code>speedrunner_tools.nut:1025-1033</code></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>hPlayer</code></td>
+<td>entity</td>
+<td>目标玩家</td>
+</tr>
+</tbody></table>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PlayerKill(hPlayer);</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-4-PlayerKillFromWeapon-hPlayer-hAttacker-iShots-bWaitForWeaponReady-fTime"><a href="#4-4-PlayerKillFromWeapon-hPlayer-hAttacker-iShots-bWaitForWeaponReady-fTime" class="headerlink" title="4.4 PlayerKillFromWeapon(hPlayer, hAttacker, iShots, bWaitForWeaponReady, fTime)"></a>4.4 <code>PlayerKillFromWeapon(hPlayer, hAttacker, iShots, bWaitForWeaponReady, fTime)</code></h3><p>使用霰弹枪武器击杀玩家 (用于团队击杀)。</p>
+<p><strong>定义</strong>: <code>speedrunner_tools.nut:1038-1164</code></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>hPlayer</code></td>
+<td>entity</td>
+<td>—</td>
+<td>被击杀者</td>
+</tr>
+<tr>
+<td><code>hAttacker</code></td>
+<td>entity</td>
+<td>—</td>
+<td>攻击者</td>
+</tr>
+<tr>
+<td><code>iShots</code></td>
+<td>int</td>
+<td>null → 4</td>
+<td>射击次数</td>
+</tr>
+<tr>
+<td><code>bWaitForWeaponReady</code></td>
+<td>bool</td>
+<td>false</td>
+<td>等待武器就绪</td>
+</tr>
+<tr>
+<td><code>fTime</code></td>
+<td>float</td>
+<td>1.0</td>
+<td>等待时间</td>
+</tr>
+</tbody></table>
+<p><strong>支持武器</strong>: <code>weapon_pumpshotgun</code>, <code>weapon_shotgun_chrome</code>, <code>weapon_autoshotgun</code>, <code>weapon_shotgun_spas</code></p>
+<p><strong>需要难度</strong>: <code>Impossible</code> (专家)</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PlayerKillFromWeapon(hPlayer, hAttacker, <span class="number">2</span>);   // <span class="number">2</span> 发 shotgun 击杀队友</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-5-PlayerGod-hPlayer-bGod"><a href="#4-5-PlayerGod-hPlayer-bGod" class="headerlink" title="4.5 PlayerGod(hPlayer, bGod)"></a>4.5 <code>PlayerGod(hPlayer, bGod)</code></h3><p>设置玩家无敌状态。</p>
+<p><strong>定义</strong>: <code>speedrunner_tools.nut:1169-1174</code></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>hPlayer</code></td>
+<td>entity</td>
+<td>玩家 handle</td>
+</tr>
+<tr>
+<td><code>bGod</code></td>
+<td>bool</td>
+<td>true&#x3D;无敌, false&#x3D;取消无敌</td>
+</tr>
+</tbody></table>
+<h3 id="4-6-ST-MR-hPlayer-eMode-sFileName-bNoTeleport"><a href="#4-6-ST-MR-hPlayer-eMode-sFileName-bNoTeleport" class="headerlink" title="4.6 ST_MR(hPlayer, eMode, sFileName, bNoTeleport)"></a>4.6 <code>ST_MR(hPlayer, eMode, sFileName, bNoTeleport)</code></h3><p>控制 Movement Reader 录制&#x2F;回放。</p>
+<p><strong>定义</strong>: <code>sm_commands.nut:161-170</code></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>hPlayer</code></td>
+<td>entity</td>
+<td>null → 玩家 1</td>
+<td>目标玩家</td>
+</tr>
+<tr>
+<td><code>eMode</code></td>
+<td>int</td>
+<td>0</td>
+<td>0&#x3D;录制, 1&#x3D;回放, 2&#x3D;default 回放, 3&#x3D;分割</td>
+</tr>
+<tr>
+<td><code>sFileName</code></td>
+<td>string</td>
+<td>null → <code>&quot;default&quot;</code></td>
+<td>文件名</td>
+</tr>
+<tr>
+<td><code>bNoTeleport</code></td>
+<td>bool</td>
+<td>false</td>
+<td>不回传起始位置</td>
+</tr>
+</tbody></table>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ST_MR(hPlayer, <span class="number">0</span>, <span class="string">&quot;m1_nick&quot;</span>);     // 录制到 m1_nick.txt</span><br><span class="line">ST_MR(hPlayer, <span class="number">1</span>, <span class="string">&quot;m1_nick&quot;</span>);     // 回放 m1_nick.txt</span><br><span class="line">ST_MR(hPlayer, <span class="number">2</span>);                 // 回放 default.txt</span><br><span class="line">ST_MR(hPlayer, <span class="number">3</span>);                 // 分割</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-7-ST-MRStop-hPlayer"><a href="#4-7-ST-MRStop-hPlayer" class="headerlink" title="4.7 ST_MRStop(hPlayer)"></a>4.7 <code>ST_MRStop(hPlayer)</code></h3><p>停止 Movement Reader。</p>
+<p><strong>定义</strong>: <code>sm_commands.nut:175-183</code></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>hPlayer</code></td>
+<td>entity</td>
+<td>null</td>
+<td>指定玩家 (null&#x3D;停止所有)</td>
+</tr>
+</tbody></table>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ST_MRStop();            // 停止所有玩家的 MR</span><br><span class="line">ST_MRStop(hPlayer);     // 停止指定玩家的 MR</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="5-地图与导演控制"><a href="#5-地图与导演控制" class="headerlink" title="5. 地图与导演控制"></a>5. 地图与导演控制</h2><h3 id="5-1-DirectorStop-bMode"><a href="#5-1-DirectorStop-bMode" class="headerlink" title="5.1 DirectorStop(bMode)"></a>5.1 <code>DirectorStop(bMode)</code></h3><p>控制导演系统。</p>
+<p><strong>定义</strong>: <code>speedrunner_tools.nut:450-477</code></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>bMode</code></td>
+<td>bool</td>
+<td>false</td>
+<td>false&#x3D;禁用导演, true&#x3D;恢复导演</td>
+</tr>
+</tbody></table>
+<p><strong>禁用时</strong> (<code>false</code>):</p>
+<ul>
+<li><code>director_no_bosses</code> &#x3D; 1, <code>director_no_mobs</code> &#x3D; 1, <code>director_no_specials</code> &#x3D; 1</li>
+<li><code>z_common_limit</code> &#x3D; 0</li>
+<li>移除所有现存感染者</li>
+</ul>
+<p><strong>恢复时</strong> (<code>true</code>):</p>
+<ul>
+<li>恢复默认导演参数</li>
+</ul>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">DirectorStop();          // 禁用导演系统 (清除所有感染者)</span><br><span class="line">DirectorStop(<span class="literal">true</span>);      // 恢复导演系统</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-2-AutoOpen-bValue"><a href="#5-2-AutoOpen-bValue" class="headerlink" title="5.2 AutoOpen(bValue)"></a>5.2 <code>AutoOpen(bValue)</code></h3><p>自动开门 (安全门)。</p>
+<p><strong>定义</strong>: <code>speedrunner_tools.nut:482-514</code></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>bValue</code></td>
+<td>bool</td>
+<td>false</td>
+<td>true&#x3D;开门一次, false&#x3D;持续自动开门</td>
+</tr>
+</tbody></table>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">AutoOpen(<span class="literal">true</span>);          // 自动打开最近的安全门</span><br><span class="line">AutoOpen(<span class="literal">false</span>);         // 持续自动开门 (每 <span class="number">0.6</span> 秒检测)</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-3-ScriptedTP-hPlayer-hLeader-fTime-bStuckTeleport-eMode"><a href="#5-3-ScriptedTP-hPlayer-hLeader-fTime-bStuckTeleport-eMode" class="headerlink" title="5.3 ScriptedTP(hPlayer, hLeader, fTime, bStuckTeleport, eMode)"></a>5.3 <code>ScriptedTP(hPlayer, hLeader, fTime, bStuckTeleport, eMode)</code></h3><p>脚本传送玩家。</p>
+<p><strong>定义</strong>: <code>speedrunner_tools.nut:897-945</code></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>hPlayer</code></td>
+<td>entity</td>
+<td>—</td>
+<td>被传送的玩家</td>
+</tr>
+<tr>
+<td><code>hLeader</code></td>
+<td>entity</td>
+<td>—</td>
+<td>目标玩家 (bStuckTeleport 时可为 null)</td>
+</tr>
+<tr>
+<td><code>fTime</code></td>
+<td>float</td>
+<td>6.1</td>
+<td>延迟秒数</td>
+</tr>
+<tr>
+<td><code>bStuckTeleport</code></td>
+<td>bool</td>
+<td>false</td>
+<td>是否卡住传送 (自动找最近队友)</td>
+</tr>
+<tr>
+<td><code>eMode</code></td>
+<td>int</td>
+<td>0</td>
+<td>0&#x3D;传送, 1&#x3D;Bot 跟随, 2&#x3D;远距离跟随</td>
+</tr>
+</tbody></table>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ScriptedTP(hPlayer, hLeader, <span class="number">5.0</span>);              // <span class="number">5</span> 秒后将 hPlayer 传到 hLeader 位置</span><br><span class="line">ScriptedTP(hPlayer, null, <span class="number">3.0</span>, <span class="literal">true</span>);            // <span class="number">3</span> 秒后自动卡住传送</span><br><span class="line">ScriptedTP(hPlayer, hLeader, <span class="number">0</span>, <span class="literal">false</span>, <span class="number">0</span>);       // 立即传送</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-4-ScriptedShots-hPlayer-fDistance"><a href="#5-4-ScriptedShots-hPlayer-fDistance" class="headerlink" title="5.4 ScriptedShots(hPlayer, fDistance)"></a>5.4 <code>ScriptedShots(hPlayer, fDistance)</code></h3><p>自动射击普通感染者。</p>
+<p><strong>定义</strong>: <code>speedrunner_tools.nut:950-1020</code></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>hPlayer</code></td>
+<td>entity</td>
+<td>—</td>
+<td>玩家 handle</td>
+</tr>
+<tr>
+<td><code>fDistance</code></td>
+<td>float</td>
+<td>1000</td>
+<td>射击距离 (0&#x3D;停止自动射击)</td>
+</tr>
+</tbody></table>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ScriptedShots(hPlayer, <span class="number">800</span>);     // 开始自动射击半径 <span class="number">800</span> 内的 common</span><br><span class="line">ScriptedShots(hPlayer, <span class="number">0</span>);       // 停止自动射击</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-5-NavMark-vecPos-flags"><a href="#5-5-NavMark-vecPos-flags" class="headerlink" title="5.5 NavMark(vecPos, flags)"></a>5.5 <code>NavMark(vecPos, flags)</code></h3><p>标记 NAV 区域。</p>
+<p><strong>定义</strong>: <code>utils.nut:937-948</code></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>vecPos</code></td>
+<td>Vector</td>
+<td>—</td>
+<td>标记位置</td>
+</tr>
+<tr>
+<td><code>flags</code></td>
+<td>int</td>
+<td>NAV_EMPTY (2)</td>
+<td>NAV 属性标记</td>
+</tr>
+</tbody></table>
+<p><strong>flags 值</strong>: <code>NAV_EMPTY</code>, <code>NAV_BATTLESTATION</code>, <code>NAV_FINALE</code>, <code>NAV_PLAYER_START</code>, <code>NAV_CHECKPOINT</code>, <code>NAV_NO_MOBS</code> 等。</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">NavMark(Vector(...));                       // 普通 NAV 标记</span><br><span class="line">NavMark(Vector(...), NAV_CHECKPOINT);       // checkpoint 标记</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="6-AutoFire-系统"><a href="#6-AutoFire-系统" class="headerlink" title="6. AutoFire 系统"></a>6. AutoFire 系统</h2><h3 id="6-1-AutoFire-hPlayer-vecAng-vecPos-bLoop-bUp-fRadius-hClient-delayTime-data-method3D-vecVel"><a href="#6-1-AutoFire-hPlayer-vecAng-vecPos-bLoop-bUp-fRadius-hClient-delayTime-data-method3D-vecVel" class="headerlink" title="6.1 AutoFire(hPlayer, vecAng, vecPos, bLoop, bUp, fRadius, hClient, delayTime, data, method3D, vecVel)"></a>6.1 <code>AutoFire(hPlayer, vecAng, vecPos, bLoop, bUp, fRadius, hClient, delayTime, data, method3D, vecVel)</code></h3><p>榴弹发射器 Boost (AF1)。</p>
+<p><strong>定义</strong>: <code>speedrunner_tools.nut:519-616</code></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>hPlayer</code></td>
+<td>entity&#x2F;string</td>
+<td>—</td>
+<td>发射玩家</td>
+</tr>
+<tr>
+<td><code>vecAng</code></td>
+<td>Vector</td>
+<td>null</td>
+<td>传送视角角度</td>
+</tr>
+<tr>
+<td><code>vecPos</code></td>
+<td>Vector</td>
+<td>null</td>
+<td>传送位置</td>
+</tr>
+<tr>
+<td><code>bLoop</code></td>
+<td>bool</td>
+<td>null</td>
+<td>是否循环攻击</td>
+</tr>
+<tr>
+<td><code>bUp</code></td>
+<td>bool</td>
+<td>null</td>
+<td>是否向上 (不蹲下)</td>
+</tr>
+<tr>
+<td><code>fRadius</code></td>
+<td>float</td>
+<td>null → 25&#x2F;61</td>
+<td>Boost 触发半径</td>
+</tr>
+<tr>
+<td><code>hClient</code></td>
+<td>entity</td>
+<td>null</td>
+<td>指定触发玩家 (null&#x3D;任意人类)</td>
+</tr>
+<tr>
+<td><code>delayTime</code></td>
+<td>float</td>
+<td>null → 0.0</td>
+<td>延迟秒数</td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td>int</td>
+<td>null → 0</td>
+<td>自定义数据 (传给 OnAutoFired)</td>
+</tr>
+<tr>
+<td><code>method3D</code></td>
+<td>bool</td>
+<td>null</td>
+<td>使用 3D 距离</td>
+</tr>
+<tr>
+<td><code>vecVel</code></td>
+<td>Vector</td>
+<td>null</td>
+<td>榴弹速度向量</td>
+</tr>
+</tbody></table>
+<p><strong>回调解发</strong>: <code>OnAutoFired(hPlayer, data)</code> 和 <code>OnAutoFired_Post(hPlayer, hClient, data)</code></p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">AutoFire(hPlayer, Vector(<span class="number">0</span>, <span class="number">90</span>, <span class="number">0</span>), Vector(...), <span class="literal">false</span>, <span class="literal">true</span>, <span class="number">30</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-2-AutoFire2-hPlayer-vecAng-vecPos-bLoop-bUp-fRadius-hClient-delayTime-data-method3D-bScripted"><a href="#6-2-AutoFire2-hPlayer-vecAng-vecPos-bLoop-bUp-fRadius-hClient-delayTime-data-method3D-bScripted" class="headerlink" title="6.2 AutoFire2(hPlayer, vecAng, vecPos, bLoop, bUp, fRadius, hClient, delayTime, data, method3D, bScripted)"></a>6.2 <code>AutoFire2(hPlayer, vecAng, vecPos, bLoop, bUp, fRadius, hClient, delayTime, data, method3D, bScripted)</code></h3><p>胆汁&#x2F;投掷物 Boost (AF2)。</p>
+<p><strong>定义</strong>: <code>speedrunner_tools.nut:621-755</code></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>bScripted</code></td>
+<td>bool</td>
+<td>null</td>
+<td>脚本模式 (记录向量)</td>
+</tr>
+</tbody></table>
+<p>其余参数同 AutoFire。<code>fRadius</code> 默认 70。</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">AutoFire2(hPlayer, Vector(<span class="number">0</span>, <span class="number">180</span>, <span class="number">0</span>), Vector(...));</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-3-AutoFire3-hPlayer-aPlayers-fPitch-sWeapon-bScripted-data"><a href="#6-3-AutoFire3-hPlayer-aPlayers-fPitch-sWeapon-bScripted-data" class="headerlink" title="6.3 AutoFire3(hPlayer, aPlayers, fPitch, sWeapon, bScripted, data)"></a>6.3 <code>AutoFire3(hPlayer, aPlayers, fPitch, sWeapon, bScripted, data)</code></h3><p>Pipe&#x2F;火瓶团队 Boost (AF3)。</p>
+<p><strong>定义</strong>: <code>speedrunner_tools.nut:760-882</code></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>hPlayer</code></td>
+<td>entity&#x2F;string</td>
+<td>—</td>
+<td>投掷玩家</td>
+</tr>
+<tr>
+<td><code>aPlayers</code></td>
+<td>array&#x2F;entity</td>
+<td>—</td>
+<td>要 Boost 的玩家数组</td>
+</tr>
+<tr>
+<td><code>fPitch</code></td>
+<td>float</td>
+<td>null → 2.0</td>
+<td>视角俯仰</td>
+</tr>
+<tr>
+<td><code>sWeapon</code></td>
+<td>string</td>
+<td>null</td>
+<td>武器限制 (pipe_bomb&#x2F;molotov)</td>
+</tr>
+<tr>
+<td><code>bScripted</code></td>
+<td>bool</td>
+<td>null</td>
+<td>脚本模式</td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td>int</td>
+<td>0</td>
+<td>自定义数据</td>
+</tr>
+</tbody></table>
+<p><strong>注册方式</strong>: 通过 <code>OnGameEvent_weapon_fire</code> 事件监听。</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">AutoFire3(hPlayer, [hPlayer2, hPlayer3], <span class="number">2.0</span>, <span class="string">&quot;pipe_bomb&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-4-AFStop"><a href="#6-4-AFStop" class="headerlink" title="6.4 AFStop()"></a>6.4 <code>AFStop()</code></h3><p>停止所有 AutoFire。</p>
+<p><strong>定义</strong>: <code>speedrunner_tools.nut:887-892</code></p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">AFStop();   // 停止 AF1, AF2, AF3</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="7-计时器与-HUD"><a href="#7-计时器与-HUD" class="headerlink" title="7. 计时器与 HUD"></a>7. 计时器与 HUD</h2><h3 id="7-1-SpeedrunStart-isHUD"><a href="#7-1-SpeedrunStart-isHUD" class="headerlink" title="7.1 SpeedrunStart(isHUD)"></a>7.1 <code>SpeedrunStart(isHUD)</code></h3><p>启动或停止计时器。</p>
+<p><strong>定义</strong>: <code>vs_st_ems.nut:947-957</code></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>isHUD</code></td>
+<td>bool</td>
+<td>true</td>
+<td>true&#x3D;启动并显示 HUD, false&#x3D;停止计时</td>
+</tr>
+</tbody></table>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SpeedrunStart();         // 启动计时</span><br><span class="line">SpeedrunStart(<span class="literal">false</span>);    // 停止计时</span><br></pre></td></tr></table></figure>
+
+<h3 id="7-2-SpeedrunRestart-bAllowFastRestarts"><a href="#7-2-SpeedrunRestart-bAllowFastRestarts" class="headerlink" title="7.2 SpeedrunRestart(bAllowFastRestarts)"></a>7.2 <code>SpeedrunRestart(bAllowFastRestarts)</code></h3><p>重启速通关卡。</p>
+<p><strong>定义</strong>: <code>vs_st_ems.nut:897-945</code></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>bAllowFastRestarts</code></td>
+<td>bool</td>
+<td>false</td>
+<td>false&#x3D;投票换图重启, true&#x3D;快速 RestartGame</td>
+</tr>
+</tbody></table>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SpeedrunRestart();           // 标准重启</span><br><span class="line">SpeedrunRestart(<span class="literal">true</span>);       // 快速重启 (保留装备)</span><br></pre></td></tr></table></figure>
+
+<h3 id="7-3-Timer-value"><a href="#7-3-Timer-value" class="headerlink" title="7.3 Timer(value)"></a>7.3 <code>Timer(value)</code></h3><p>三段式倒计时系统。</p>
+<p><strong>定义</strong>: <code>vs_st_ems.nut:1427-1475</code> (g_STLib.Funcs.Timer)</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>value</code></td>
+<td>int</td>
+<td>3</td>
+<td>3&#x3D;开始倒计时, 2&#x3D;倒数 1, 1&#x3D;倒数 2, 0&#x3D;结束冻结并调用 Inventory</td>
+</tr>
+</tbody></table>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Timer();        // 使用 g_ST.timer_value (默认 <span class="number">3</span> 秒)</span><br></pre></td></tr></table></figure>
+
+<p>倒计时流程: <code>3 → 2 → 1 → Inventory() / Inventory2() → SpeedrunStart()</code></p>
+<h3 id="7-4-HUDLoad-value"><a href="#7-4-HUDLoad-value" class="headerlink" title="7.4 HUDLoad(value)"></a>7.4 <code>HUDLoad(value)</code></h3><p>加载 HUD 计时器。</p>
+<p><strong>定义</strong>: <code>vs_st_ems.nut:1010-1141</code> (g_STLib.Funcs.HUDLoad)</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>value</code></td>
+<td>float</td>
+<td>0.0</td>
+<td>初始时间值</td>
+</tr>
+</tbody></table>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">HUDLoad();          // 从 <span class="number">0</span> 开始</span><br><span class="line">HUDLoad(<span class="number">30.5</span>);      // 从 <span class="number">30.5</span> 秒开始</span><br><span class="line">HUDLoad(g_RTA.<span class="built_in">time</span>); // 接着上次 RTA 时间</span><br></pre></td></tr></table></figure>
+
+<h3 id="7-5-PrintTime"><a href="#7-5-PrintTime" class="headerlink" title="7.5 PrintTime()"></a>7.5 <code>PrintTime()</code></h3><p>打印当前计时结果到控制台 (含完整统计信息)。</p>
+<p><strong>定义</strong>: <code>vs_st_ems.nut:959-1008</code> (g_STLib.Funcs.PrintTime)</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">g_STLib.Funcs.PrintTime();</span><br></pre></td></tr></table></figure>
+
+<h3 id="7-6-CPTime-sValue-hPlayer"><a href="#7-6-CPTime-sValue-hPlayer" class="headerlink" title="7.6 CPTime(sValue, hPlayer)"></a>7.6 <code>CPTime(sValue, hPlayer)</code></h3><p>打印带时间戳的消息到聊天框。</p>
+<p><strong>定义</strong>: <code>debug.nut:11-15</code></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>sValue</code></td>
+<td>string</td>
+<td>null</td>
+<td>消息文本</td>
+</tr>
+<tr>
+<td><code>hPlayer</code></td>
+<td>entity</td>
+<td>null</td>
+<td>目标玩家 (null&#x3D;所有人)</td>
+</tr>
+</tbody></table>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CPTime(&quot;Jump&quot;);       // 输出 &quot;Jump 123.456&quot;</span><br><span class="line">CPTime(&quot;Checkpoint&quot;); // 输出 &quot;Checkpoint 234.567&quot;</span><br></pre></td></tr></table></figure>
+
+<h3 id="7-7-CPSetTime-fValue"><a href="#7-7-CPSetTime-fValue" class="headerlink" title="7.7 CPSetTime(fValue)"></a>7.7 <code>CPSetTime(fValue)</code></h3><p>设置当前时间基准。</p>
+<p><strong>定义</strong>: <code>debug.nut:20-23</code></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>fValue</code></td>
+<td>float</td>
+<td>0</td>
+<td>新的时间值</td>
+</tr>
+</tbody></table>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CPSetTime(<span class="number">0</span>);        // 重置计时器为 <span class="number">0</span></span><br><span class="line">CPSetTime(<span class="number">10.5</span>);     // 设置为 <span class="number">10.5</span> 秒</span><br></pre></td></tr></table></figure>
+
+<h3 id="7-8-CPGetTime"><a href="#7-8-CPGetTime" class="headerlink" title="7.8 CPGetTime()"></a>7.8 <code>CPGetTime()</code></h3><p>获取当前经过时间。</p>
+<p><strong>定义</strong>: <code>debug.nut:28-31</code></p>
+<p><strong>返回值</strong>: float — 从 <code>g_STLib.Vars.time</code> 到现在的秒数。</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">local</span> t = CPGetTime();</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="8-工具函数"><a href="#8-工具函数" class="headerlink" title="8. 工具函数"></a>8. 工具函数</h2><h3 id="8-1-TeleportEntity-hEntity-vecPos-vecAng-vecVel-bOriginKV"><a href="#8-1-TeleportEntity-hEntity-vecPos-vecAng-vecVel-bOriginKV" class="headerlink" title="8.1 TeleportEntity(hEntity, vecPos, vecAng, vecVel, bOriginKV)"></a>8.1 <code>TeleportEntity(hEntity, vecPos, vecAng, vecVel, bOriginKV)</code></h3><p>传送实体到指定位置。</p>
+<p><strong>定义</strong>: <code>utils.nut:860-873</code></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>hEntity</code></td>
+<td>entity</td>
+<td>—</td>
+<td>目标实体</td>
+</tr>
+<tr>
+<td><code>vecPos</code></td>
+<td>Vector</td>
+<td>null</td>
+<td>位置 (null&#x3D;不变)</td>
+</tr>
+<tr>
+<td><code>vecAng</code></td>
+<td>Vector</td>
+<td>null</td>
+<td>角度 (null&#x3D;不变)</td>
+</tr>
+<tr>
+<td><code>vecVel</code></td>
+<td>Vector</td>
+<td>null</td>
+<td>速度 (null&#x3D;不变)</td>
+</tr>
+<tr>
+<td><code>bOriginKV</code></td>
+<td>bool</td>
+<td>false</td>
+<td>是否用 KV 方式设置原点</td>
+</tr>
+</tbody></table>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TeleportEntity(hPlayer, Vector(<span class="number">100</span>, <span class="number">200</span>, <span class="number">50</span>), Vector(<span class="number">30</span>, <span class="number">180</span>, <span class="number">0</span>));</span><br></pre></td></tr></table></figure>
+
+<h3 id="8-2-GetPicker-hPlayer-tr-len-tr-mask"><a href="#8-2-GetPicker-hPlayer-tr-len-tr-mask" class="headerlink" title="8.2 GetPicker(hPlayer, tr_len, tr_mask)"></a>8.2 <code>GetPicker(hPlayer, tr_len, tr_mask)</code></h3><p>获取准星指向的实体。</p>
+<p><strong>定义</strong>: <code>utils.nut:451-469</code></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>hPlayer</code></td>
+<td>entity</td>
+<td>null → 玩家 1</td>
+<td>玩家</td>
+</tr>
+<tr>
+<td><code>tr_len</code></td>
+<td>float</td>
+<td>MAX_TRACE_LENGTH</td>
+<td>追踪距离</td>
+</tr>
+<tr>
+<td><code>tr_mask</code></td>
+<td>int</td>
+<td>TRACE_MASK_VISIBLE_AND_NPCS</td>
+<td>追踪掩码</td>
+</tr>
+</tbody></table>
+<p><strong>返回值</strong>: entity handle 或 null。</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">local</span> hEnt = GetPicker(hPlayer);</span><br></pre></td></tr></table></figure>
+
+<h3 id="8-3-GetPickerPos-hPlayer-tr-len-tr-mask"><a href="#8-3-GetPickerPos-hPlayer-tr-len-tr-mask" class="headerlink" title="8.3 GetPickerPos(hPlayer, tr_len, tr_mask)"></a>8.3 <code>GetPickerPos(hPlayer, tr_len, tr_mask)</code></h3><p>获取准星指向的位置。</p>
+<p><strong>定义</strong>: <code>utils.nut:474-487</code></p>
+<p><strong>返回值</strong>: Vector — 射线击中的坐标。</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">local</span> vecPos = GetPickerPos(hPlayer);</span><br></pre></td></tr></table></figure>
+
+<h3 id="8-4-GetPlayer-model-checkObs"><a href="#8-4-GetPlayer-model-checkObs" class="headerlink" title="8.4 GetPlayer(model, checkObs)"></a>8.4 <code>GetPlayer(model, checkObs)</code></h3><p>查找指定角色的生还者。</p>
+<p><strong>定义</strong>: <code>utils.nut:492-503</code></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>model</code></td>
+<td>int</td>
+<td>null</td>
+<td>角色索引 (MDL_NI&#x3D;0, MDL_RO&#x3D;1 等)</td>
+</tr>
+<tr>
+<td><code>checkObs</code></td>
+<td>bool</td>
+<td>false</td>
+<td>是否包括观察者</td>
+</tr>
+</tbody></table>
+<p><strong>返回值</strong>: entity handle 或 null。</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">GetPlayer(MDL_NI);     // 找 Nick</span><br><span class="line">GetPlayer(MDL_CO);     // 找 Coach</span><br><span class="line">GetPlayer();           // 找任意生还者</span><br></pre></td></tr></table></figure>
+
+<h3 id="8-5-GetOwner-client"><a href="#8-5-GetOwner-client" class="headerlink" title="8.5 GetOwner(client)"></a>8.5 <code>GetOwner(client)</code></h3><p>获取 Bot 的”所有者”(使其闲置的人类玩家)。</p>
+<p><strong>定义</strong>: <code>utils.nut:440-446</code></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>client</code></td>
+<td>entity&#x2F;int&#x2F;string</td>
+<td>Bot 实体&#x2F;索引&#x2F;名称</td>
+</tr>
+</tbody></table>
+<h3 id="8-6-GetDistance-hEntity-hEntity2"><a href="#8-6-GetDistance-hEntity-hEntity2" class="headerlink" title="8.6 GetDistance(hEntity, hEntity2)"></a>8.6 <code>GetDistance(hEntity, hEntity2)</code></h3><p>计算两个实体间的距离。</p>
+<p><strong>定义</strong>: <code>utils.nut:1176-1178</code></p>
+<p><strong>返回值</strong>: float — 3D 距离。</p>
+<h3 id="8-7-GetSpeed-hPlayer"><a href="#8-7-GetSpeed-hPlayer" class="headerlink" title="8.7 GetSpeed(hPlayer)"></a>8.7 <code>GetSpeed(hPlayer)</code></h3><p>获取玩家速度。</p>
+<p><strong>定义</strong>: <code>utils.nut:1180-1182</code></p>
+<p><strong>返回值</strong>: float — 速率 (标量长度)。</p>
+<h3 id="8-8-GetDisplayTime-value-sValue"><a href="#8-8-GetDisplayTime-value-sValue" class="headerlink" title="8.8 GetDisplayTime(value, sValue)"></a>8.8 <code>GetDisplayTime(value, sValue)</code></h3><p>将秒数转换为分:秒格式。</p>
+<p><strong>定义</strong>: <code>utils.nut:537-543</code></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>value</code></td>
+<td>float</td>
+<td>—</td>
+<td>秒数</td>
+</tr>
+<tr>
+<td><code>sValue</code></td>
+<td>string</td>
+<td><code>&quot;:&quot;</code></td>
+<td>分隔符</td>
+</tr>
+</tbody></table>
+<p><strong>返回值</strong>: string — 格式化的时间字符串。</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GetDisplayTime(<span class="number">83.456</span>);     // <span class="string">&quot;1:23&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="8-9-GetEpoch"><a href="#8-9-GetEpoch" class="headerlink" title="8.9 GetEpoch()"></a>8.9 <code>GetEpoch()</code></h3><p>获取当前 Unix 时间戳。</p>
+<p><strong>定义</strong>: <code>utils.nut:548-557</code></p>
+<h3 id="8-10-GetDate-unix"><a href="#8-10-GetDate-unix" class="headerlink" title="8.10 GetDate(unix)"></a>8.10 <code>GetDate(unix)</code></h3><p>获取日期时间信息。</p>
+<p><strong>定义</strong>: <code>utils.nut:599-632</code></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>unix</code></td>
+<td>int</td>
+<td>null</td>
+<td>Unix 时间戳 (null&#x3D;当前时间)</td>
+</tr>
+</tbody></table>
+<p><strong>返回值</strong>: table — 包含 <code>time</code>, <code>time_full</code>, <code>date</code>, <code>timestamp</code>, <code>timestamp2</code>, <code>timestamp3</code>。</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">local</span> d = GetDate();</span><br><span class="line">printl(d.timestamp);    // <span class="string">&quot;13/05/2026 @ 15:00:00&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="8-11-IsPlayer-hPlayer"><a href="#8-11-IsPlayer-hPlayer" class="headerlink" title="8.11 IsPlayer(hPlayer)"></a>8.11 <code>IsPlayer(hPlayer)</code></h3><p>检查是否为有效的玩家实体。</p>
+<p><strong>定义</strong>: <code>utils.nut:704-708</code></p>
+<p><strong>返回值</strong>: bool。</p>
+<h3 id="8-12-IsFakeClient-hPlayer"><a href="#8-12-IsFakeClient-hPlayer" class="headerlink" title="8.12 IsFakeClient(hPlayer)"></a>8.12 <code>IsFakeClient(hPlayer)</code></h3><p>检查是否为假客户端 (sm_fake 创建的)。</p>
+<p><strong>定义</strong>: <code>utils.nut:666-669</code></p>
+<p><strong>返回值</strong>: bool。</p>
+<h3 id="8-13-Ent-entity"><a href="#8-13-Ent-entity" class="headerlink" title="8.13 Ent(entity)"></a>8.13 <code>Ent(entity)</code></h3><p>统一化实体查找函数。</p>
+<p><strong>定义</strong>: <code>utils.nut:773-779</code></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>entity</code></td>
+<td>instance&#x2F;int&#x2F;string</td>
+<td>实体&#x2F;索引&#x2F;名称</td>
+</tr>
+</tbody></table>
+<p><strong>返回值</strong>: entity handle 或 null。</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Ent(<span class="number">1</span>);               // 索引 <span class="number">1</span></span><br><span class="line">Ent(<span class="string">&quot;!nick&quot;</span>);         // 名称查找</span><br><span class="line">Ent(hPlayer);         // 有效性检查</span><br></pre></td></tr></table></figure>
+
+<h3 id="8-14-EmitSound-vecPos-sSound-iRadius"><a href="#8-14-EmitSound-vecPos-sSound-iRadius" class="headerlink" title="8.14 EmitSound(vecPos, sSound, iRadius)"></a>8.14 <code>EmitSound(vecPos, sSound, iRadius)</code></h3><p>在指定位置播放音效。</p>
+<p><strong>定义</strong>: <code>utils.nut:784-798</code></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>vecPos</code></td>
+<td>Vector</td>
+<td>—</td>
+<td>音效位置</td>
+</tr>
+<tr>
+<td><code>sSound</code></td>
+<td>string</td>
+<td>—</td>
+<td>音效名</td>
+</tr>
+<tr>
+<td><code>iRadius</code></td>
+<td>int</td>
+<td>3000</td>
+<td>传播半径</td>
+</tr>
+</tbody></table>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">EmitSound(Vector(...), <span class="string">&quot;Shotgun.Fire&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="8-15-EmitSoundEx-hEntity-sndName-sndRadius-flags"><a href="#8-15-EmitSoundEx-hEntity-sndName-sndRadius-flags" class="headerlink" title="8.15 EmitSoundEx(hEntity, sndName, sndRadius, flags)"></a>8.15 <code>EmitSoundEx(hEntity, sndName, sndRadius, flags)</code></h3><p>在实体上播放音效 (支持跟随)。</p>
+<p><strong>定义</strong>: <code>utils.nut:815-855</code></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>hEntity</code></td>
+<td>entity</td>
+<td>—</td>
+<td>音效源实体 (null&#x3D;对所有人类播放)</td>
+</tr>
+<tr>
+<td><code>sndName</code></td>
+<td>string</td>
+<td>—</td>
+<td>音效名</td>
+</tr>
+<tr>
+<td><code>sndRadius</code></td>
+<td>int</td>
+<td>5000</td>
+<td>半径</td>
+</tr>
+<tr>
+<td><code>flags</code></td>
+<td>int</td>
+<td>0</td>
+<td>SND_* 标记</td>
+</tr>
+</tbody></table>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">EmitSoundEx(hPlayer, <span class="string">&quot;Player.Jump&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="8-16-OnGameFrame-funcName-fTime-fDuration"><a href="#8-16-OnGameFrame-funcName-fTime-fDuration" class="headerlink" title="8.16 OnGameFrame(funcName, fTime, fDuration)"></a>8.16 <code>OnGameFrame(funcName, fTime, fDuration)</code></h3><p>创建定时器，定期执行函数。</p>
+<p><strong>定义</strong>: <code>utils.nut:909-932</code></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>funcName</code></td>
+<td>string</td>
+<td>—</td>
+<td>函数名 (可带参数)</td>
+</tr>
+<tr>
+<td><code>fTime</code></td>
+<td>float</td>
+<td>null → 0.01</td>
+<td>执行间隔</td>
+</tr>
+<tr>
+<td><code>fDuration</code></td>
+<td>float</td>
+<td>null</td>
+<td>持续时间 (null&#x3D;永久)</td>
+</tr>
+</tbody></table>
+<p><strong>返回值</strong>: <code>logic_timer</code> entity handle。</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">OnGameFrame(<span class="string">&quot;g_STLib.AF1.Think&quot;</span>);                                // 每帧执行</span><br><span class="line">OnGameFrame(<span class="string">&quot;SpeedrunRestart(false)&quot;</span>, <span class="number">1.0</span>);                       // <span class="number">1</span> 秒后执行一次</span><br><span class="line">OnGameFrame(<span class="string">&quot;MyFunction()&quot;</span>, <span class="number">0.1</span>, <span class="number">5.0</span>);                            // 每 <span class="number">0.1</span> 秒执行，持续 <span class="number">5</span> 秒</span><br><span class="line">OnGameFrame(<span class="string">&quot;g_STLib.AF1.ThinkProj&quot;</span>, null, <span class="number">0.5</span>);                  // 每帧执行，<span class="number">0.5</span> 秒后停止</span><br></pre></td></tr></table></figure>
+
+<h3 id="8-17-ClearEvent-sEvent-hTable"><a href="#8-17-ClearEvent-sEvent-hTable" class="headerlink" title="8.17 ClearEvent(sEvent, hTable)"></a>8.17 <code>ClearEvent(sEvent, hTable)</code></h3><p>取消注册游戏事件监听。</p>
+<p><strong>定义</strong>: <code>utils.nut:879-904</code></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>sEvent</code></td>
+<td>string</td>
+<td>null</td>
+<td>事件名 (null&#x3D;自动从调用帧检测)</td>
+</tr>
+<tr>
+<td><code>hTable</code></td>
+<td>table</td>
+<td>null</td>
+<td>要移除的监听表</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="9-数学与辅助函数"><a href="#9-数学与辅助函数" class="headerlink" title="9. 数学与辅助函数"></a>9. 数学与辅助函数</h2><h3 id="9-1-AngNorm-ang-u-ang"><a href="#9-1-AngNorm-ang-u-ang" class="headerlink" title="9.1 AngNorm(ang, u_ang)"></a>9.1 <code>AngNorm(ang, u_ang)</code></h3><p>角度归一化。</p>
+<p><strong>定义</strong>: <code>utils.nut:372-383</code></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>ang</code></td>
+<td>float</td>
+<td>—</td>
+<td>角度</td>
+</tr>
+<tr>
+<td><code>u_ang</code></td>
+<td>bool</td>
+<td>false</td>
+<td>true&#x3D;返回 0<del>360, false&#x3D;返回 -180</del>180</td>
+</tr>
+</tbody></table>
+<h3 id="9-2-Clamp-x-min-max"><a href="#9-2-Clamp-x-min-max" class="headerlink" title="9.2 Clamp(x, min, max)"></a>9.2 <code>Clamp(x, min, max)</code></h3><p>限定数值范围。</p>
+<p><strong>定义</strong>: <code>utils.nut:406-411</code></p>
+<h3 id="9-3-Lerp-a-b-t"><a href="#9-3-Lerp-a-b-t" class="headerlink" title="9.3 Lerp(a, b, t)"></a>9.3 <code>Lerp(a, b, t)</code></h3><p>线性插值。</p>
+<p><strong>定义</strong>: <code>utils.nut:416-419</code></p>
+<h3 id="9-4-EaseInOut-a-b-t"><a href="#9-4-EaseInOut-a-b-t" class="headerlink" title="9.4 EaseInOut(a, b, t)"></a>9.4 <code>EaseInOut(a, b, t)</code></h3><p>平滑插值 (缓入缓出)。</p>
+<p><strong>定义</strong>: <code>utils.nut:421-424</code></p>
+<h3 id="9-5-EaseIn-a-b-t"><a href="#9-5-EaseIn-a-b-t" class="headerlink" title="9.5 EaseIn(a, b, t)"></a>9.5 <code>EaseIn(a, b, t)</code></h3><p>缓入插值 (二次方)。</p>
+<p><strong>定义</strong>: <code>utils.nut:426-429</code></p>
+<h3 id="9-6-EaseOut-a-b-t"><a href="#9-6-EaseOut-a-b-t" class="headerlink" title="9.6 EaseOut(a, b, t)"></a>9.6 <code>EaseOut(a, b, t)</code></h3><p>缓出插值 (二次方)。</p>
+<p><strong>定义</strong>: <code>utils.nut:431-434</code></p>
+<h3 id="9-7-FEqual-a-b-deviation"><a href="#9-7-FEqual-a-b-deviation" class="headerlink" title="9.7 FEqual(a, b, deviation)"></a>9.7 <code>FEqual(a, b, deviation)</code></h3><p>浮点数近似相等比较。</p>
+<p><strong>定义</strong>: <code>utils.nut:396-401</code></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>a</code></td>
+<td>float</td>
+<td>—</td>
+<td>值 a</td>
+</tr>
+<tr>
+<td><code>b</code></td>
+<td>float</td>
+<td>—</td>
+<td>值 b</td>
+</tr>
+<tr>
+<td><code>deviation</code></td>
+<td>float</td>
+<td>0.001</td>
+<td>允许误差范围</td>
+</tr>
+</tbody></table>
+<h3 id="9-8-absf-x"><a href="#9-8-absf-x" class="headerlink" title="9.8 absf(x)"></a>9.8 <code>absf(x)</code></h3><p>浮点数绝对值。</p>
+<p><strong>定义</strong>: <code>utils.nut:388-391</code></p>
+<h3 id="9-9-GetVecAng-vec"><a href="#9-9-GetVecAng-vec" class="headerlink" title="9.9 GetVecAng(vec)"></a>9.9 <code>GetVecAng(vec)</code></h3><p>从向量计算欧拉角。</p>
+<p><strong>定义</strong>: <code>utils.nut:525-532</code></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>vec</code></td>
+<td>Vector</td>
+<td>方向向量</td>
+</tr>
+</tbody></table>
+<p><strong>返回值</strong>: QAngle</p>
+<h3 id="9-10-GetFinaleType"><a href="#9-10-GetFinaleType" class="headerlink" title="9.10 GetFinaleType()"></a>9.10 <code>GetFinaleType()</code></h3><p>获取当前关卡的最终战类型。</p>
+<p><strong>定义</strong>: <code>utils.nut:637-661</code></p>
+<p><strong>返回值</strong>: int — 0&#x3D;Holdout, 1&#x3D;Gauntlet, 2&#x3D;Scavenge, 3&#x3D;Custom, -1&#x3D;N&#x2F;A</p>
+<hr>
+<h2 id="10-SM-命令-VScript-封装"><a href="#10-SM-命令-VScript-封装" class="headerlink" title="10. SM 命令 VScript 封装"></a>10. SM 命令 VScript 封装</h2><p>通过 <code>sm_ccmd</code> 与 SourceMod 插件通信。</p>
+<h3 id="10-1-ClientCommand-hPlayer-sCmd"><a href="#10-1-ClientCommand-hPlayer-sCmd" class="headerlink" title="10.1 ClientCommand(hPlayer, sCmd)"></a>10.1 <code>ClientCommand(hPlayer, sCmd)</code></h3><p>让指定玩家执行控制台命令。</p>
+<p><strong>定义</strong>: <code>sm_commands.nut:14-17</code></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>hPlayer</code></td>
+<td>entity</td>
+<td>玩家</td>
+</tr>
+<tr>
+<td><code>sCmd</code></td>
+<td>string</td>
+<td>命令</td>
+</tr>
+</tbody></table>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ClientCommand(hPlayer, <span class="string">&quot;say hello&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="10-2-SetClientName-hPlayer-sName"><a href="#10-2-SetClientName-hPlayer-sName" class="headerlink" title="10.2 SetClientName(hPlayer, sName)"></a>10.2 <code>SetClientName(hPlayer, sName)</code></h3><p>修改玩家名称。</p>
+<p><strong>定义</strong>: <code>sm_commands.nut:22-25</code></p>
+<h3 id="10-3-SetAmmo-hPlayer-iSlot-iClip-iAmmo-iUpgrade"><a href="#10-3-SetAmmo-hPlayer-iSlot-iClip-iAmmo-iUpgrade" class="headerlink" title="10.3 SetAmmo(hPlayer, iSlot, iClip, iAmmo, iUpgrade)"></a>10.3 <code>SetAmmo(hPlayer, iSlot, iClip, iAmmo, iUpgrade)</code></h3><p>设置玩家弹药量。</p>
+<p><strong>定义</strong>: <code>sm_commands.nut:30-42</code></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>hPlayer</code></td>
+<td>entity</td>
+<td>—</td>
+<td>玩家</td>
+</tr>
+<tr>
+<td><code>iSlot</code></td>
+<td>int</td>
+<td>—</td>
+<td>武器槽位 (0&#x3D;主武器, 1&#x3D;副武器)</td>
+</tr>
+<tr>
+<td><code>iClip</code></td>
+<td>int</td>
+<td>—</td>
+<td>弹夹子弹数</td>
+</tr>
+<tr>
+<td><code>iAmmo</code></td>
+<td>int</td>
+<td>null</td>
+<td>备弹数</td>
+</tr>
+<tr>
+<td><code>iUpgrade</code></td>
+<td>int</td>
+<td>null</td>
+<td>升级弹药 (0&#x3D; incendiary, 1&#x3D; explosive, 2&#x3D; laser)</td>
+</tr>
+</tbody></table>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SetAmmo(hPlayer, <span class="number">0</span>, <span class="number">30</span>, <span class="number">90</span>);           // 主武器 <span class="number">30</span> 发弹夹 + <span class="number">90</span> 备弹</span><br><span class="line">SetAmmo(hPlayer, <span class="number">0</span>, <span class="number">30</span>, <span class="number">90</span>, <span class="number">1</span>);        // + 高爆弹药</span><br></pre></td></tr></table></figure>
+
+<h3 id="10-4-SetTeam-survName"><a href="#10-4-SetTeam-survName" class="headerlink" title="10.4 SetTeam(survName)"></a>10.4 <code>SetTeam(survName)</code></h3><p>设置队伍角色 (需要 Bot 在场)。</p>
+<p><strong>定义</strong>: <code>sm_commands.nut:47-66</code></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>survName</code></td>
+<td>string</td>
+<td>角色名 (Nick, Rochelle, Coach, Ellis)</td>
+</tr>
+</tbody></table>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SetTeam(<span class="string">&quot;Coach&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="10-5-CallVote-hCaller-sCmd"><a href="#10-5-CallVote-hCaller-sCmd" class="headerlink" title="10.5 CallVote(hCaller, sCmd)"></a>10.5 <code>CallVote(hCaller, sCmd)</code></h3><p>发起投票 (更改难度)。</p>
+<p><strong>定义</strong>: <code>sm_commands.nut:71-84</code></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>hCaller</code></td>
+<td>entity</td>
+<td>发起者</td>
+</tr>
+<tr>
+<td><code>sCmd</code></td>
+<td>string</td>
+<td>难度 (Easy, Normal, Hard, Impossible)</td>
+</tr>
+</tbody></table>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CallVote(hPlayer, <span class="string">&quot;Easy&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="10-6-PlayerReplace-hPlayer-hPlayer2"><a href="#10-6-PlayerReplace-hPlayer-hPlayer2" class="headerlink" title="10.6 PlayerReplace(hPlayer, hPlayer2)"></a>10.6 <code>PlayerReplace(hPlayer, hPlayer2)</code></h3><p>交换两个玩家的名称和角色控制权。</p>
+<p><strong>定义</strong>: <code>sm_commands.nut:89-92</code></p>
+<h3 id="10-7-AutoKick-hCaller-hPlayer-bRootKey"><a href="#10-7-AutoKick-hCaller-hPlayer-bRootKey" class="headerlink" title="10.7 AutoKick(hCaller, hPlayer, bRootKey)"></a>10.7 <code>AutoKick(hCaller, hPlayer, bRootKey)</code></h3><p>投票踢出 Bot 并补充新 Bot。</p>
+<p><strong>定义</strong>: <code>sm_commands.nut:97-138</code></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>hCaller</code></td>
+<td>entity</td>
+<td>—</td>
+<td>投票发起者</td>
+</tr>
+<tr>
+<td><code>hPlayer</code></td>
+<td>entity</td>
+<td>—</td>
+<td>要踢的 Bot</td>
+</tr>
+<tr>
+<td><code>bRootKey</code></td>
+<td>bool</td>
+<td>false</td>
+<td>是否注册 round_end 事件</td>
+</tr>
+</tbody></table>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">AutoKick(hPlayer, hBot);</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="11-调试函数"><a href="#11-调试函数" class="headerlink" title="11. 调试函数"></a>11. 调试函数</h2><h3 id="11-1-DebugItems-itemName-withDelay"><a href="#11-1-DebugItems-itemName-withDelay" class="headerlink" title="11.1 DebugItems(itemName, withDelay)"></a>11.1 <code>DebugItems(itemName, withDelay)</code></h3><p>标记地图上所有可生成物品并输出 SpawnItem 代码。</p>
+<p><strong>定义</strong>: <code>debug.nut:36-88</code></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>itemName</code></td>
+<td>string</td>
+<td>null</td>
+<td>过滤物品名 (null&#x3D;全部)</td>
+</tr>
+<tr>
+<td><code>withDelay</code></td>
+<td>bool</td>
+<td>false</td>
+<td>延迟执行</td>
+</tr>
+</tbody></table>
+<p><strong>输出文件</strong>: <code>ems/st_config/items_dump.nut</code></p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">DebugItems();              // 标记所有物品</span><br><span class="line">DebugItems(<span class="string">&quot;molotov&quot;</span>);     // 仅标记燃烧瓶</span><br></pre></td></tr></table></figure>
+
+<h3 id="11-2-CheckMoving-fTime-bChat-bLocalTime"><a href="#11-2-CheckMoving-fTime-bChat-bLocalTime" class="headerlink" title="11.2 CheckMoving(fTime, bChat, bLocalTime)"></a>11.2 <code>CheckMoving(fTime, bChat, bLocalTime)</code></h3><p>监听 Bot 按键输入并输出到控制台。</p>
+<p><strong>定义</strong>: <code>debug.nut:93-124</code></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>fTime</code></td>
+<td>float</td>
+<td>3.0</td>
+<td>监听时长</td>
+</tr>
+<tr>
+<td><code>bChat</code></td>
+<td>bool</td>
+<td>false</td>
+<td>true&#x3D;聊天输出, false&#x3D;控制台输出</td>
+</tr>
+<tr>
+<td><code>bLocalTime</code></td>
+<td>bool</td>
+<td>false</td>
+<td>使用本地时间而非 CPGetTime</td>
+</tr>
+</tbody></table>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CheckMoving(<span class="number">5.0</span>);             // 监听 <span class="number">5</span> 秒</span><br><span class="line">CheckMoving(<span class="number">3.0</span>, <span class="literal">true</span>);       // 聊天窗口输出</span><br></pre></td></tr></table></figure>
+
+<h3 id="11-3-ZDump-fTime"><a href="#11-3-ZDump-fTime" class="headerlink" title="11.3 ZDump(fTime)"></a>11.3 <code>ZDump(fTime)</code></h3><p>转储当前地图所有僵尸的位置和生成代码。</p>
+<p><strong>定义</strong>: <code>debug.nut:129-180</code></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>fTime</code></td>
+<td>float</td>
+<td>null</td>
+<td>延迟秒数 (null&#x3D;立即)</td>
+</tr>
+</tbody></table>
+<p><strong>输出文件</strong>: <code>ems/st_config/zdump.nut</code></p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ZDump();          // 立即转储</span><br><span class="line">ZDump(<span class="number">1.0</span>);       // <span class="number">1</span> 秒后转储</span><br></pre></td></tr></table></figure>
+
+<h3 id="11-4-MobListener-flags-mobMax"><a href="#11-4-MobListener-flags-mobMax" class="headerlink" title="11.4 MobListener(flags, mobMax)"></a>11.4 <code>MobListener(flags, mobMax)</code></h3><p>监听普通感染者数量。</p>
+<p><strong>定义</strong>: <code>debug.nut:185-252</code></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>flags</code></td>
+<td>int</td>
+<td>1</td>
+<td>1&#x3D;HUD显示, 2&#x3D;聊天输出, 4&#x3D;控制台输出</td>
+</tr>
+<tr>
+<td><code>mobMax</code></td>
+<td>int</td>
+<td>200</td>
+<td>最大 Mob 数</td>
+</tr>
+</tbody></table>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">MobListener(<span class="number">1</span>);              // 仅 HUD 显示</span><br><span class="line">MobListener(<span class="number">7</span>);              // HUD + 聊天 + 控制台</span><br><span class="line">MobListener(<span class="number">7</span>, <span class="number">150</span>);         // 自定义上限</span><br></pre></td></tr></table></figure>
+
+<h3 id="11-5-ppos-vecPos-sName"><a href="#11-5-ppos-vecPos-sName" class="headerlink" title="11.5 ppos(vecPos, sName)"></a>11.5 <code>ppos(vecPos, sName)</code></h3><p>在指定位置创建标记实体并打印 setpos 代码。</p>
+<p><strong>定义</strong>: <code>utils.nut:995-1009</code></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>vecPos</code></td>
+<td>Vector</td>
+<td>—</td>
+<td>标记位置</td>
+</tr>
+<tr>
+<td><code>sName</code></td>
+<td>string</td>
+<td>“”</td>
+<td>标记名称后缀</td>
+</tr>
+</tbody></table>
+<h3 id="11-6-ppos2-vecPos"><a href="#11-6-ppos2-vecPos" class="headerlink" title="11.6 ppos2(vecPos)"></a>11.6 <code>ppos2(vecPos)</code></h3><p>小尺寸位置标记 (editor 模型)。</p>
+<p><strong>定义</strong>: <code>utils.nut:1011-1015</code></p>
+<h3 id="11-7-ptp-hPlayer"><a href="#11-7-ptp-hPlayer" class="headerlink" title="11.7 ptp(hPlayer)"></a>11.7 <code>ptp(hPlayer)</code></h3><p>打印玩家当前位置&#x2F;角度&#x2F;速度的 TeleportEntity 代码。</p>
+<p><strong>定义</strong>: <code>utils.nut:1052-1078</code></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>hPlayer</code></td>
+<td>entity&#x2F;int</td>
+<td>1</td>
+<td>玩家 handle 或索引</td>
+</tr>
+</tbody></table>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ptp();           // 打印玩家 <span class="number">1</span> 的位置代码</span><br><span class="line">ptp(hPlayer);    // 打印指定玩家</span><br></pre></td></tr></table></figure>
+
+<h3 id="11-8-pvel-hPlayer"><a href="#11-8-pvel-hPlayer" class="headerlink" title="11.8 pvel(hPlayer)"></a>11.8 <code>pvel(hPlayer)</code></h3><p>打印玩家速度。</p>
+<p><strong>定义</strong>: <code>utils.nut:976-980</code></p>
+<h3 id="11-9-pdist-hPlayer-hPlayer2"><a href="#11-9-pdist-hPlayer-hPlayer2" class="headerlink" title="11.9 pdist(hPlayer, hPlayer2)"></a>11.9 <code>pdist(hPlayer, hPlayer2)</code></h3><p>打印两个玩家之间的距离。</p>
+<p><strong>定义</strong>: <code>utils.nut:985-990</code></p>
+<h3 id="11-10-DebugTrace-vStart-vEnd-autoPurge"><a href="#11-10-DebugTrace-vStart-vEnd-autoPurge" class="headerlink" title="11.10 DebugTrace(vStart, vEnd, autoPurge)"></a>11.10 <code>DebugTrace(vStart, vEnd, autoPurge)</code></h3><p>在两点之间创建可视化绳索追踪线。</p>
+<p><strong>定义</strong>: <code>utils.nut:1083-1089</code></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>vStart</code></td>
+<td>Vector</td>
+<td>—</td>
+<td>起点</td>
+</tr>
+<tr>
+<td><code>vEnd</code></td>
+<td>Vector</td>
+<td>—</td>
+<td>终点</td>
+</tr>
+<tr>
+<td><code>autoPurge</code></td>
+<td>float</td>
+<td>null</td>
+<td>自动清除时间</td>
+</tr>
+</tbody></table>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DebugTrace(Vector(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>), Vector(<span class="number">100</span>, <span class="number">0</span>, <span class="number">0</span>), <span class="number">5.0</span>);  // 显示 <span class="number">5</span> 秒</span><br></pre></td></tr></table></figure>
+
+<h3 id="11-11-find-name-findex"><a href="#11-11-find-name-findex" class="headerlink" title="11.11 find(name, findex)"></a>11.11 <code>find(name, findex)</code></h3><p>标记所有匹配名称或类名的实体。</p>
+<p><strong>定义</strong>: <code>utils.nut:1094-1120</code></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>name</code></td>
+<td>string</td>
+<td>“”</td>
+<td>搜索文本 (空&#x3D;清除标记)</td>
+</tr>
+<tr>
+<td><code>findex</code></td>
+<td>bool</td>
+<td>false</td>
+<td>true&#x3D;精确匹配类名或名称</td>
+</tr>
+</tbody></table>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">find</span>(<span class="string">&quot;infected&quot;</span>);   // 标记所有含 infected 的实体</span><br><span class="line"><span class="built_in">find</span>(<span class="string">&quot;&quot;</span>, <span class="literal">true</span>);     // 清除所有标记</span><br></pre></td></tr></table></figure>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/about" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/images/touming.png&quot;" data-lazy-src="/images/Ausnty.jpg" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/images/touming.png&quot;" data-lazy-src="/images/Ausnty.jpg" title="头像" alt="头像"></a><div class="post-copyright__author_name">Yusqual</div><div class="post-copyright__author_desc">生活明朗 万物可爱</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="https://yusqual.github.io/games/st_api_reference.html">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('https://yusqual.github.io/games/st_api_reference.html')">L4D2 ST-API文档</span></a></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://yusqual.github.io" target="_blank">Suyu</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/l4d2/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>l4d2<span class="tagsPageCount">5</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="/images/Ausnty.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/qt/daily.html"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/images/touming.png&quot;" data-lazy-src="/" onerror="onerror=null;src='/images/touming.png'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">daily</div></div></a></div><div class="next-post pull-right"><a href="/games/speedrunner_tools_guide.html"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/images/touming.png&quot;" data-lazy-src="/" onerror="onerror=null;src='/images/touming.png'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">L4D2 ST说明文档</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#ST-Squirrel-%E5%87%BD%E6%95%B0%E5%8F%82%E8%80%83"><span class="toc-number">1.</span> <span class="toc-text">ST Squirrel 函数参考</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95"><span class="toc-number">1.1.</span> <span class="toc-text">目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%A0%B8%E5%BF%83%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F"><span class="toc-number">1.2.</span> <span class="toc-text">1. 核心全局变量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-g-ST"><span class="toc-number">1.2.1.</span> <span class="toc-text">1.1 g_ST</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-g-RTA"><span class="toc-number">1.2.2.</span> <span class="toc-text">1.2 g_RTA</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-g-STLib"><span class="toc-number">1.2.3.</span> <span class="toc-text">1.3 g_STLib</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E7%89%A9%E5%93%81%E4%B8%8E%E5%AE%9E%E4%BD%93%E7%94%9F%E6%88%90"><span class="toc-number">1.3.</span> <span class="toc-text">2. 物品与实体生成</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-SpawnItem-sName-vecPos-vecAng-iCount-sTarget-fRadius"><span class="toc-number">1.3.1.</span> <span class="toc-text">2.1 SpawnItem(sName, vecPos, vecAng, iCount, sTarget, fRadius)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-SpawnZombie-sName-vecPos-idle"><span class="toc-number">1.3.2.</span> <span class="toc-text">2.2 SpawnZombie(sName, vecPos, idle)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-SpawnZombieEx-sName-vecPos-vecAng-AttackOnSpawn-spawnTime"><span class="toc-number">1.3.3.</span> <span class="toc-text">2.3 SpawnZombieEx(sName, vecPos, vecAng, AttackOnSpawn, spawnTime)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-SpawnZombieForCB-vecPos-vecAng-startTime-hPlayer-bNotSolid-sName"><span class="toc-number">1.3.4.</span> <span class="toc-text">2.4 SpawnZombieForCB(vecPos, vecAng, startTime, hPlayer, bNotSolid, sName)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-SpawnCommon-sName-vecPos-vecAng-flags"><span class="toc-number">1.3.5.</span> <span class="toc-text">2.5 SpawnCommon(sName, vecPos, vecAng, flags)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-6-SpawnTrigger-sName-vecPos-vecMaxs-vecMins-sFunc-iType-output-sClass"><span class="toc-number">1.3.6.</span> <span class="toc-text">2.6 SpawnTrigger(sName, vecPos, vecMaxs, vecMins, sFunc, iType, output, sClass)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E7%89%A9%E5%93%81%E7%AE%A1%E7%90%86"><span class="toc-number">1.4.</span> <span class="toc-text">3. 物品管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-RemoveItem-sName"><span class="toc-number">1.4.1.</span> <span class="toc-text">3.1 RemoveItem(sName)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-RemoveItemEx-vecPos-fRadius"><span class="toc-number">1.4.2.</span> <span class="toc-text">3.2 RemoveItemEx(vecPos, fRadius)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-RemoveSlot-hPlayer-slot"><span class="toc-number">1.4.3.</span> <span class="toc-text">3.3 RemoveSlot(hPlayer, slot)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-RemoveCI"><span class="toc-number">1.4.4.</span> <span class="toc-text">3.4 RemoveCI()</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E7%8E%A9%E5%AE%B6%E6%8E%A7%E5%88%B6"><span class="toc-number">1.5.</span> <span class="toc-text">4. 玩家控制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-ST-Idle-hPlayer-bMode"><span class="toc-number">1.5.1.</span> <span class="toc-text">4.1 ST_Idle(hPlayer, bMode)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-ST-PlayerReplace-hPlayer-hPlayer2"><span class="toc-number">1.5.2.</span> <span class="toc-text">4.2 ST_PlayerReplace(hPlayer, hPlayer2)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-PlayerKill-hPlayer"><span class="toc-number">1.5.3.</span> <span class="toc-text">4.3 PlayerKill(hPlayer)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4-PlayerKillFromWeapon-hPlayer-hAttacker-iShots-bWaitForWeaponReady-fTime"><span class="toc-number">1.5.4.</span> <span class="toc-text">4.4 PlayerKillFromWeapon(hPlayer, hAttacker, iShots, bWaitForWeaponReady, fTime)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-5-PlayerGod-hPlayer-bGod"><span class="toc-number">1.5.5.</span> <span class="toc-text">4.5 PlayerGod(hPlayer, bGod)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-6-ST-MR-hPlayer-eMode-sFileName-bNoTeleport"><span class="toc-number">1.5.6.</span> <span class="toc-text">4.6 ST_MR(hPlayer, eMode, sFileName, bNoTeleport)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-7-ST-MRStop-hPlayer"><span class="toc-number">1.5.7.</span> <span class="toc-text">4.7 ST_MRStop(hPlayer)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E5%9C%B0%E5%9B%BE%E4%B8%8E%E5%AF%BC%E6%BC%94%E6%8E%A7%E5%88%B6"><span class="toc-number">1.6.</span> <span class="toc-text">5. 地图与导演控制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-DirectorStop-bMode"><span class="toc-number">1.6.1.</span> <span class="toc-text">5.1 DirectorStop(bMode)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-AutoOpen-bValue"><span class="toc-number">1.6.2.</span> <span class="toc-text">5.2 AutoOpen(bValue)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-3-ScriptedTP-hPlayer-hLeader-fTime-bStuckTeleport-eMode"><span class="toc-number">1.6.3.</span> <span class="toc-text">5.3 ScriptedTP(hPlayer, hLeader, fTime, bStuckTeleport, eMode)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-4-ScriptedShots-hPlayer-fDistance"><span class="toc-number">1.6.4.</span> <span class="toc-text">5.4 ScriptedShots(hPlayer, fDistance)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-5-NavMark-vecPos-flags"><span class="toc-number">1.6.5.</span> <span class="toc-text">5.5 NavMark(vecPos, flags)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-AutoFire-%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.7.</span> <span class="toc-text">6. AutoFire 系统</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-AutoFire-hPlayer-vecAng-vecPos-bLoop-bUp-fRadius-hClient-delayTime-data-method3D-vecVel"><span class="toc-number">1.7.1.</span> <span class="toc-text">6.1 AutoFire(hPlayer, vecAng, vecPos, bLoop, bUp, fRadius, hClient, delayTime, data, method3D, vecVel)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2-AutoFire2-hPlayer-vecAng-vecPos-bLoop-bUp-fRadius-hClient-delayTime-data-method3D-bScripted"><span class="toc-number">1.7.2.</span> <span class="toc-text">6.2 AutoFire2(hPlayer, vecAng, vecPos, bLoop, bUp, fRadius, hClient, delayTime, data, method3D, bScripted)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-3-AutoFire3-hPlayer-aPlayers-fPitch-sWeapon-bScripted-data"><span class="toc-number">1.7.3.</span> <span class="toc-text">6.3 AutoFire3(hPlayer, aPlayers, fPitch, sWeapon, bScripted, data)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-4-AFStop"><span class="toc-number">1.7.4.</span> <span class="toc-text">6.4 AFStop()</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E8%AE%A1%E6%97%B6%E5%99%A8%E4%B8%8E-HUD"><span class="toc-number">1.8.</span> <span class="toc-text">7. 计时器与 HUD</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#7-1-SpeedrunStart-isHUD"><span class="toc-number">1.8.1.</span> <span class="toc-text">7.1 SpeedrunStart(isHUD)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-2-SpeedrunRestart-bAllowFastRestarts"><span class="toc-number">1.8.2.</span> <span class="toc-text">7.2 SpeedrunRestart(bAllowFastRestarts)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-3-Timer-value"><span class="toc-number">1.8.3.</span> <span class="toc-text">7.3 Timer(value)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-4-HUDLoad-value"><span class="toc-number">1.8.4.</span> <span class="toc-text">7.4 HUDLoad(value)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-5-PrintTime"><span class="toc-number">1.8.5.</span> <span class="toc-text">7.5 PrintTime()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-6-CPTime-sValue-hPlayer"><span class="toc-number">1.8.6.</span> <span class="toc-text">7.6 CPTime(sValue, hPlayer)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-7-CPSetTime-fValue"><span class="toc-number">1.8.7.</span> <span class="toc-text">7.7 CPSetTime(fValue)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-8-CPGetTime"><span class="toc-number">1.8.8.</span> <span class="toc-text">7.8 CPGetTime()</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-%E5%B7%A5%E5%85%B7%E5%87%BD%E6%95%B0"><span class="toc-number">1.9.</span> <span class="toc-text">8. 工具函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#8-1-TeleportEntity-hEntity-vecPos-vecAng-vecVel-bOriginKV"><span class="toc-number">1.9.1.</span> <span class="toc-text">8.1 TeleportEntity(hEntity, vecPos, vecAng, vecVel, bOriginKV)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-2-GetPicker-hPlayer-tr-len-tr-mask"><span class="toc-number">1.9.2.</span> <span class="toc-text">8.2 GetPicker(hPlayer, tr_len, tr_mask)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-3-GetPickerPos-hPlayer-tr-len-tr-mask"><span class="toc-number">1.9.3.</span> <span class="toc-text">8.3 GetPickerPos(hPlayer, tr_len, tr_mask)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-4-GetPlayer-model-checkObs"><span class="toc-number">1.9.4.</span> <span class="toc-text">8.4 GetPlayer(model, checkObs)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-5-GetOwner-client"><span class="toc-number">1.9.5.</span> <span class="toc-text">8.5 GetOwner(client)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-6-GetDistance-hEntity-hEntity2"><span class="toc-number">1.9.6.</span> <span class="toc-text">8.6 GetDistance(hEntity, hEntity2)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-7-GetSpeed-hPlayer"><span class="toc-number">1.9.7.</span> <span class="toc-text">8.7 GetSpeed(hPlayer)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-8-GetDisplayTime-value-sValue"><span class="toc-number">1.9.8.</span> <span class="toc-text">8.8 GetDisplayTime(value, sValue)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-9-GetEpoch"><span class="toc-number">1.9.9.</span> <span class="toc-text">8.9 GetEpoch()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-10-GetDate-unix"><span class="toc-number">1.9.10.</span> <span class="toc-text">8.10 GetDate(unix)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-11-IsPlayer-hPlayer"><span class="toc-number">1.9.11.</span> <span class="toc-text">8.11 IsPlayer(hPlayer)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-12-IsFakeClient-hPlayer"><span class="toc-number">1.9.12.</span> <span class="toc-text">8.12 IsFakeClient(hPlayer)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-13-Ent-entity"><span class="toc-number">1.9.13.</span> <span class="toc-text">8.13 Ent(entity)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-14-EmitSound-vecPos-sSound-iRadius"><span class="toc-number">1.9.14.</span> <span class="toc-text">8.14 EmitSound(vecPos, sSound, iRadius)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-15-EmitSoundEx-hEntity-sndName-sndRadius-flags"><span class="toc-number">1.9.15.</span> <span class="toc-text">8.15 EmitSoundEx(hEntity, sndName, sndRadius, flags)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-16-OnGameFrame-funcName-fTime-fDuration"><span class="toc-number">1.9.16.</span> <span class="toc-text">8.16 OnGameFrame(funcName, fTime, fDuration)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-17-ClearEvent-sEvent-hTable"><span class="toc-number">1.9.17.</span> <span class="toc-text">8.17 ClearEvent(sEvent, hTable)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-%E6%95%B0%E5%AD%A6%E4%B8%8E%E8%BE%85%E5%8A%A9%E5%87%BD%E6%95%B0"><span class="toc-number">1.10.</span> <span class="toc-text">9. 数学与辅助函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#9-1-AngNorm-ang-u-ang"><span class="toc-number">1.10.1.</span> <span class="toc-text">9.1 AngNorm(ang, u_ang)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-2-Clamp-x-min-max"><span class="toc-number">1.10.2.</span> <span class="toc-text">9.2 Clamp(x, min, max)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-3-Lerp-a-b-t"><span class="toc-number">1.10.3.</span> <span class="toc-text">9.3 Lerp(a, b, t)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-4-EaseInOut-a-b-t"><span class="toc-number">1.10.4.</span> <span class="toc-text">9.4 EaseInOut(a, b, t)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-5-EaseIn-a-b-t"><span class="toc-number">1.10.5.</span> <span class="toc-text">9.5 EaseIn(a, b, t)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-6-EaseOut-a-b-t"><span class="toc-number">1.10.6.</span> <span class="toc-text">9.6 EaseOut(a, b, t)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-7-FEqual-a-b-deviation"><span class="toc-number">1.10.7.</span> <span class="toc-text">9.7 FEqual(a, b, deviation)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-8-absf-x"><span class="toc-number">1.10.8.</span> <span class="toc-text">9.8 absf(x)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-9-GetVecAng-vec"><span class="toc-number">1.10.9.</span> <span class="toc-text">9.9 GetVecAng(vec)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-10-GetFinaleType"><span class="toc-number">1.10.10.</span> <span class="toc-text">9.10 GetFinaleType()</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-SM-%E5%91%BD%E4%BB%A4-VScript-%E5%B0%81%E8%A3%85"><span class="toc-number">1.11.</span> <span class="toc-text">10. SM 命令 VScript 封装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#10-1-ClientCommand-hPlayer-sCmd"><span class="toc-number">1.11.1.</span> <span class="toc-text">10.1 ClientCommand(hPlayer, sCmd)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-2-SetClientName-hPlayer-sName"><span class="toc-number">1.11.2.</span> <span class="toc-text">10.2 SetClientName(hPlayer, sName)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-3-SetAmmo-hPlayer-iSlot-iClip-iAmmo-iUpgrade"><span class="toc-number">1.11.3.</span> <span class="toc-text">10.3 SetAmmo(hPlayer, iSlot, iClip, iAmmo, iUpgrade)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-4-SetTeam-survName"><span class="toc-number">1.11.4.</span> <span class="toc-text">10.4 SetTeam(survName)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-5-CallVote-hCaller-sCmd"><span class="toc-number">1.11.5.</span> <span class="toc-text">10.5 CallVote(hCaller, sCmd)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-6-PlayerReplace-hPlayer-hPlayer2"><span class="toc-number">1.11.6.</span> <span class="toc-text">10.6 PlayerReplace(hPlayer, hPlayer2)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-7-AutoKick-hCaller-hPlayer-bRootKey"><span class="toc-number">1.11.7.</span> <span class="toc-text">10.7 AutoKick(hCaller, hPlayer, bRootKey)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-%E8%B0%83%E8%AF%95%E5%87%BD%E6%95%B0"><span class="toc-number">1.12.</span> <span class="toc-text">11. 调试函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#11-1-DebugItems-itemName-withDelay"><span class="toc-number">1.12.1.</span> <span class="toc-text">11.1 DebugItems(itemName, withDelay)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-2-CheckMoving-fTime-bChat-bLocalTime"><span class="toc-number">1.12.2.</span> <span class="toc-text">11.2 CheckMoving(fTime, bChat, bLocalTime)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-3-ZDump-fTime"><span class="toc-number">1.12.3.</span> <span class="toc-text">11.3 ZDump(fTime)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-4-MobListener-flags-mobMax"><span class="toc-number">1.12.4.</span> <span class="toc-text">11.4 MobListener(flags, mobMax)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-5-ppos-vecPos-sName"><span class="toc-number">1.12.5.</span> <span class="toc-text">11.5 ppos(vecPos, sName)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-6-ppos2-vecPos"><span class="toc-number">1.12.6.</span> <span class="toc-text">11.6 ppos2(vecPos)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-7-ptp-hPlayer"><span class="toc-number">1.12.7.</span> <span class="toc-text">11.7 ptp(hPlayer)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-8-pvel-hPlayer"><span class="toc-number">1.12.8.</span> <span class="toc-text">11.8 pvel(hPlayer)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-9-pdist-hPlayer-hPlayer2"><span class="toc-number">1.12.9.</span> <span class="toc-text">11.9 pdist(hPlayer, hPlayer2)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-10-DebugTrace-vStart-vEnd-autoPurge"><span class="toc-number">1.12.10.</span> <span class="toc-text">11.10 DebugTrace(vStart, vEnd, autoPurge)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-11-find-name-findex"><span class="toc-number">1.12.11.</span> <span class="toc-text">11.11 find(name, findex)</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/games/str_guide.html" title="L4D2 STR说明文档">L4D2 STR说明文档</a><time datetime="2026-07-06T06:00:01.000Z" title="发表于 2026-07-06 14:00:01">2026-07-06</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/games/movement_reader_guide.html" title="L4D2 MR说明文档">L4D2 MR说明文档</a><time datetime="2026-07-06T06:00:01.000Z" title="发表于 2026-07-06 14:00:01">2026-07-06</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/games/speedrunner_tools_guide.html" title="L4D2 ST说明文档">L4D2 ST说明文档</a><time datetime="2026-07-06T06:00:01.000Z" title="发表于 2026-07-06 14:00:01">2026-07-06</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/games/st_api_reference.html" title="L4D2 ST-API文档">L4D2 ST-API文档</a><time datetime="2026-07-06T06:00:01.000Z" title="发表于 2026-07-06 14:00:01">2026-07-06</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/qt/daily.html" title="daily">daily</a><time datetime="2026-05-30T06:29:16.000Z" title="发表于 2026-05-30 14:29:16">2026-05-30</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div id="workboard"><img class="workSituationImg boardsign" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/images/touming.png&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.0.4/img/badge/安知鱼-上班摸鱼中.svg" alt="距离月入25k也就还差一个大佬带我~" title="距离月入25k也就还差一个大佬带我~"/><div id="runtimeTextTip"></div></div><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" data-title="博客框架为Hexo_v5.4.0" title="博客框架为Hexo_v5.4.0"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/images/touming.png&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.1.5/img/badge/Frame-Hexo.svg" alt="博客框架为Hexo_v5.4.0"/></a><a class="github-badge" target="_blank" href="https://blog.anheyu.com/" style="margin-inline:5px" data-title="本站使用AnZhiYu主题" title="本站使用AnZhiYu主题"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/images/touming.png&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.9/img/Theme-AnZhiYu-2E67D3.svg" alt="本站使用AnZhiYu主题"/></a><a class="github-badge" target="_blank" href="https://github.com/" style="margin-inline:5px" data-title="本站项目由Github托管" title="本站项目由Github托管"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/images/touming.png&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.1.5/img/badge/Source-Github.svg" alt="本站项目由Github托管"/></a></p></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2025 - 2026 By <a class="footer-bar-link" href="/" title="Yusqual" target="_blank">Yusqual</a></div></div><div id="footer-type-tips"></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://github.com/anzhiyu-c/hexo-theme-anzhiyu" title="主题">主题</a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">10</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">3</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">3</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://blog.anheyu.com/" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/images/touming.png&quot;" data-lazy-src="/img/favicon.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://image.anheyu.com/" title="安知鱼图床"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/images/touming.png&quot;" data-lazy-src="https://image.anheyu.com/favicon.ico" alt="安知鱼图床"/><span class="back-menu-item-text">安知鱼图床</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li></ul></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/l4d2/" style="font-size: 0.88rem;">l4d2<sup>5</sup></a><a href="/tags/notes/" style="font-size: 0.88rem;">notes<sup>4</sup></a><a href="/tags/qt/" style="font-size: 0.88rem;">qt<sup>1</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="translateLink" type="button" title="简繁转换">繁</button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("01/20/2025 00:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `欢迎使用安知鱼!`,
+    `生活明朗, 万物可爱`,
+    `
+        
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+        
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2025 By 安知鱼 V1.6.14",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 Yusqual 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><script async="async">(function () {
+  var grt = new Date("01/20/2025 00:00:00"); //设置网站上线时间
+  var now = new Date();
+  var dnum;
+  var hnum;
+  var mnum;
+  var snum;
+  var nowHour;
+
+  // 计算并更新天数、小时数、分钟数和秒数
+  function updateTime() {
+    now = new Date(); // 更新 now 的值
+    nowHour = now.getHours(); // 更新 nowHour 的值
+    var days = (now - grt) / 1000 / 60 / 60 / 24;
+    dnum = Math.floor(days);
+    var hours = (now - grt) / 1000 / 60 / 60 - 24 * dnum;
+    hnum = Math.floor(hours);
+    if (String(hnum).length == 1) {
+      hnum = "0" + hnum;
+    }
+    var minutes = (now - grt) / 1000 / 60 - 24 * 60 * dnum - 60 * hnum;
+    mnum = Math.floor(minutes);
+    if (String(mnum).length == 1) {
+      mnum = "0" + mnum;
+    }
+    var seconds = (now - grt) / 1000 - 24 * 60 * 60 * dnum - 60 * 60 * hnum - 60 * mnum;
+    snum = Math.round(seconds);
+    if (String(snum).length == 1) {
+      snum = "0" + snum;
+    }
+  }
+
+  // 更新网页中显示的网站运行时间
+  function updateHtml() {
+    const footer = document.getElementById("footer");
+    if (!footer) return
+    let currentTimeHtml = "";
+    if (nowHour < 18 && nowHour >= 9) {
+      // 如果是上班时间，默认就是"安知鱼-上班摸鱼中.svg"图片，不需要更改
+      currentTimeHtml = `本站居然运行了 ${dnum} 天<span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span><i class='anzhiyufont anzhiyu-icon-heartbeat' style='color:red'></i>`;
+    } else {
+      // 如果是下班时间，插入"安知鱼-下班啦.svg"图片
+      let img = document.querySelector("#workboard .workSituationImg");
+      if (img != null) {
+        img.src = "https://npm.elemecdn.com/anzhiyu-blog@2.0.4/img/badge/安知鱼-下班啦.svg";
+        img.title = "下班了就该开开心心的玩耍，嘿嘿~";
+        img.alt = "下班了就该开开心心的玩耍，嘿嘿~";
+      }
+
+      currentTimeHtml = `本站居然运行了 ${dnum} 天<span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span><i class='anzhiyufont anzhiyu-icon-heartbeat' style='color:red'></i>`;
+    }
+
+    if (document.getElementById("runtimeTextTip")) {
+      document.getElementById("runtimeTextTip").innerHTML = currentTimeHtml;
+    }
+  }
+
+  setInterval(() => {
+    updateTime();
+    updateHtml();
+  }, 1000);
+})();</script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.cbd.int/mathjax@3.2.2/es5/tex-mml-chtml.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script><input type="hidden" name="page-type" id="page-type" value="post"></div><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script charset="UTF-8" src="https://cdn.cbd.int/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>

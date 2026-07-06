@@ -1,0 +1,1017 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>L4D2 MR说明文档 | Suyu</title><meta name="keywords" content="l4d2"><meta name="author" content="Yusqual"><meta name="copyright" content="Yusqual"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#18171d"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="L4D2 MR说明文档"><meta name="application-name" content="L4D2 MR说明文档"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#18171d"><meta property="og:type" content="article"><meta property="og:title" content="L4D2 MR说明文档"><meta property="og:url" content="https://yusqual.github.io/games/movement_reader_guide.html"><meta property="og:site_name" content="Suyu"><meta property="og:description" content="Movement Reader (sm_amovement_reader) 使用指南版本: 1.5.23作者: noa1mbot说明: 记录和回放玩家的移动操作。  目录 文件存储位置 快速上手 菜单系统 控制台命令 ConVars 配置项 文件格式说明 高级功能 VScript 回调   1. 文"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://yusqual.github.io/images/Ausnty.jpg"><meta property="article:author" content="Yusqual"><meta property="article:tag"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://yusqual.github.io/images/Ausnty.jpg"><meta name="description" content="Movement Reader (sm_amovement_reader) 使用指南版本: 1.5.23作者: noa1mbot说明: 记录和回放玩家的移动操作。  目录 文件存储位置 快速上手 菜单系统 控制台命令 ConVars 配置项 文件格式说明 高级功能 VScript 回调   1. 文"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="https://yusqual.github.io/games/movement_reader_guide.html"><link rel="preconnect" href="//cdn.cbd.int"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: {"enable":true,"img":"https://linux.do/uploads/default/optimized/3X/7/3/7344591d7035ceeed5823f9a6eea7f93f5705438_2_1035x651.png"},
+  postHeadAiDescription: {"enable":true,"gptName":"AnZhiYu","mode":"local","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"xxxx","Referer":"https://xx.xx/"},
+  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w 不要走！再看看嘛！","backTitle":"♪(^∇^*)欢迎肥来！"},
+  LA51: undefined,
+  greetingBox: undefined,
+  twikooEnvId: '',
+  commentBarrageConfig:undefined,
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: false,
+  mainTone: undefined,
+  authorStatus: {"skills":null},
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: Yusqual","link":"链接: ","source":"来源: Suyu","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  shortcutKey: undefined,
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: 'Suyu',
+  title: 'L4D2 MR说明文档',
+  postAI: '',
+  pageFillDescription: 'Movement Reader (sm_amovement_reader) 使用指南, 目录, 1. 文件存储位置, 2. 快速上手, 2.1 录制移动, 2.2 回放移动, 3. 菜单系统, 3.1 基本菜单 (stmr), 3.2 高级菜单 (stmr2), 4. 控制台命令, 4.1 st_mr_stop [player], 4.2 st_mr_goto ltlinegt [filename] [player], 4.3 st_mr_get_frame [player], 4.4 st_mr_tracker [filename], 4.5 st_mr_tracker_clear, 4.6 st_mr_save, 5. ConVars 配置项, 6. 文件格式说明, 6.1 文件结构, 6.2 帧数据字段, 6.3 按键掩码, 6.4 武器 ID, 7. 高级功能, 7.1 扩展模式 vs 传统模式, 7.2 分割录制 (Split), 7.3 Goto 模式 (帧精确浏览), 7.4 轨迹追踪 (Tracker), 7.5 调试模式, 7.6 IN_IDLE 和 IN_TAKEOVER, 7.7 IN_FREE_ANGLE, 7.8 主机输入转发, 7.9 特殊辅助功能, 8. VScript 回调, 8.1 OnPlayEnd, 8.2 OnPlayLine, 9. 注意事项使用指南版本作者说明记录和回放玩家的移动操作目录文件存储位置快速上手菜单系统控制台命令配置项文件格式说明高级功能回调文件存储位置所有移动记录文件保存在默认文件名玩家主机其他玩家如快速保存快速上手录制移动在游戏中打开控制台输入打开基本菜单选择选项开始录制执行你想要录制的移动操作输入或在菜单中选择停止录制或者通过直接控制开始录制玩家的移动停止玩家的录制回放移动确保文件存在于目录输入打开菜单选择选项或者开始回放玩家的移动菜单系统基本菜单选项功能说明录制开始录制当前玩家的移动回放开始回放已录制的移动分割从当前位置分割回放并开始新录制快进快进帧后退后退帧停止停止所有录制回放传统模式切换扩展模式传统模式仅主机高级菜单选项功能说明录制分割延迟后开始录制或分割播放开始回放跳转冻结进入帧浏览模式或冻结当前帧停止停止并重置状态传统模式切换是否使用扩展向量数据调试模式循环切换轨迹追踪在游戏中绘制移动路径快速保存保存当前的副本为快捷键高级菜单下使用换弹清除所有轨迹线加载最后一次快速保存的文件键在模式下逐帧后退前进控制台命令停止指定玩家的所有录制回放不带参数默认停止所有玩家停止所有停止玩家跳转到指定行开始回放跳转到当前回放的第行加载并跳转到第行为玩家跳转到第行注意行号从开始计数前行为头信息在模式下按键可以逐帧浏览获取当前回放的帧号查看当前玩家帧号查看玩家的帧号在游戏中绘制移动路径的轨迹线并将统计信息输出到控制台追踪当前选中的文件追踪控制台输出信息轨迹编号移动文件名时长总帧数总行数含头信息文件路径文件大小文件时间戳清除所有已绘制的轨迹线将当前复制为配置项默认值说明强制指定回放文件名指定要录制的玩家索引指定要回放的玩家索引指定要分割的玩家索引禁止回放前传送玩家到起始位置停止指定玩家的录制回放启用扩展录制记录和向量启用扩展回放使用记录的向量数据在控制台输出指定玩家的移动数据行自由模式每个玩家使用自己的文件允许录制标志位允许自由视角录制回放调试用允许将客户端输入发送到主机控制台回放时自动重置计时器并清除特感录制分割前的延迟时间秒录制分割后的游戏速度倍率轨迹文字显示级别关仅文字带时间标记文件格式说明文件结构一个标准的移动文件包含行头信息行帧数据起始位置起始视角起始速度以下每行一帧帧数据字段字段说明按键掩码整数见下方按键表视角视角武器见武器索引表位置向量仅扩展模式速度向量仅扩展模式玩家标志位仅扩展模式按键掩码值名称说明攻击跳跃蹲下前进后退使用左移右移左平移右平移右键攻击奔跑换弹速度键行走冲锋闲置插件自定义接管插件自定义自由视角插件自定义武器武器高级功能扩展模式传统模式扩展模式默认开启录制和数据回放时精确还原位置和速度文件体积较大传统模式仅记录按钮和视角回放时由游戏物理模拟移动兼容旧版本文件在高级菜单中通过切换切换传统模式仅对主机有效分割录制分割功能允许你在回放过程中从某个时间点开始重新录制先录制一段移动如回放到你想修改的位置点击玩家的后续操作将替换原有动作或者在控制台分割玩家的回放并开始新录制分割前可以通过设置延迟时间设置分割后的游戏速度模式帧精确浏览模式让你可以逐帧浏览回放在高级菜单中选择进入帧浏览模式按住键后退按住键前进再次点击退出浏览模式并继续回放点击从当前位置开始回放注意模式下不保存状态在跳跃前后分割可能导致回放异常建议在可以等待下次跳跃的位置进行分割轨迹追踪在场景中绘制移动路径绘制指定文件的路径清除所有路径每调用一次都会创建一个新的轨迹轨迹线为蓝色和黄色交替线段并带有文字标注首次追踪时玩家视角会自动转向路径起点在高级菜单中按选项可快速追踪当前选中的文件轨迹文字显示级别由控制调试模式高级菜单选项循环切换三种调试状态关闭调试在游戏画面上显示信息速度帧号标志位按键状态在控制台输出每帧的详细数据多人模式下调试不可用会自动切换为模式模式依赖的系统和这两个自定义标志位用于处理接管当玩家因替换而被踢出时标记为闲置状态当玩家重新接管时触发控制是否录制这些标志位标志位让回放保持玩家的原始视角不变可以用于调试但不建议在常规回放中使用可通过全局启用主机输入转发当为时回放过程中会将攻击和下蹲指令发送到主机控制台这主要用于非专用服务器上的回放特殊辅助功能当为默认时回放开始时自动执行调用重置计时器执行移除所有感染者回调插件提供了两个可以在中回放结束时触发回放的文件名每帧回放时触发回放的文件名当前帧号当前帧的按键掩码注意事项插件加载优先级插件需要在等插件之前加载避免冲突分割限制模式后立即分割可能因标志位不匹配导致回放异常门交互回放中的门交互仅部分有效单个按压可成功但持续按住效果不佳声音回放时武器开火声音已在插件中模拟处理多次录制版本后支持同时录制分割多个玩家的移动',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2026-07-06 17:32:39',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://npm.elemecdn.com/anzhiyu-blog-static@1.0.4/img/avatar.jpg"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><a id="site-name" href="/" accesskey="h"><div class="title">Suyu</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li></ul></div></div></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" target="_blank"><img class="post-qr-code-img" alt="微信" src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" target="_blank"><img class="post-qr-code-img" alt="支付宝" src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/l4d2/" style="font-size: 1.05rem;">l4d2<sup>5</sup></a><a href="/tags/notes/" style="font-size: 1.05rem;">notes<sup>4</sup></a><a href="/tags/qt/" style="font-size: 1.05rem;">qt<sup>1</sup></a></div></div><hr/></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/07/"><span class="card-archive-list-date">七月 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">4</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/05/"><span class="card-archive-list-date">五月 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/05/"><span class="card-archive-list-date">五月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/04/"><span class="card-archive-list-date">四月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/03/"><span class="card-archive-list-date">三月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/01/"><span class="card-archive-list-date">一月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%85%B6%E4%BB%96/" itemprop="url">其他</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/l4d2/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>l4d2</span></a></span></div></div><h1 class="post-title" itemprop="name headline">L4D2 MR说明文档</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2026-07-06T06:00:01.000Z" title="发表于 2026-07-06 14:00:01">2026-07-06</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2026-07-06T09:32:39.270Z" title="更新于 2026-07-06 17:32:39">2026-07-06</time></span></div><div class="meta-secondline"><span class="post-meta-separator"></span><span class="post-meta-wordcount"><i class="anzhiyufont anzhiyu-icon-file-word post-meta-icon" title="文章字数"></i><span class="post-meta-label" title="文章字数">字数总计:</span><span class="word-count" title="文章字数">2.5k</span><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-clock post-meta-icon" title="阅读时长"></i><span class="post-meta-label" title="阅读时长">阅读时长:</span><span>9分钟</span></span><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为湖北"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>湖北</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src=""></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="https://yusqual.github.io/games/movement_reader_guide.html"><header><a class="post-meta-categories" href="/categories/%E5%85%B6%E4%BB%96/" itemprop="url">其他</a><a href="/tags/l4d2/" tabindex="-1" itemprop="url">l4d2</a><h1 id="CrawlerTitle" itemprop="name headline">L4D2 MR说明文档</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">Yusqual</span><time itemprop="dateCreated datePublished" datetime="2026-07-06T06:00:01.000Z" title="发表于 2026-07-06 14:00:01">2026-07-06</time><time itemprop="dateCreated datePublished" datetime="2026-07-06T09:32:39.270Z" title="更新于 2026-07-06 17:32:39">2026-07-06</time></header><h1 id="Movement-Reader-sm-amovement-reader-使用指南"><a href="#Movement-Reader-sm-amovement-reader-使用指南" class="headerlink" title="Movement Reader (sm_amovement_reader) 使用指南"></a>Movement Reader (sm_amovement_reader) 使用指南</h1><p><strong>版本</strong>: 1.5.23<br><strong>作者</strong>: noa1mbot<br><strong>说明</strong>: 记录和回放玩家的移动操作。</p>
+<hr>
+<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ol>
+<li><a href="#1-%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8%E4%BD%8D%E7%BD%AE">文件存储位置</a></li>
+<li><a href="#2-%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B">快速上手</a></li>
+<li><a href="#3-%E8%8F%9C%E5%8D%95%E7%B3%BB%E7%BB%9F">菜单系统</a></li>
+<li><a href="#4-%E6%8E%A7%E5%88%B6%E5%8F%B0%E5%91%BD%E4%BB%A4">控制台命令</a></li>
+<li><a href="#5-convars-%E9%85%8D%E7%BD%AE%E9%A1%B9">ConVars 配置项</a></li>
+<li><a href="#6-%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F%E8%AF%B4%E6%98%8E">文件格式说明</a></li>
+<li><a href="#7-%E9%AB%98%E7%BA%A7%E5%8A%9F%E8%83%BD">高级功能</a></li>
+<li><a href="#8-vscript-%E5%9B%9E%E8%B0%83">VScript 回调</a></li>
+</ol>
+<hr>
+<h2 id="1-文件存储位置"><a href="#1-文件存储位置" class="headerlink" title="1. 文件存储位置"></a>1. 文件存储位置</h2><p>所有移动记录文件保存在:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">addons/sourcemod/plugins/disabled/movements/</span><br></pre></td></tr></table></figure>
+
+<p>默认文件名:</p>
+<ul>
+<li>玩家 1 (主机): <code>default.txt</code></li>
+<li>其他玩家: <code>default_&#123;index&#125;.txt</code> (如 <code>default_2.txt</code>)</li>
+<li>快速保存: <code>quicksave.txt</code></li>
+</ul>
+<hr>
+<h2 id="2-快速上手"><a href="#2-快速上手" class="headerlink" title="2. 快速上手"></a>2. 快速上手</h2><h3 id="2-1-录制移动"><a href="#2-1-录制移动" class="headerlink" title="2.1 录制移动"></a>2.1 录制移动</h3><ol>
+<li>在游戏中打开控制台，输入 <code>stmr</code> 打开基本菜单</li>
+<li>选择 <strong>Record</strong> (选项 1)，开始录制</li>
+<li>执行你想要录制的移动操作</li>
+<li>输入 <code>st_mr_stop</code> 或在菜单中选择 <strong>Stop</strong> 停止录制</li>
+</ol>
+<p>或者通过 ConVar 直接控制:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">st_mr_record 1    # 开始录制玩家 1 的移动</span><br><span class="line">st_mr_stop_player 1  # 停止玩家 1 的录制</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-回放移动"><a href="#2-2-回放移动" class="headerlink" title="2.2 回放移动"></a>2.2 回放移动</h3><ol>
+<li>确保 <code>default.txt</code> 文件存在于 movements 目录</li>
+<li>输入 <code>stmr</code> 打开菜单，选择 <strong>Playback</strong> (选项 2)</li>
+</ol>
+<p>或者:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">st_mr_play 1      # 开始回放玩家 1 的移动</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="3-菜单系统"><a href="#3-菜单系统" class="headerlink" title="3. 菜单系统"></a>3. 菜单系统</h2><h3 id="3-1-基本菜单-stmr"><a href="#3-1-基本菜单-stmr" class="headerlink" title="3.1 基本菜单 (stmr)"></a>3.1 基本菜单 (<code>stmr</code>)</h3><table>
+<thead>
+<tr>
+<th>选项</th>
+<th>功能</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1. Record</td>
+<td>录制</td>
+<td>开始录制当前玩家的移动</td>
+</tr>
+<tr>
+<td>2. Playback</td>
+<td>回放</td>
+<td>开始回放已录制的移动</td>
+</tr>
+<tr>
+<td>3. Split</td>
+<td>分割</td>
+<td>从当前位置分割回放并开始新录制</td>
+</tr>
+<tr>
+<td>4. Fwd &gt;&gt;</td>
+<td>快进</td>
+<td>快进 150 帧</td>
+</tr>
+<tr>
+<td>5. Rew &lt;&lt;</td>
+<td>后退</td>
+<td>后退 150 帧</td>
+</tr>
+<tr>
+<td>6. Stop</td>
+<td>停止</td>
+<td>停止所有录制&#x2F;回放</td>
+</tr>
+<tr>
+<td>7. Legacy Mode</td>
+<td>传统模式</td>
+<td>切换 扩展模式&#x2F;传统模式 (仅主机)</td>
+</tr>
+</tbody></table>
+<h3 id="3-2-高级菜单-stmr2"><a href="#3-2-高级菜单-stmr2" class="headerlink" title="3.2 高级菜单 (stmr2)"></a>3.2 高级菜单 (<code>stmr2</code>)</h3><table>
+<thead>
+<tr>
+<th>选项</th>
+<th>功能</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1. Record&#x2F;Split</td>
+<td>录制&#x2F;分割</td>
+<td>延迟后开始录制或分割</td>
+</tr>
+<tr>
+<td>2. Play</td>
+<td>播放</td>
+<td>开始回放</td>
+</tr>
+<tr>
+<td>3. Goto&#x2F;Freeze</td>
+<td>跳转&#x2F;冻结</td>
+<td>进入帧浏览模式或冻结当前帧</td>
+</tr>
+<tr>
+<td>4. Stop</td>
+<td>停止</td>
+<td>停止并重置 Goto 状态</td>
+</tr>
+<tr>
+<td>5. Legacy Mode</td>
+<td>传统模式</td>
+<td>切换是否使用扩展向量数据</td>
+</tr>
+<tr>
+<td>6. Debug Mode</td>
+<td>调试模式</td>
+<td>OFF → Screen → Console 循环切换</td>
+</tr>
+<tr>
+<td>7. Tracker</td>
+<td>轨迹追踪</td>
+<td>在游戏中绘制移动路径</td>
+</tr>
+<tr>
+<td>8. Save</td>
+<td>快速保存</td>
+<td>保存当前 default.txt 的副本为 quicksave.txt</td>
+</tr>
+</tbody></table>
+<p><strong>快捷键 (高级菜单下)</strong>:</p>
+<ul>
+<li><code>E + R</code> (使用+换弹): 清除所有轨迹线</li>
+<li><code>SHIFT + R</code>: 加载最后一次快速保存的文件</li>
+<li><code>A/D</code> 键 (在 Goto 模式下): 逐帧后退&#x2F;前进</li>
+</ul>
+<hr>
+<h2 id="4-控制台命令"><a href="#4-控制台命令" class="headerlink" title="4. 控制台命令"></a>4. 控制台命令</h2><h3 id="4-1-st-mr-stop-player"><a href="#4-1-st-mr-stop-player" class="headerlink" title="4.1 st_mr_stop [player]"></a>4.1 <code>st_mr_stop [player]</code></h3><p>停止指定玩家的所有录制&#x2F;回放。不带参数默认停止所有玩家。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">st_mr_stop     # 停止所有</span><br><span class="line">st_mr_stop 2   # 停止玩家 2</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-2-st-mr-goto-filename-player"><a href="#4-2-st-mr-goto-filename-player" class="headerlink" title="4.2 st_mr_goto &lt;line&gt; [filename] [player]"></a>4.2 <code>st_mr_goto &lt;line&gt; [filename] [player]</code></h3><p>跳转到指定行开始回放。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">st_mr_goto 150          # 跳转到当前回放的第 150 行</span><br><span class="line">st_mr_goto 100 &quot;run1&quot;   # 加载 run1.txt 并跳转到第 100 行</span><br><span class="line">st_mr_goto 50 &quot;&quot; 2      # 为玩家 2 跳转到第 50 行</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>注意</strong>: 行号从 4 开始计数 (前 3 行为 Origin&#x2F;Angles&#x2F;Velocity 头信息)。<br>在 Goto 模式下，按 A&#x2F;D 键可以逐帧浏览。</p>
+</blockquote>
+<h3 id="4-3-st-mr-get-frame-player"><a href="#4-3-st-mr-get-frame-player" class="headerlink" title="4.3 st_mr_get_frame [player]"></a>4.3 <code>st_mr_get_frame [player]</code></h3><p>获取当前回放的帧号。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">st_mr_get_frame     # 查看当前玩家帧号</span><br><span class="line">st_mr_get_frame 2   # 查看玩家 2 的帧号</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-4-st-mr-tracker-filename"><a href="#4-4-st-mr-tracker-filename" class="headerlink" title="4.4 st_mr_tracker [filename]"></a>4.4 <code>st_mr_tracker [filename]</code></h3><p>在游戏中绘制移动路径的轨迹线，并将统计信息输出到控制台。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">st_mr_tracker           # 追踪当前选中的文件</span><br><span class="line">st_mr_tracker &quot;run1&quot;    # 追踪 run1.txt</span><br></pre></td></tr></table></figure>
+
+<p>控制台输出信息:</p>
+<ul>
+<li>ID: 轨迹编号</li>
+<li>Name: 移动文件名</li>
+<li>Duration: 时长</li>
+<li>Frames: 总帧数</li>
+<li>Lines: 总行数 (含头信息)</li>
+<li>File path: 文件路径</li>
+<li>Size: 文件大小</li>
+<li>Timestamp: 文件时间戳</li>
+</ul>
+<h3 id="4-5-st-mr-tracker-clear"><a href="#4-5-st-mr-tracker-clear" class="headerlink" title="4.5 st_mr_tracker_clear"></a>4.5 <code>st_mr_tracker_clear</code></h3><p>清除所有已绘制的轨迹线。</p>
+<h3 id="4-6-st-mr-save"><a href="#4-6-st-mr-save" class="headerlink" title="4.6 st_mr_save"></a>4.6 <code>st_mr_save</code></h3><p>将当前 <code>default.txt</code> 复制为 <code>quicksave.txt</code>。</p>
+<hr>
+<h2 id="5-ConVars-配置项"><a href="#5-ConVars-配置项" class="headerlink" title="5. ConVars 配置项"></a>5. ConVars 配置项</h2><table>
+<thead>
+<tr>
+<th>ConVar</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>st_mr_force_file</code></td>
+<td><code>&quot;default&quot;</code></td>
+<td>强制指定回放文件名</td>
+</tr>
+<tr>
+<td><code>st_mr_record</code></td>
+<td><code>0</code></td>
+<td>指定要录制的玩家索引</td>
+</tr>
+<tr>
+<td><code>st_mr_play</code></td>
+<td><code>0</code></td>
+<td>指定要回放的玩家索引</td>
+</tr>
+<tr>
+<td><code>st_mr_split</code></td>
+<td><code>0</code></td>
+<td>指定要分割的玩家索引</td>
+</tr>
+<tr>
+<td><code>st_mr_no_teleport</code></td>
+<td><code>0</code></td>
+<td>禁止回放前传送玩家到起始位置</td>
+</tr>
+<tr>
+<td><code>st_mr_stop_player</code></td>
+<td><code>0</code></td>
+<td>停止指定玩家的录制&#x2F;回放</td>
+</tr>
+<tr>
+<td><code>st_mr_exrec</code></td>
+<td><code>1</code></td>
+<td>启用扩展录制 (记录 Origin 和 Velocity 向量)</td>
+</tr>
+<tr>
+<td><code>st_mr_explay</code></td>
+<td><code>1</code></td>
+<td>启用扩展回放 (使用记录的向量数据)</td>
+</tr>
+<tr>
+<td><code>st_mr_debug</code></td>
+<td><code>0</code></td>
+<td>在控制台输出指定玩家的移动数据行</td>
+</tr>
+<tr>
+<td><code>st_mr_ffa</code></td>
+<td><code>1</code></td>
+<td>自由模式，每个玩家使用自己的 default 文件</td>
+</tr>
+<tr>
+<td><code>st_mr_allow_record_idle</code></td>
+<td><code>1</code></td>
+<td>允许录制 IDLE 标志位</td>
+</tr>
+<tr>
+<td><code>st_mr_allow_free_angle</code></td>
+<td><code>0</code></td>
+<td>允许自由视角录制&#x2F;回放 (调试用)</td>
+</tr>
+<tr>
+<td><code>st_mr_allow_host_inputs</code></td>
+<td><code>0</code></td>
+<td>允许将客户端输入发送到主机控制台</td>
+</tr>
+<tr>
+<td><code>st_mr_allow_playback_special_helpers</code></td>
+<td><code>1</code></td>
+<td>回放时自动重置计时器并清除特感</td>
+</tr>
+<tr>
+<td><code>st_mr_tweak_delay</code></td>
+<td><code>1.2</code></td>
+<td>录制&#x2F;分割前的延迟时间 (秒)</td>
+</tr>
+<tr>
+<td><code>st_mr_tweak_timescale</code></td>
+<td><code>0.25</code></td>
+<td>录制&#x2F;分割后的游戏速度倍率</td>
+</tr>
+<tr>
+<td><code>st_mr_tracker_text_level</code></td>
+<td><code>1</code></td>
+<td>轨迹文字显示级别 (0&#x3D;关, 1&#x3D;仅文字, 2&#x3D;带时间标记)</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="6-文件格式说明"><a href="#6-文件格式说明" class="headerlink" title="6. 文件格式说明"></a>6. 文件格式说明</h2><h3 id="6-1-文件结构"><a href="#6-1-文件结构" class="headerlink" title="6.1 文件结构"></a>6.1 文件结构</h3><p>一个标准的移动文件包含 3 行头信息 + N 行帧数据:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Origin:-1415.250:-877.969:160.031       ← 起始位置 (m_vecOrigin)</span><br><span class="line">Angles:30.000:25.000:0.000               ← 起始视角</span><br><span class="line">Velocity:250.000:0.000:0.000             ← 起始速度 (m_vecVelocity)</span><br><span class="line"></span><br><span class="line">← 以下每行一帧 →</span><br><span class="line">buttons:angleX:angleY:weapon:originX, originY, originZ:velX, velY, velZ:flags</span><br><span class="line">buttons:angleX:angleY:weapon:originX, originY, originZ:velX, velY, velZ:flags</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-2-帧数据字段"><a href="#6-2-帧数据字段" class="headerlink" title="6.2 帧数据字段"></a>6.2 帧数据字段</h3><table>
+<thead>
+<tr>
+<th>字段</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>buttons</code></td>
+<td>按键掩码 (整数，见下方按键表)</td>
+</tr>
+<tr>
+<td><code>angleX</code></td>
+<td>视角 X (Pitch)</td>
+</tr>
+<tr>
+<td><code>angleY</code></td>
+<td>视角 Y (Yaw)</td>
+</tr>
+<tr>
+<td><code>weapon</code></td>
+<td>武器 ID (见武器索引表)</td>
+</tr>
+<tr>
+<td><code>origin</code></td>
+<td>位置向量 (X, Y, Z) — 仅扩展模式</td>
+</tr>
+<tr>
+<td><code>velocity</code></td>
+<td>速度向量 (X, Y, Z) — 仅扩展模式</td>
+</tr>
+<tr>
+<td><code>flags</code></td>
+<td>玩家标志位 (m_fFlags) — 仅扩展模式</td>
+</tr>
+</tbody></table>
+<h3 id="6-3-按键掩码"><a href="#6-3-按键掩码" class="headerlink" title="6.3 按键掩码"></a>6.3 按键掩码</h3><table>
+<thead>
+<tr>
+<th>值</th>
+<th>名称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>IN_ATTACK</td>
+<td>攻击</td>
+</tr>
+<tr>
+<td>2</td>
+<td>IN_JUMP</td>
+<td>跳跃</td>
+</tr>
+<tr>
+<td>4</td>
+<td>IN_DUCK</td>
+<td>蹲下</td>
+</tr>
+<tr>
+<td>8</td>
+<td>IN_FORWARD</td>
+<td>前进 (W)</td>
+</tr>
+<tr>
+<td>16</td>
+<td>IN_BACK</td>
+<td>后退 (S)</td>
+</tr>
+<tr>
+<td>32</td>
+<td>IN_USE</td>
+<td>使用 (E)</td>
+</tr>
+<tr>
+<td>128</td>
+<td>IN_LEFT</td>
+<td>左移</td>
+</tr>
+<tr>
+<td>256</td>
+<td>IN_RIGHT</td>
+<td>右移</td>
+</tr>
+<tr>
+<td>512</td>
+<td>IN_MOVELEFT</td>
+<td>左平移 (A)</td>
+</tr>
+<tr>
+<td>1024</td>
+<td>IN_MOVERIGHT</td>
+<td>右平移 (D)</td>
+</tr>
+<tr>
+<td>2048</td>
+<td>IN_ATTACK2</td>
+<td>右键攻击</td>
+</tr>
+<tr>
+<td>4096</td>
+<td>IN_RUN</td>
+<td>奔跑</td>
+</tr>
+<tr>
+<td>8192</td>
+<td>IN_RELOAD</td>
+<td>换弹 (R)</td>
+</tr>
+<tr>
+<td>131072</td>
+<td>IN_SPEED</td>
+<td>速度键 (SHIFT)</td>
+</tr>
+<tr>
+<td>262144</td>
+<td>IN_WALK</td>
+<td>行走</td>
+</tr>
+<tr>
+<td>4194304</td>
+<td>IN_BULLRUSH</td>
+<td>冲锋</td>
+</tr>
+<tr>
+<td>67108864</td>
+<td>IN_IDLE</td>
+<td>闲置 (插件自定义)</td>
+</tr>
+<tr>
+<td>134217728</td>
+<td>IN_TAKEOVER</td>
+<td>接管 Bot (插件自定义)</td>
+</tr>
+<tr>
+<td>268435456</td>
+<td>IN_FREE_ANGLE</td>
+<td>自由视角 (插件自定义)</td>
+</tr>
+</tbody></table>
+<h3 id="6-4-武器-ID"><a href="#6-4-武器-ID" class="headerlink" title="6.4 武器 ID"></a>6.4 武器 ID</h3><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>武器</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>weapon_upgradepack_incendiary</td>
+</tr>
+<tr>
+<td>2</td>
+<td>weapon_upgradepack_explosive</td>
+</tr>
+<tr>
+<td>3</td>
+<td>weapon_pistol</td>
+</tr>
+<tr>
+<td>4</td>
+<td>weapon_pistol_magnum</td>
+</tr>
+<tr>
+<td>5</td>
+<td>weapon_adrenaline</td>
+</tr>
+<tr>
+<td>6</td>
+<td>weapon_pain_pills</td>
+</tr>
+<tr>
+<td>7</td>
+<td>weapon_vomitjar</td>
+</tr>
+<tr>
+<td>8</td>
+<td>weapon_pipe_bomb</td>
+</tr>
+<tr>
+<td>9</td>
+<td>weapon_molotov</td>
+</tr>
+<tr>
+<td>10</td>
+<td>weapon_defibrillator</td>
+</tr>
+<tr>
+<td>11</td>
+<td>weapon_first_aid_kit</td>
+</tr>
+<tr>
+<td>12</td>
+<td>weapon_shotgun_chrome</td>
+</tr>
+<tr>
+<td>13</td>
+<td>weapon_pumpshotgun</td>
+</tr>
+<tr>
+<td>14</td>
+<td>weapon_shotgun_spas</td>
+</tr>
+<tr>
+<td>15</td>
+<td>weapon_autoshotgun</td>
+</tr>
+<tr>
+<td>16</td>
+<td>weapon_smg</td>
+</tr>
+<tr>
+<td>17</td>
+<td>weapon_smg_silenced</td>
+</tr>
+<tr>
+<td>18</td>
+<td>weapon_rifle</td>
+</tr>
+<tr>
+<td>19</td>
+<td>weapon_rifle_ak47</td>
+</tr>
+<tr>
+<td>20</td>
+<td>weapon_rifle_desert</td>
+</tr>
+<tr>
+<td>21</td>
+<td>weapon_hunting_rifle</td>
+</tr>
+<tr>
+<td>22</td>
+<td>weapon_sniper_military</td>
+</tr>
+<tr>
+<td>23</td>
+<td>weapon_rifle_m60</td>
+</tr>
+<tr>
+<td>24</td>
+<td>weapon_grenade_launcher</td>
+</tr>
+<tr>
+<td>25</td>
+<td>weapon_chainsaw</td>
+</tr>
+<tr>
+<td>26</td>
+<td>weapon_melee</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="7-高级功能"><a href="#7-高级功能" class="headerlink" title="7. 高级功能"></a>7. 高级功能</h2><h3 id="7-1-扩展模式-vs-传统模式"><a href="#7-1-扩展模式-vs-传统模式" class="headerlink" title="7.1 扩展模式 vs 传统模式"></a>7.1 扩展模式 vs 传统模式</h3><p><strong>扩展模式</strong> (<code>st_mr_exrec 1</code> &#x2F; <code>st_mr_explay 1</code>，默认开启):</p>
+<ul>
+<li>录制 Origin、Velocity 和 Flags 数据</li>
+<li>回放时精确还原位置和速度</li>
+<li>文件体积较大</li>
+</ul>
+<p><strong>传统模式</strong> (<code>st_mr_exrec 0</code> &#x2F; <code>st_mr_explay 0</code>):</p>
+<ul>
+<li>仅记录按钮和视角</li>
+<li>回放时由游戏物理模拟移动</li>
+<li>兼容旧版本文件</li>
+<li>在高级菜单中通过 <strong>Legacy Mode</strong> 切换</li>
+</ul>
+<blockquote>
+<p>切换传统模式仅对主机 (player 1) 有效。</p>
+</blockquote>
+<h3 id="7-2-分割录制-Split"><a href="#7-2-分割录制-Split" class="headerlink" title="7.2 分割录制 (Split)"></a>7.2 分割录制 (Split)</h3><p>分割功能允许你在回放过程中从某个时间点开始重新录制:</p>
+<ol>
+<li>先录制一段移动 (如 default.txt)</li>
+<li>回放到你想修改的位置，点击 <strong>Split</strong></li>
+<li>玩家的后续操作将替换原有动作</li>
+</ol>
+<p>或者在控制台:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">st_mr_split 1     # 分割玩家 1 的回放并开始新录制</span><br></pre></td></tr></table></figure>
+
+<p>分割前可以通过 <code>st_mr_tweak_delay</code> 设置延迟时间，<code>st_mr_tweak_timescale</code> 设置分割后的游戏速度。</p>
+<h3 id="7-3-Goto-模式-帧精确浏览"><a href="#7-3-Goto-模式-帧精确浏览" class="headerlink" title="7.3 Goto 模式 (帧精确浏览)"></a>7.3 Goto 模式 (帧精确浏览)</h3><p>Goto 模式让你可以逐帧浏览回放:</p>
+<ol>
+<li>在高级菜单中选择 <strong>Goto</strong> 进入帧浏览模式</li>
+<li>按住 <code>A</code> 键后退，按住 <code>D</code> 键前进</li>
+<li>再次点击 <strong>Goto</strong> 退出浏览模式并继续回放</li>
+<li>点击 <strong>Play</strong> 从当前位置开始回放</li>
+</ol>
+<blockquote>
+<p><strong>注意</strong>: Goto 模式下不保存 m_fFlags 状态，在跳跃前后分割可能导致回放异常。建议在可以等待下次跳跃的位置进行分割。</p>
+</blockquote>
+<h3 id="7-4-轨迹追踪-Tracker"><a href="#7-4-轨迹追踪-Tracker" class="headerlink" title="7.4 轨迹追踪 (Tracker)"></a>7.4 轨迹追踪 (Tracker)</h3><p>在 3D 场景中绘制移动路径:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">st_mr_tracker &quot;filename&quot;   # 绘制指定文件的路径</span><br><span class="line">st_mr_tracker_clear        # 清除所有路径</span><br></pre></td></tr></table></figure>
+
+<p>每调用一次 <code>st_mr_tracker</code> 都会创建一个新的轨迹 ID。轨迹线为蓝色和黄色交替线段，并带有文字标注。首次追踪时，玩家视角会自动转向路径起点。</p>
+<p>在高级菜单中按 <strong>Tracker</strong> (选项 7) 可快速追踪当前选中的文件。轨迹文字显示级别由 <code>st_mr_tracker_text_level</code> 控制。</p>
+<h3 id="7-5-调试模式"><a href="#7-5-调试模式" class="headerlink" title="7.5 调试模式"></a>7.5 调试模式</h3><p>高级菜单选项 6 循环切换三种调试状态:</p>
+<ul>
+<li><strong>OFF</strong>: 关闭调试</li>
+<li><strong>Screen</strong>: 在游戏画面上显示 HUD 信息 (UPS、速度、帧号、标志位、按键状态)</li>
+<li><strong>Console</strong>: 在控制台输出每帧的详细数据</li>
+</ul>
+<blockquote>
+<p>多人模式下 Screen 调试不可用，会自动切换为 Console 模式。Screen 模式依赖 Speedrun Tools 的 HUD 系统。</p>
+</blockquote>
+<h3 id="7-6-IN-IDLE-和-IN-TAKEOVER"><a href="#7-6-IN-IDLE-和-IN-TAKEOVER" class="headerlink" title="7.6 IN_IDLE 和 IN_TAKEOVER"></a>7.6 IN_IDLE 和 IN_TAKEOVER</h3><p>这两个自定义标志位用于处理 Bot 接管:</p>
+<ul>
+<li><strong>IN_IDLE</strong> (67108864): 当玩家因 Bot 替换而被踢出时，标记为闲置状态</li>
+<li><strong>IN_TAKEOVER</strong> (134217728): 当玩家重新接管 Bot 时触发</li>
+</ul>
+<p><code>st_mr_allow_record_idle</code> 控制是否录制这些标志位。</p>
+<h3 id="7-7-IN-FREE-ANGLE"><a href="#7-7-IN-FREE-ANGLE" class="headerlink" title="7.7 IN_FREE_ANGLE"></a>7.7 IN_FREE_ANGLE</h3><p><strong>IN_FREE_ANGLE</strong> (268435456) 标志位让回放保持玩家的原始视角不变。可以用于调试，但不建议在常规回放中使用。可通过 <code>st_mr_allow_free_angle</code> ConVar 全局启用。</p>
+<h3 id="7-8-主机输入转发"><a href="#7-8-主机输入转发" class="headerlink" title="7.8 主机输入转发"></a>7.8 主机输入转发</h3><p>当 <code>st_mr_allow_host_inputs</code> 为 1 时，回放过程中会将攻击(+attack)和下蹲(+duck)指令发送到主机控制台。这主要用于非专用服务器上的回放。</p>
+<h3 id="7-9-特殊辅助功能"><a href="#7-9-特殊辅助功能" class="headerlink" title="7.9 特殊辅助功能"></a>7.9 特殊辅助功能</h3><p>当 <code>st_mr_allow_playback_special_helpers</code> 为 1 (默认) 时，回放开始时自动执行:</p>
+<ul>
+<li>调用 <code>SpeedrunStart()</code> 重置计时器</li>
+<li>执行 <code>nb_delete_all infected</code> 移除所有感染者</li>
+</ul>
+<hr>
+<h2 id="8-VScript-回调"><a href="#8-VScript-回调" class="headerlink" title="8. VScript 回调"></a>8. VScript 回调</h2><p>插件提供了两个 forward，可以在 VScript 中 Hook:</p>
+<h3 id="8-1-OnPlayEnd"><a href="#8-1-OnPlayEnd" class="headerlink" title="8.1 OnPlayEnd"></a>8.1 OnPlayEnd</h3><p>回放结束时触发:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">function <span class="title">OnPlayEnd</span><span class="params">(self, filename)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// filename: 回放的文件名</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="8-2-OnPlayLine"><a href="#8-2-OnPlayLine" class="headerlink" title="8.2 OnPlayLine"></a>8.2 OnPlayLine</h3><p>每帧回放时触发:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">function <span class="title">OnPlayLine</span><span class="params">(self, filename, tick, buttons)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// filename: 回放的文件名</span></span><br><span class="line">    <span class="comment">// tick: 当前帧号 (+3)</span></span><br><span class="line">    <span class="comment">// buttons: 当前帧的按键掩码</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="9-注意事项"><a href="#9-注意事项" class="headerlink" title="9. 注意事项"></a>9. 注意事项</h2><ol>
+<li><strong>插件加载优先级</strong>: 插件需要在 <code>sm_bhop</code> 等插件之前加载，避免冲突</li>
+<li><strong>分割限制</strong>: Goto 模式后立即分割可能因标志位不匹配导致回放异常</li>
+<li><strong>门交互</strong>: 回放中的门交互 (+use) 仅部分有效，单个按压可成功但持续按住效果不佳</li>
+<li><strong>声音</strong>: 回放时武器开火声音已在插件中模拟处理</li>
+<li><strong>多次录制</strong>: 1.4 版本后支持同时录制&#x2F;分割多个玩家的移动</li>
+</ol>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/about" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/images/touming.png&quot;" data-lazy-src="/images/Ausnty.jpg" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/images/touming.png&quot;" data-lazy-src="/images/Ausnty.jpg" title="头像" alt="头像"></a><div class="post-copyright__author_name">Yusqual</div><div class="post-copyright__author_desc">生活明朗 万物可爱</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="https://yusqual.github.io/games/movement_reader_guide.html">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('https://yusqual.github.io/games/movement_reader_guide.html')">L4D2 MR说明文档</span></a></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://yusqual.github.io" target="_blank">Suyu</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/l4d2/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>l4d2<span class="tagsPageCount">5</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="/images/Ausnty.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/games/speedrunner_tools_guide.html"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/images/touming.png&quot;" data-lazy-src="/" onerror="onerror=null;src='/images/touming.png'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">L4D2 ST说明文档</div></div></a></div><div class="next-post pull-right"><a href="/games/str_guide.html"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/images/touming.png&quot;" data-lazy-src="/" onerror="onerror=null;src='/images/touming.png'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">L4D2 STR说明文档</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Movement-Reader-sm-amovement-reader-%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97"><span class="toc-number">1.</span> <span class="toc-text">Movement Reader (sm_amovement_reader) 使用指南</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95"><span class="toc-number">1.1.</span> <span class="toc-text">目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8%E4%BD%8D%E7%BD%AE"><span class="toc-number">1.2.</span> <span class="toc-text">1. 文件存储位置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B"><span class="toc-number">1.3.</span> <span class="toc-text">2. 快速上手</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E5%BD%95%E5%88%B6%E7%A7%BB%E5%8A%A8"><span class="toc-number">1.3.1.</span> <span class="toc-text">2.1 录制移动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E5%9B%9E%E6%94%BE%E7%A7%BB%E5%8A%A8"><span class="toc-number">1.3.2.</span> <span class="toc-text">2.2 回放移动</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E8%8F%9C%E5%8D%95%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.4.</span> <span class="toc-text">3. 菜单系统</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E5%9F%BA%E6%9C%AC%E8%8F%9C%E5%8D%95-stmr"><span class="toc-number">1.4.1.</span> <span class="toc-text">3.1 基本菜单 (stmr)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E9%AB%98%E7%BA%A7%E8%8F%9C%E5%8D%95-stmr2"><span class="toc-number">1.4.2.</span> <span class="toc-text">3.2 高级菜单 (stmr2)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E6%8E%A7%E5%88%B6%E5%8F%B0%E5%91%BD%E4%BB%A4"><span class="toc-number">1.5.</span> <span class="toc-text">4. 控制台命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-st-mr-stop-player"><span class="toc-number">1.5.1.</span> <span class="toc-text">4.1 st_mr_stop [player]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-st-mr-goto-filename-player"><span class="toc-number">1.5.2.</span> <span class="toc-text">4.2 st_mr_goto &lt;line&gt; [filename] [player]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-st-mr-get-frame-player"><span class="toc-number">1.5.3.</span> <span class="toc-text">4.3 st_mr_get_frame [player]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4-st-mr-tracker-filename"><span class="toc-number">1.5.4.</span> <span class="toc-text">4.4 st_mr_tracker [filename]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-5-st-mr-tracker-clear"><span class="toc-number">1.5.5.</span> <span class="toc-text">4.5 st_mr_tracker_clear</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-6-st-mr-save"><span class="toc-number">1.5.6.</span> <span class="toc-text">4.6 st_mr_save</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-ConVars-%E9%85%8D%E7%BD%AE%E9%A1%B9"><span class="toc-number">1.6.</span> <span class="toc-text">5. ConVars 配置项</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F%E8%AF%B4%E6%98%8E"><span class="toc-number">1.7.</span> <span class="toc-text">6. 文件格式说明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84"><span class="toc-number">1.7.1.</span> <span class="toc-text">6.1 文件结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2-%E5%B8%A7%E6%95%B0%E6%8D%AE%E5%AD%97%E6%AE%B5"><span class="toc-number">1.7.2.</span> <span class="toc-text">6.2 帧数据字段</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-3-%E6%8C%89%E9%94%AE%E6%8E%A9%E7%A0%81"><span class="toc-number">1.7.3.</span> <span class="toc-text">6.3 按键掩码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-4-%E6%AD%A6%E5%99%A8-ID"><span class="toc-number">1.7.4.</span> <span class="toc-text">6.4 武器 ID</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E9%AB%98%E7%BA%A7%E5%8A%9F%E8%83%BD"><span class="toc-number">1.8.</span> <span class="toc-text">7. 高级功能</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#7-1-%E6%89%A9%E5%B1%95%E6%A8%A1%E5%BC%8F-vs-%E4%BC%A0%E7%BB%9F%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.8.1.</span> <span class="toc-text">7.1 扩展模式 vs 传统模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-2-%E5%88%86%E5%89%B2%E5%BD%95%E5%88%B6-Split"><span class="toc-number">1.8.2.</span> <span class="toc-text">7.2 分割录制 (Split)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-3-Goto-%E6%A8%A1%E5%BC%8F-%E5%B8%A7%E7%B2%BE%E7%A1%AE%E6%B5%8F%E8%A7%88"><span class="toc-number">1.8.3.</span> <span class="toc-text">7.3 Goto 模式 (帧精确浏览)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-4-%E8%BD%A8%E8%BF%B9%E8%BF%BD%E8%B8%AA-Tracker"><span class="toc-number">1.8.4.</span> <span class="toc-text">7.4 轨迹追踪 (Tracker)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-5-%E8%B0%83%E8%AF%95%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.8.5.</span> <span class="toc-text">7.5 调试模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-6-IN-IDLE-%E5%92%8C-IN-TAKEOVER"><span class="toc-number">1.8.6.</span> <span class="toc-text">7.6 IN_IDLE 和 IN_TAKEOVER</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-7-IN-FREE-ANGLE"><span class="toc-number">1.8.7.</span> <span class="toc-text">7.7 IN_FREE_ANGLE</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-8-%E4%B8%BB%E6%9C%BA%E8%BE%93%E5%85%A5%E8%BD%AC%E5%8F%91"><span class="toc-number">1.8.8.</span> <span class="toc-text">7.8 主机输入转发</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-9-%E7%89%B9%E6%AE%8A%E8%BE%85%E5%8A%A9%E5%8A%9F%E8%83%BD"><span class="toc-number">1.8.9.</span> <span class="toc-text">7.9 特殊辅助功能</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-VScript-%E5%9B%9E%E8%B0%83"><span class="toc-number">1.9.</span> <span class="toc-text">8. VScript 回调</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#8-1-OnPlayEnd"><span class="toc-number">1.9.1.</span> <span class="toc-text">8.1 OnPlayEnd</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-2-OnPlayLine"><span class="toc-number">1.9.2.</span> <span class="toc-text">8.2 OnPlayLine</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-number">1.10.</span> <span class="toc-text">9. 注意事项</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/games/str_guide.html" title="L4D2 STR说明文档">L4D2 STR说明文档</a><time datetime="2026-07-06T06:00:01.000Z" title="发表于 2026-07-06 14:00:01">2026-07-06</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/games/movement_reader_guide.html" title="L4D2 MR说明文档">L4D2 MR说明文档</a><time datetime="2026-07-06T06:00:01.000Z" title="发表于 2026-07-06 14:00:01">2026-07-06</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/games/speedrunner_tools_guide.html" title="L4D2 ST说明文档">L4D2 ST说明文档</a><time datetime="2026-07-06T06:00:01.000Z" title="发表于 2026-07-06 14:00:01">2026-07-06</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/games/st_api_reference.html" title="L4D2 ST-API文档">L4D2 ST-API文档</a><time datetime="2026-07-06T06:00:01.000Z" title="发表于 2026-07-06 14:00:01">2026-07-06</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/qt/daily.html" title="daily">daily</a><time datetime="2026-05-30T06:29:16.000Z" title="发表于 2026-05-30 14:29:16">2026-05-30</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div id="workboard"><img class="workSituationImg boardsign" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/images/touming.png&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.0.4/img/badge/安知鱼-上班摸鱼中.svg" alt="距离月入25k也就还差一个大佬带我~" title="距离月入25k也就还差一个大佬带我~"/><div id="runtimeTextTip"></div></div><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" data-title="博客框架为Hexo_v5.4.0" title="博客框架为Hexo_v5.4.0"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/images/touming.png&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.1.5/img/badge/Frame-Hexo.svg" alt="博客框架为Hexo_v5.4.0"/></a><a class="github-badge" target="_blank" href="https://blog.anheyu.com/" style="margin-inline:5px" data-title="本站使用AnZhiYu主题" title="本站使用AnZhiYu主题"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/images/touming.png&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.9/img/Theme-AnZhiYu-2E67D3.svg" alt="本站使用AnZhiYu主题"/></a><a class="github-badge" target="_blank" href="https://github.com/" style="margin-inline:5px" data-title="本站项目由Github托管" title="本站项目由Github托管"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/images/touming.png&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.1.5/img/badge/Source-Github.svg" alt="本站项目由Github托管"/></a></p></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2025 - 2026 By <a class="footer-bar-link" href="/" title="Yusqual" target="_blank">Yusqual</a></div></div><div id="footer-type-tips"></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://github.com/anzhiyu-c/hexo-theme-anzhiyu" title="主题">主题</a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">10</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">3</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">3</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://blog.anheyu.com/" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/images/touming.png&quot;" data-lazy-src="/img/favicon.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://image.anheyu.com/" title="安知鱼图床"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/images/touming.png&quot;" data-lazy-src="https://image.anheyu.com/favicon.ico" alt="安知鱼图床"/><span class="back-menu-item-text">安知鱼图床</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li></ul></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/l4d2/" style="font-size: 0.88rem;">l4d2<sup>5</sup></a><a href="/tags/notes/" style="font-size: 0.88rem;">notes<sup>4</sup></a><a href="/tags/qt/" style="font-size: 0.88rem;">qt<sup>1</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="translateLink" type="button" title="简繁转换">繁</button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("01/20/2025 00:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `欢迎使用安知鱼!`,
+    `生活明朗, 万物可爱`,
+    `
+        
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+        
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2025 By 安知鱼 V1.6.14",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 Yusqual 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><script async="async">(function () {
+  var grt = new Date("01/20/2025 00:00:00"); //设置网站上线时间
+  var now = new Date();
+  var dnum;
+  var hnum;
+  var mnum;
+  var snum;
+  var nowHour;
+
+  // 计算并更新天数、小时数、分钟数和秒数
+  function updateTime() {
+    now = new Date(); // 更新 now 的值
+    nowHour = now.getHours(); // 更新 nowHour 的值
+    var days = (now - grt) / 1000 / 60 / 60 / 24;
+    dnum = Math.floor(days);
+    var hours = (now - grt) / 1000 / 60 / 60 - 24 * dnum;
+    hnum = Math.floor(hours);
+    if (String(hnum).length == 1) {
+      hnum = "0" + hnum;
+    }
+    var minutes = (now - grt) / 1000 / 60 - 24 * 60 * dnum - 60 * hnum;
+    mnum = Math.floor(minutes);
+    if (String(mnum).length == 1) {
+      mnum = "0" + mnum;
+    }
+    var seconds = (now - grt) / 1000 - 24 * 60 * 60 * dnum - 60 * 60 * hnum - 60 * mnum;
+    snum = Math.round(seconds);
+    if (String(snum).length == 1) {
+      snum = "0" + snum;
+    }
+  }
+
+  // 更新网页中显示的网站运行时间
+  function updateHtml() {
+    const footer = document.getElementById("footer");
+    if (!footer) return
+    let currentTimeHtml = "";
+    if (nowHour < 18 && nowHour >= 9) {
+      // 如果是上班时间，默认就是"安知鱼-上班摸鱼中.svg"图片，不需要更改
+      currentTimeHtml = `本站居然运行了 ${dnum} 天<span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span><i class='anzhiyufont anzhiyu-icon-heartbeat' style='color:red'></i>`;
+    } else {
+      // 如果是下班时间，插入"安知鱼-下班啦.svg"图片
+      let img = document.querySelector("#workboard .workSituationImg");
+      if (img != null) {
+        img.src = "https://npm.elemecdn.com/anzhiyu-blog@2.0.4/img/badge/安知鱼-下班啦.svg";
+        img.title = "下班了就该开开心心的玩耍，嘿嘿~";
+        img.alt = "下班了就该开开心心的玩耍，嘿嘿~";
+      }
+
+      currentTimeHtml = `本站居然运行了 ${dnum} 天<span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span><i class='anzhiyufont anzhiyu-icon-heartbeat' style='color:red'></i>`;
+    }
+
+    if (document.getElementById("runtimeTextTip")) {
+      document.getElementById("runtimeTextTip").innerHTML = currentTimeHtml;
+    }
+  }
+
+  setInterval(() => {
+    updateTime();
+    updateHtml();
+  }, 1000);
+})();</script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.cbd.int/mathjax@3.2.2/es5/tex-mml-chtml.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script><input type="hidden" name="page-type" id="page-type" value="post"></div><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script charset="UTF-8" src="https://cdn.cbd.int/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>
