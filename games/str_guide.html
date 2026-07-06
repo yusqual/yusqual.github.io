@@ -1,0 +1,889 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>L4D2 STR说明文档 | Suyu</title><meta name="keywords" content="l4d2"><meta name="author" content="Yusqual"><meta name="copyright" content="Yusqual"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#18171d"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="L4D2 STR说明文档"><meta name="application-name" content="L4D2 STR说明文档"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#18171d"><meta property="og:type" content="article"><meta property="og:title" content="L4D2 STR说明文档"><meta property="og:url" content="https://yusqual.github.io/games/str_guide.html"><meta property="og:site_name" content="Suyu"><meta property="og:description" content="STR (Speedrun TAS Tools) 使用文档版本: 2.2说明: 为 L4D2 速通提供录制&amp;#x2F;回放&amp;#x2F;调试功能的 TAS 工具集，包含 SourceMod 插件 (SpeedrunTastools.sp) 和 VScript 封装 (str_commands.nut)"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://yusqual.github.io/images/Ausnty.jpg"><meta property="article:author" content="Yusqual"><meta property="article:tag"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://yusqual.github.io/images/Ausnty.jpg"><meta name="description" content="STR (Speedrun TAS Tools) 使用文档版本: 2.2说明: 为 L4D2 速通提供录制&amp;#x2F;回放&amp;#x2F;调试功能的 TAS 工具集，包含 SourceMod 插件 (SpeedrunTastools.sp) 和 VScript 封装 (str_commands.nut)"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="https://yusqual.github.io/games/str_guide.html"><link rel="preconnect" href="//cdn.cbd.int"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: {"enable":true,"img":"https://linux.do/uploads/default/optimized/3X/7/3/7344591d7035ceeed5823f9a6eea7f93f5705438_2_1035x651.png"},
+  postHeadAiDescription: {"enable":true,"gptName":"AnZhiYu","mode":"local","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"xxxx","Referer":"https://xx.xx/"},
+  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w 不要走！再看看嘛！","backTitle":"♪(^∇^*)欢迎肥来！"},
+  LA51: undefined,
+  greetingBox: undefined,
+  twikooEnvId: '',
+  commentBarrageConfig:undefined,
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: false,
+  mainTone: undefined,
+  authorStatus: {"skills":null},
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: Yusqual","link":"链接: ","source":"来源: Suyu","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  shortcutKey: undefined,
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: 'Suyu',
+  title: 'L4D2 STR说明文档',
+  postAI: '',
+  pageFillDescription: 'STR (Speedrun TAS Tools) 使用文档, 目录, 1. 概述, 2. 安装与文件结构, 3. 控制台命令, 3.1 菜单, 3.2 录制与回放, 3.3 文件操作, 3.4 帧与参数, 3.5 轨迹绘制, 3.6 其他, 4. ConVar 配置项, 4.1 行为开关, 4.2 坐标映射, 4.3 VScript 触发器（自动归零）, 5. 菜单系统, 5.1 菜单流程, 5.2 Debug 子菜单, 6. VScript API, 6.1 str_commands.nut, 6.1.1 引入方式, 6.1.2 核心操作, 6.1.3 ConVar 设置, 6.1.4 参数约定, 6.1.5 典型用法, 6.2 str_extensions.nut, 6.2.1 ST_TriggerTeleport, 7. STR 文件格式, 7.1 存储位置, 7.2 格式说明, 8. Debug 显示, 8.1 开启方式, 8.2 显示内容, 8.3 VScript 技术细节, 9. VScript Forwards, 参数说明, 触发时机, VScript 使用示例, 10. 使用流程, 10.1 录制, 10.2 回放, 10.3 VScript 调用, 11. 注意事项使用文档版本说明为速通提供录制回放调试功能的工具集包含插件和封装目录概述安装与文件结构控制台命令配置项菜单系统文件格式显示使用流程注意事项概述提供录制玩家逐帧输入和移动数据回放录制内容以及实时调试显示的功能插件录制回放文件菜单轨迹绘制等核心逻辑封装通过同步调用插件的各项功能无的一帧延迟所有函数使用机制侧在当前帧同步执行回调安装与文件结构编译后的插件插件源码模块文件玩家状态管理录制逻辑回放逻辑文件保存加载分割命令处理菜单帧数据结构菜单枚举封装放入编译器录制文件存储目录地图名文件名端需将放入目录并在对应脚本中引入控制台命令菜单命令说明打开主菜单录制与回放命令参数说明索引开始录制指定玩家默认自身索引继续开始回放索引暂停回放索引取消暂停索引重置停止文件操作命令参数说明索引保存录制的到文件索引文件名加载文件索引分割从当前帧截断帧与参数命令参数说明值设置回放起始帧值设置回放结束帧值设置回放停止帧到达后自动停止移除指定物品栏槽位轨迹绘制命令参数说明索引绘制轨迹线索引按坐标映射偏移绘制轨迹关闭轨迹绘制其他命令参数说明索引线性平滑回放从起点平滑过渡到终点调试用测试命令配置项行为开关默认值说明回放结束后自动转入录制模式仅应用速度不改变位置和视角倒地状态是否允许继续回放无人时是否允许闲置屏幕中心显示帧信息全局透视轨迹开关坐标映射默认值说明轨迹坐标映射分量轨迹坐标映射分量轨迹坐标映射分量触发器自动归零以下主要用于调用值会在回调处理后自动归零格式说明索引触发回放索引触发录制索引触发重置索引触发保存索引触发暂停索引触发取消暂停文件名触发加载文件触发切换武器槽位菜单系统输入或打开主菜单菜单流程主菜单录制开始录制自身停止重置停止录制回放继续播放开始回放需先加载文件暂停暂停回放播放中显示加载文件输入文件名加载保存到文件保存当前录制为起始帧结束帧停止帧设置回放范围切换回放转录制开关切换倒地继续回放切换仅设置速度平滑回放执行线性平滑回放分离从当前帧截断调试屏幕调试显示自身显示自身调试信息名称显示指定调试信息退出菜单子菜单子菜单使用在屏幕上实时显示逐帧调试信息名称左对齐字符宽帧当前帧总帧数回放中或非回放如表示空中表示爬梯当前速度大小按键位掩码及对应按键名引入方式在脚本中添加核心操作录制播放重置开始录制开始播放重置停止停止单个或全部停止指定玩家为则停止所有保存保存录制到文件暂停取消暂停加载文件文件名例如切换武器槽位主武器副武器投掷物医疗包药设置回放结束后自动转入录制仅应用速度屏幕中心显示帧号轨迹全局透视倒地允许回放设置坐标映射偏移参数约定玩家句柄为时默认取主机仅文件名不含路径如所有操作在同一帧同步执行无延迟典型用法加载文件并开始回放播放回放结束后自动转入录制批量停止所有玩家设置仅速度模式不改变位置和视角基于和模组封装的工具函数需额外引入依赖模组闲置玩家在目标位置生成玩家碰到后接管输出耗时执行回调参数类型说明目标玩家句柄生成位置可为示例文件格式存储位置地图名文件名格式说明文件为自定义二进制文本混合格式每帧包含以下数据字段说明玩家坐标视角速度向量按键掩码等移动类型用于爬梯检测当前武器索引显示开启方式菜单中进入调试子菜单勾选自身和或目标显示内容在屏幕中央右侧实时显示玩家名帧仅显示当前在线的纯不显示后会自动重建被禁用的玩家会清空显示技术细节使用每刷新使用数据经过转义嵌入字符串插件提供三个全局供第三方插件和使用回放每触发录制每触发回放结束时触发自身也会对调用函数如果存在回放每帧录制每帧回放结束自然结束停止手动重置参数说明参数类型说明客户端索引当前帧号已加载的文件名不含路径如触发时机触发条件回放中每录制中每回放自然结束到达或手动使用示例在脚本或中定义即可会自动调用回放每帧触发可用于同步日志外部计时器等回放结束时触发可用于自动加载下一个文件切换模式等例如链式加载下一个分段录制每帧触发可用于监控录制进度实时保存等使用流程录制选择录制进行游戏操作选择停止重置选择保存到文件输入文件名回放选择加载文件输入文件名设置起始帧结束帧可选选择继续播放回放过程中按默认右键锁定视角松开后平滑过渡回录制视角调用录制录制帧回放注意事项先加载再回放调用之前必须先用加载文件爬梯回放插件自动处理爬梯帧的和方向向量播放正常按键释放回放结束重置时自动调用释放所有按键防止卡死暂停状态暂停时玩家位置被锁定在原点自由视角回放时按住右键锁定视角观察周围松开后内平滑过渡回录制视角限制区域有裁剪限制同时显示目标过多可能导致文字被裁剪',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2026-07-06 14:17:52',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://npm.elemecdn.com/anzhiyu-blog-static@1.0.4/img/avatar.jpg"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><a id="site-name" href="/" accesskey="h"><div class="title">Suyu</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li></ul></div></div></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" target="_blank"><img class="post-qr-code-img" alt="微信" src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" target="_blank"><img class="post-qr-code-img" alt="支付宝" src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/l4d2/" style="font-size: 1.05rem;">l4d2<sup>2</sup></a><a href="/tags/notes/" style="font-size: 1.05rem;">notes<sup>4</sup></a><a href="/tags/qt/" style="font-size: 1.05rem;">qt<sup>1</sup></a></div></div><hr/></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/07/"><span class="card-archive-list-date">七月 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/05/"><span class="card-archive-list-date">五月 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/05/"><span class="card-archive-list-date">五月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/04/"><span class="card-archive-list-date">四月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/03/"><span class="card-archive-list-date">三月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/01/"><span class="card-archive-list-date">一月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%85%B6%E4%BB%96/" itemprop="url">其他</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/l4d2/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>l4d2</span></a></span></div></div><h1 class="post-title" itemprop="name headline">L4D2 STR说明文档</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2026-07-06T06:00:01.000Z" title="发表于 2026-07-06 14:00:01">2026-07-06</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2026-07-06T06:17:52.625Z" title="更新于 2026-07-06 14:17:52">2026-07-06</time></span></div><div class="meta-secondline"><span class="post-meta-separator"></span><span class="post-meta-wordcount"><i class="anzhiyufont anzhiyu-icon-file-word post-meta-icon" title="文章字数"></i><span class="post-meta-label" title="文章字数">字数总计:</span><span class="word-count" title="文章字数">2.6k</span><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-clock post-meta-icon" title="阅读时长"></i><span class="post-meta-label" title="阅读时长">阅读时长:</span><span>9分钟</span></span><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为湖北"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>湖北</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src=""></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="https://yusqual.github.io/games/str_guide.html"><header><a class="post-meta-categories" href="/categories/%E5%85%B6%E4%BB%96/" itemprop="url">其他</a><a href="/tags/l4d2/" tabindex="-1" itemprop="url">l4d2</a><h1 id="CrawlerTitle" itemprop="name headline">L4D2 STR说明文档</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">Yusqual</span><time itemprop="dateCreated datePublished" datetime="2026-07-06T06:00:01.000Z" title="发表于 2026-07-06 14:00:01">2026-07-06</time><time itemprop="dateCreated datePublished" datetime="2026-07-06T06:17:52.625Z" title="更新于 2026-07-06 14:17:52">2026-07-06</time></header><h1 id="STR-Speedrun-TAS-Tools-使用文档"><a href="#STR-Speedrun-TAS-Tools-使用文档" class="headerlink" title="STR (Speedrun TAS Tools) 使用文档"></a>STR (Speedrun TAS Tools) 使用文档</h1><p><strong>版本</strong>: 2.2<br><strong>说明</strong>: 为 L4D2 速通提供录制&#x2F;回放&#x2F;调试功能的 TAS 工具集，包含 SourceMod 插件 (<code>SpeedrunTastools.sp</code>) 和 VScript 封装 (<code>str_commands.nut</code>)。</p>
+<hr>
+<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ol>
+<li><a href="#1-%E6%A6%82%E8%BF%B0">概述</a></li>
+<li><a href="#2-%E5%AE%89%E8%A3%85%E4%B8%8E%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84">安装与文件结构</a></li>
+<li><a href="#3-%E6%8E%A7%E5%88%B6%E5%8F%B0%E5%91%BD%E4%BB%A4">控制台命令</a></li>
+<li><a href="#4-convars-%E9%85%8D%E7%BD%AE%E9%A1%B9">ConVar 配置项</a></li>
+<li><a href="#5-%E8%8F%9C%E5%8D%95%E7%B3%BB%E7%BB%9F">菜单系统</a></li>
+<li><a href="#6-vscript-api">VScript API</a></li>
+<li><a href="#7-str-%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F">STR 文件格式</a></li>
+<li><a href="#8-debug-%E6%98%BE%E7%A4%BA">Debug 显示</a></li>
+<li><a href="#9-vscript-forwards">VScript Forwards</a></li>
+<li><a href="#10-%E4%BD%BF%E7%94%A8%E6%B5%81%E7%A8%8B">使用流程</a></li>
+<li><a href="#11-%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9">注意事项</a></li>
+</ol>
+<hr>
+<h2 id="1-概述"><a href="#1-概述" class="headerlink" title="1. 概述"></a>1. 概述</h2><p>STR 提供录制玩家逐帧输入和移动数据、回放录制内容、以及实时调试显示的功能。</p>
+<ul>
+<li><strong>SourceMod 插件</strong> (<code>SpeedrunTastools.sp</code>) — 录制、回放、文件 IO、菜单、轨迹绘制等核心逻辑</li>
+<li><strong>VScript 封装</strong> (<code>str_commands.nut</code>) — 通过 <code>Convars.SetValue()</code> 同步调用 SourceMod 插件的各项功能，无 <code>SendToConsole</code> 的一帧延迟</li>
+</ul>
+<p>所有函数使用 <code>Convars.SetValue()</code> → <code>HookConVarChange</code> 机制，SourceMod 侧在当前帧同步执行回调。</p>
+<hr>
+<h2 id="2-安装与文件结构"><a href="#2-安装与文件结构" class="headerlink" title="2. 安装与文件结构"></a>2. 安装与文件结构</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">addons/sourcemod/</span><br><span class="line">├── plugins/</span><br><span class="line">│   └── SpeedrunTastools.smx          ← 编译后的 STR 插件</span><br><span class="line">├── scripting/</span><br><span class="line">│   ├── SpeedrunTastools.sp           ← 插件源码</span><br><span class="line">│   ├── STR/                          ← 模块文件</span><br><span class="line">│   │   ├── STAPlayer.inc             ← 玩家状态管理</span><br><span class="line">│   │   ├── ReplayRecording.inc       ← 录制逻辑</span><br><span class="line">│   │   ├── ReplayPlayback.inc        ← 回放逻辑 + Debug HUD</span><br><span class="line">│   │   ├── ReplayFileIO.inc          ← 文件保存/加载/分割</span><br><span class="line">│   │   ├── ReplayCommands.inc        ← 命令处理 + 菜单</span><br><span class="line">│   │   ├── ReplayFrame.inc           ← 帧数据结构</span><br><span class="line">│   │   ├── Menus.inc                 ← 菜单枚举</span><br><span class="line">│   │   ├── Formats.inc, Vector.inc, Time.inc, ItemList.inc</span><br><span class="line">│   │   └── ...</span><br><span class="line">│   ├── str_commands.nut              ← VScript 封装（放入 scripts/vscripts/）</span><br><span class="line">│   └── compile.exe                   ← 编译器</span><br><span class="line">└── data/</span><br><span class="line">    └── str/                          ← 录制文件存储目录</span><br><span class="line">        └── &lt;地图名&gt;/</span><br><span class="line">            └── &lt;文件名&gt;.STR</span><br></pre></td></tr></table></figure>
+
+<p>VScript 端需将 <code>str_commands.nut</code> 放入 <code>scripts/vscripts/</code> 目录，并在对应 map 脚本中 <code>IncludeScript(&quot;str_commands&quot;)</code> 引入。</p>
+<hr>
+<h2 id="3-控制台命令"><a href="#3-控制台命令" class="headerlink" title="3. 控制台命令"></a>3. 控制台命令</h2><h3 id="3-1-菜单"><a href="#3-1-菜单" class="headerlink" title="3.1 菜单"></a>3.1 菜单</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>sm_str</code></td>
+<td>打开 STR 主菜单</td>
+</tr>
+</tbody></table>
+<h3 id="3-2-录制与回放"><a href="#3-2-录制与回放" class="headerlink" title="3.2 录制与回放"></a>3.2 录制与回放</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>sm_replayrecord</code></td>
+<td><code>[client索引]</code></td>
+<td>开始录制指定玩家（默认自身）</td>
+</tr>
+<tr>
+<td><code>sm_replay_continue</code></td>
+<td><code>[client索引]</code></td>
+<td>继续&#x2F;开始回放</td>
+</tr>
+<tr>
+<td><code>sm_replay_pause</code></td>
+<td><code>[client索引]</code></td>
+<td>暂停回放</td>
+</tr>
+<tr>
+<td><code>sm_replay_unpause</code></td>
+<td><code>[client索引]</code></td>
+<td>取消暂停</td>
+</tr>
+<tr>
+<td><code>sm_resetreplay</code></td>
+<td><code>[client索引]</code></td>
+<td>重置&#x2F;停止 Replay</td>
+</tr>
+</tbody></table>
+<h3 id="3-3-文件操作"><a href="#3-3-文件操作" class="headerlink" title="3.3 文件操作"></a>3.3 文件操作</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>sm_replaysave</code></td>
+<td><code>[client索引]</code></td>
+<td>保存录制的 Replay 到文件</td>
+</tr>
+<tr>
+<td><code>sm_loadfile</code></td>
+<td><code>[client索引] [文件名]</code></td>
+<td>加载 .STR 文件</td>
+</tr>
+<tr>
+<td><code>sm_replay_split</code></td>
+<td><code>[client索引]</code></td>
+<td>分割 Replay（从当前帧截断）</td>
+</tr>
+</tbody></table>
+<h3 id="3-4-帧与参数"><a href="#3-4-帧与参数" class="headerlink" title="3.4 帧与参数"></a>3.4 帧与参数</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>sm_startframe</code></td>
+<td><code>[值]</code></td>
+<td>设置回放起始帧</td>
+</tr>
+<tr>
+<td><code>sm_endframe</code></td>
+<td><code>[值]</code></td>
+<td>设置回放结束帧</td>
+</tr>
+<tr>
+<td><code>sm_stopframe</code></td>
+<td><code>[值]</code></td>
+<td>设置回放停止帧（到达后自动停止）</td>
+</tr>
+<tr>
+<td><code>sm_removeslot</code></td>
+<td><code>[slot]</code></td>
+<td>移除指定物品栏槽位</td>
+</tr>
+</tbody></table>
+<h3 id="3-5-轨迹绘制"><a href="#3-5-轨迹绘制" class="headerlink" title="3.5 轨迹绘制"></a>3.5 轨迹绘制</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>sm_replaydrawtrace</code></td>
+<td><code>[client索引]</code></td>
+<td>绘制 Replay 轨迹线</td>
+</tr>
+<tr>
+<td><code>sm_replaydrawtrace_posmap</code></td>
+<td><code>[client索引] [x] [y] [z]</code></td>
+<td>按坐标映射偏移绘制轨迹</td>
+</tr>
+<tr>
+<td><code>sm_replaydrawtraceclose</code></td>
+<td>—</td>
+<td>关闭轨迹绘制</td>
+</tr>
+</tbody></table>
+<h3 id="3-6-其他"><a href="#3-6-其他" class="headerlink" title="3.6 其他"></a>3.6 其他</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>sm_smoothreplay</code></td>
+<td><code>[client索引]</code></td>
+<td>线性平滑回放（从起点平滑过渡到终点）</td>
+</tr>
+<tr>
+<td><code>sm_test</code></td>
+<td>—</td>
+<td>调试用测试命令</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="4-ConVar-配置项"><a href="#4-ConVar-配置项" class="headerlink" title="4. ConVar 配置项"></a>4. ConVar 配置项</h2><h3 id="4-1-行为开关"><a href="#4-1-行为开关" class="headerlink" title="4.1 行为开关"></a>4.1 行为开关</h3><table>
+<thead>
+<tr>
+<th>ConVar</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>sm_replaytorecord</code></td>
+<td><code>0</code></td>
+<td>回放结束后自动转入录制模式</td>
+</tr>
+<tr>
+<td><code>str_onlysetvel</code></td>
+<td><code>0</code></td>
+<td>仅应用速度，不改变位置和视角</td>
+</tr>
+<tr>
+<td><code>sm_replay_incapacitated</code></td>
+<td><code>0</code></td>
+<td>倒地状态是否允许继续回放</td>
+</tr>
+<tr>
+<td><code>sm_replay_idle_anytime</code></td>
+<td><code>0</code></td>
+<td>无人时是否允许闲置 Bot</td>
+</tr>
+<tr>
+<td><code>sm_showframe</code></td>
+<td><code>0</code></td>
+<td>屏幕中心显示帧信息</td>
+</tr>
+<tr>
+<td><code>sm_replaydebug</code></td>
+<td><code>0</code></td>
+<td>全局透视轨迹 Debug 开关</td>
+</tr>
+</tbody></table>
+<h3 id="4-2-坐标映射"><a href="#4-2-坐标映射" class="headerlink" title="4.2 坐标映射"></a>4.2 坐标映射</h3><table>
+<thead>
+<tr>
+<th>ConVar</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>str_posmap_x</code></td>
+<td><code>0.0</code></td>
+<td>轨迹坐标映射 X 分量</td>
+</tr>
+<tr>
+<td><code>str_posmap_y</code></td>
+<td><code>0.0</code></td>
+<td>轨迹坐标映射 Y 分量</td>
+</tr>
+<tr>
+<td><code>str_posmap_z</code></td>
+<td><code>0.0</code></td>
+<td>轨迹坐标映射 Z 分量</td>
+</tr>
+</tbody></table>
+<h3 id="4-3-VScript-触发器（自动归零）"><a href="#4-3-VScript-触发器（自动归零）" class="headerlink" title="4.3 VScript 触发器（自动归零）"></a>4.3 VScript 触发器（自动归零）</h3><p>以下 ConVar 主要用于 VScript 调用，值会在回调处理后自动归零：</p>
+<table>
+<thead>
+<tr>
+<th>ConVar</th>
+<th>格式</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>str_trigger_play</code></td>
+<td><code>client索引</code></td>
+<td>触发回放</td>
+</tr>
+<tr>
+<td><code>str_trigger_record</code></td>
+<td><code>client索引</code></td>
+<td>触发录制</td>
+</tr>
+<tr>
+<td><code>str_trigger_reset</code></td>
+<td><code>client索引</code></td>
+<td>触发重置</td>
+</tr>
+<tr>
+<td><code>str_trigger_save</code></td>
+<td><code>client索引</code></td>
+<td>触发保存</td>
+</tr>
+<tr>
+<td><code>str_trigger_pause</code></td>
+<td><code>client索引</code></td>
+<td>触发暂停</td>
+</tr>
+<tr>
+<td><code>str_trigger_unpause</code></td>
+<td><code>client索引</code></td>
+<td>触发取消暂停</td>
+</tr>
+<tr>
+<td><code>str_trigger_load</code></td>
+<td><code>client;文件名</code></td>
+<td>触发加载文件</td>
+</tr>
+<tr>
+<td><code>str_trigger_switchslot</code></td>
+<td><code>client;slot</code></td>
+<td>触发切换武器槽位（slot: 1-5）</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="5-菜单系统"><a href="#5-菜单系统" class="headerlink" title="5. 菜单系统"></a>5. 菜单系统</h2><p>输入 <code>!str</code> 或 <code>/str</code> 打开主菜单。</p>
+<h3 id="5-1-菜单流程"><a href="#5-1-菜单流程" class="headerlink" title="5.1 菜单流程"></a>5.1 菜单流程</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">主菜单</span><br><span class="line">├── 录制                                  → 开始录制自身</span><br><span class="line">├── 停止/重置                             → 停止录制/回放</span><br><span class="line">├── 继续/播放                             → 开始回放（需先加载文件）</span><br><span class="line">├── 暂停                                  → 暂停回放（播放中显示）</span><br><span class="line">├── 加载文件                              → 输入文件名加载 .STR</span><br><span class="line">├── 保存到文件                            → 保存当前录制为 .STR</span><br><span class="line">├── 起始帧 / 结束帧 / 停止帧              → 设置回放范围</span><br><span class="line">├── sm_replaytorecord: ON/OFF             → 切换回放转录制开关</span><br><span class="line">├── sm_replay_incapacitated: ON/OFF       → 切换倒地继续回放</span><br><span class="line">├── str_onlysetvel: ON/OFF                → 切换仅设置速度</span><br><span class="line">├── 平滑回放                              → 执行线性平滑回放</span><br><span class="line">├── 分离 Replay                           → 从当前帧截断</span><br><span class="line">├── Debug 调试                            → 屏幕 HUD 调试显示</span><br><span class="line">│   ├── [自身]          ON/OFF            → 显示自身调试信息</span><br><span class="line">│   └── [Bot 名称]      ON/OFF            → 显示指定 Bot 调试信息</span><br><span class="line">└── 退出菜单</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-2-Debug-子菜单"><a href="#5-2-Debug-子菜单" class="headerlink" title="5.2 Debug 子菜单"></a>5.2 Debug 子菜单</h3><p>Debug 子菜单使用 VScript HUD 在屏幕上实时显示逐帧调试信息：</p>
+<ul>
+<li><strong>[名称]</strong> — 左对齐，10 字符宽</li>
+<li><strong>帧</strong> — 当前帧 &#x2F; 总帧数（回放中）或 <code>-</code>（非回放）</li>
+<li><strong>F</strong> — <code>m_fFlags</code>（如 130 表示空中，128 表示爬梯）</li>
+<li><strong>VEL</strong> — 当前速度大小</li>
+<li><strong>[bitmask] +btn1 +btn2…</strong> — 按键位掩码及对应按键名</li>
+</ul>
+<hr>
+<h2 id="6-VScript-API"><a href="#6-VScript-API" class="headerlink" title="6. VScript API"></a>6. VScript API</h2><h3 id="6-1-str-commands-nut"><a href="#6-1-str-commands-nut" class="headerlink" title="6.1 str_commands.nut"></a>6.1 str_commands.nut</h3><h4 id="6-1-1-引入方式"><a href="#6-1-1-引入方式" class="headerlink" title="6.1.1 引入方式"></a>6.1.1 引入方式</h4><p>在 map 脚本中添加：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">IncludeScript(&quot;str_commands&quot;);</span><br></pre></td></tr></table></figure>
+
+<h4 id="6-1-2-核心操作"><a href="#6-1-2-核心操作" class="headerlink" title="6.1.2 核心操作"></a>6.1.2 核心操作</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">// 录制 / 播放 / 重置</span><br><span class="line">ST_STR(hPlayer, 0);    // 开始录制</span><br><span class="line">ST_STR(hPlayer, 1);    // 开始播放</span><br><span class="line">ST_STR(hPlayer, 2);    // 重置/停止</span><br><span class="line"></span><br><span class="line">// 停止（单个或全部）</span><br><span class="line">ST_STRStop(hPlayer);   // 停止指定玩家；hPlayer 为 null 则停止所有</span><br><span class="line"></span><br><span class="line">// 保存</span><br><span class="line">ST_STR_Save(hPlayer);  // 保存录制到文件</span><br><span class="line"></span><br><span class="line">// 暂停 / 取消暂停</span><br><span class="line">ST_STR_Pause(hPlayer);</span><br><span class="line">ST_STR_UnPause(hPlayer);</span><br><span class="line"></span><br><span class="line">// 加载文件</span><br><span class="line">ST_STR_LoadFile(hPlayer, &quot;文件名&quot;);  // 例如: ST_STR_LoadFile(hPlayer, &quot;B2.STR&quot;)</span><br><span class="line"></span><br><span class="line">// 切换武器槽位</span><br><span class="line">ST_STR_SwitchSlot(hPlayer, 1); // slot 1-5: 主武器/副武器/投掷物/医疗包/药</span><br></pre></td></tr></table></figure>
+
+<h4 id="6-1-3-ConVar-设置"><a href="#6-1-3-ConVar-设置" class="headerlink" title="6.1.3 ConVar 设置"></a>6.1.3 ConVar 设置</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ST_STR_SetPlayToRecord(true);   // 回放结束后自动转入录制</span><br><span class="line">ST_STR_SetOnlySetVel(true);     // 仅应用速度</span><br><span class="line">ST_STR_SetShowFrame(true);      // 屏幕中心显示帧号</span><br><span class="line">ST_STR_SetReplayDebug(true);    // 轨迹全局透视</span><br><span class="line">ST_STR_SetPlayWhenIncapped(true); // 倒地允许回放</span><br><span class="line">ST_STR_SetPosMap(x, y, z);     // 设置坐标映射偏移</span><br></pre></td></tr></table></figure>
+
+<h4 id="6-1-4-参数约定"><a href="#6-1-4-参数约定" class="headerlink" title="6.1.4 参数约定"></a>6.1.4 参数约定</h4><ul>
+<li><code>hPlayer</code> — 玩家句柄。为 <code>null</code> 时默认取 <code>PlayerInstanceFromIndex(1)</code> (主机)</li>
+<li><code>sFileName</code> — 仅文件名，不含路径。如 <code>&quot;B2.STR&quot;</code></li>
+<li>所有操作在同一帧同步执行，无延迟</li>
+</ul>
+<h4 id="6-1-5-典型用法"><a href="#6-1-5-典型用法" class="headerlink" title="6.1.5 典型用法"></a>6.1.5 典型用法</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">// 1. 加载文件并开始回放</span><br><span class="line">ST_STR_LoadFile(hPlayer, &quot;mysave&quot;);</span><br><span class="line">ST_STR(hPlayer, 1);  // mode 1 = 播放</span><br><span class="line"></span><br><span class="line">// 2. 回放结束后自动转入录制</span><br><span class="line">ST_STR_SetPlayToRecord(true);</span><br><span class="line">ST_STR_SetShowFrame(true);</span><br><span class="line"></span><br><span class="line">// 3. 批量停止所有玩家</span><br><span class="line">ST_STRStop(null);</span><br><span class="line"></span><br><span class="line">// 4. 设置仅速度模式（不改变位置和视角）</span><br><span class="line">ST_STR_SetOnlySetVel(true);</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-2-str-extensions-nut"><a href="#6-2-str-extensions-nut" class="headerlink" title="6.2 str_extensions.nut"></a>6.2 str_extensions.nut</h3><p>基于 STR 和 Speedrunner Tools 模组封装的工具函数，需额外引入：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">IncludeScript(&quot;str_extensions&quot;);</span><br></pre></td></tr></table></figure>
+
+<p>依赖：<code>str_commands.nut</code>、Speedrunner Tools 模组（<code>ST_Idle</code>、<code>SpawnTrigger</code>）。</p>
+<h4 id="6-2-1-ST-TriggerTeleport"><a href="#6-2-1-ST-TriggerTeleport" class="headerlink" title="6.2.1 ST_TriggerTeleport"></a>6.2.1 ST_TriggerTeleport</h4><p>闲置玩家 → 在目标位置生成 trigger → 玩家碰到后接管、输出耗时、执行回调。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ST_TriggerTeleport(hPlayer, vecPos, fCallback);</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>hPlayer</code></td>
+<td>handle</td>
+<td>目标玩家句柄</td>
+</tr>
+<tr>
+<td><code>vecPos</code></td>
+<td>Vector</td>
+<td>trigger 生成位置</td>
+</tr>
+<tr>
+<td><code>fCallback</code></td>
+<td>function</td>
+<td><code>function(hPlayer, fElapsedSec)</code>，可为 null</td>
+</tr>
+</tbody></table>
+<p><strong>示例：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ST_TriggerTeleport(hPlayer, Vector(1000, 2000, 100), function(hPlayer, fTime) &#123;</span><br><span class="line">    printl(&quot;Hit trigger in &quot; + fTime + &quot; seconds&quot;);</span><br><span class="line">    ST_STR_LoadFile(hPlayer, &quot;next.STR&quot;);</span><br><span class="line">    ST_STR(hPlayer, 1);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="7-STR-文件格式"><a href="#7-STR-文件格式" class="headerlink" title="7. STR 文件格式"></a>7. STR 文件格式</h2><h3 id="7-1-存储位置"><a href="#7-1-存储位置" class="headerlink" title="7.1 存储位置"></a>7.1 存储位置</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">addons/sourcemod/data/str/&lt;地图名&gt;/&lt;文件名&gt;.STR</span><br></pre></td></tr></table></figure>
+
+<h3 id="7-2-格式说明"><a href="#7-2-格式说明" class="headerlink" title="7.2 格式说明"></a>7.2 格式说明</h3><p><code>.STR</code> 文件为自定义二进制&#x2F;文本混合格式，每帧包含以下数据：</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>FRAME_PosX/Y/Z</code></td>
+<td>玩家坐标</td>
+</tr>
+<tr>
+<td><code>FRAME_AngX/Y</code></td>
+<td>视角（pitch, yaw）</td>
+</tr>
+<tr>
+<td><code>FRAME_VelX/Y/Z</code></td>
+<td>速度向量</td>
+</tr>
+<tr>
+<td><code>FRAME_Buttons</code></td>
+<td>按键掩码（IN_ATTACK, IN_JUMP 等）</td>
+</tr>
+<tr>
+<td><code>FRAME_MOVETYPE</code></td>
+<td>移动类型（用于爬梯检测）</td>
+</tr>
+<tr>
+<td><code>FRAME_WEAPON</code></td>
+<td>当前武器索引</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="8-Debug-显示"><a href="#8-Debug-显示" class="headerlink" title="8. Debug 显示"></a>8. Debug 显示</h2><h3 id="8-1-开启方式"><a href="#8-1-开启方式" class="headerlink" title="8.1 开启方式"></a>8.1 开启方式</h3><ol>
+<li>菜单中进入 “Debug 调试” 子菜单</li>
+<li>勾选 “自身” 和&#x2F;或目标 Bot</li>
+</ol>
+<h3 id="8-2-显示内容"><a href="#8-2-显示内容" class="headerlink" title="8.2 显示内容"></a>8.2 显示内容</h3><p>在屏幕中央右侧实时显示（VScript HUD）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[玩家名]    帧:123/456  F: 130  VEL:   250  [513] +fwd +mright</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>仅显示当前在线的 Fake Client（Bot），纯 AI Bot 不显示</li>
+<li><code>!restart</code> 后 HUD 会自动重建</li>
+<li>被禁用的玩家会清空 HUD 显示</li>
+</ul>
+<h3 id="8-3-VScript-技术细节"><a href="#8-3-VScript-技术细节" class="headerlink" title="8.3 VScript 技术细节"></a>8.3 VScript 技术细节</h3><ul>
+<li>使用 HUD slot 9（<code>HUD_MID_BOX</code>）</li>
+<li>每 tick 刷新，使用 <code>HUDPlace</code> + <code>HUDSetLayout</code></li>
+<li>数据经过转义（<code>&quot;</code> → <code>&#39;</code>，<code>\n</code> → <code>\\n</code>）嵌入 VScript 字符串</li>
+</ul>
+<hr>
+<h2 id="9-VScript-Forwards"><a href="#9-VScript-Forwards" class="headerlink" title="9. VScript Forwards"></a>9. VScript Forwards</h2><p>插件提供三个全局 Forward 供第三方插件和 VScript 使用：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 回放每 tick 触发</span><br><span class="line">forward void OnPlayTick(int client, int frame, const char[] filename);</span><br><span class="line"></span><br><span class="line">// 录制每 tick 触发</span><br><span class="line">forward void OnRecordTick(int client, int frame);</span><br><span class="line"></span><br><span class="line">// 回放结束时触发</span><br><span class="line">forward void OnPlayTickEnd(int client, const char[] filename);</span><br></pre></td></tr></table></figure>
+
+<p>STR 自身也会对 client 调用 VScript 函数（如果存在）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 回放每帧</span><br><span class="line">if (&quot;OnPlayTick&quot; in getroottable()) OnPlayTick(self, curframe, &quot;filename&quot;);</span><br><span class="line"></span><br><span class="line">// 录制每帧</span><br><span class="line">if (&quot;OnRecordTick&quot; in getroottable()) OnRecordTick(self, curframe);</span><br><span class="line"></span><br><span class="line">// 回放结束（自然结束 / stopFrame 停止 / 手动重置）</span><br><span class="line">if (&quot;OnPlayTickEnd&quot; in getroottable()) OnPlayTickEnd(self, &quot;filename&quot;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="参数说明"><a href="#参数说明" class="headerlink" title="参数说明"></a>参数说明</h3><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>client</code></td>
+<td><code>int</code></td>
+<td>客户端索引</td>
+</tr>
+<tr>
+<td><code>frame</code></td>
+<td><code>int</code></td>
+<td>当前帧号</td>
+</tr>
+<tr>
+<td><code>filename</code></td>
+<td><code>string</code></td>
+<td>已加载的 .STR 文件名（不含路径），如 <code>&quot;B2.STR&quot;</code></td>
+</tr>
+</tbody></table>
+<h3 id="触发时机"><a href="#触发时机" class="headerlink" title="触发时机"></a>触发时机</h3><table>
+<thead>
+<tr>
+<th>Forward</th>
+<th>VScript</th>
+<th>触发条件</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>OnPlayTick</code></td>
+<td><code>OnPlayTick(self, frame, filename)</code></td>
+<td>回放中每 tick</td>
+</tr>
+<tr>
+<td><code>OnRecordTick</code></td>
+<td><code>OnRecordTick(self, frame)</code></td>
+<td>录制中每 tick</td>
+</tr>
+<tr>
+<td><code>OnPlayTickEnd</code></td>
+<td><code>OnPlayTickEnd(self, filename)</code></td>
+<td>回放自然结束、到达 stopFrame、或手动 <code>sm_resetreplay</code></td>
+</tr>
+</tbody></table>
+<h3 id="VScript-使用示例"><a href="#VScript-使用示例" class="headerlink" title="VScript 使用示例"></a>VScript 使用示例</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">// 在 map 脚本或 vs_st_speedrun.nut 中定义即可，STR 会自动调用</span><br><span class="line"></span><br><span class="line">::OnPlayTick &lt;- function(hPlayer, frame, filename)</span><br><span class="line">&#123;</span><br><span class="line">    // 回放每帧触发 — 可用于同步 UI、日志、外部计时器等</span><br><span class="line">    printl(format(&quot;[STR] Playing %s — frame %d&quot;, filename, frame));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">::OnPlayTickEnd &lt;- function(hPlayer, filename)</span><br><span class="line">&#123;</span><br><span class="line">    // 回放结束时触发 — 可用于自动加载下一个文件、切换模式等</span><br><span class="line">    printl(format(&quot;[STR] Playback of %s finished&quot;, filename));</span><br><span class="line"></span><br><span class="line">    // 例如：链式加载下一个分段</span><br><span class="line">    // ST_STR_LoadFile(hPlayer, &quot;B3.STR&quot;);</span><br><span class="line">    // ST_STR(hPlayer, 1);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">::OnRecordTick &lt;- function(hPlayer, frame)</span><br><span class="line">&#123;</span><br><span class="line">    // 录制每帧触发 — 可用于监控录制进度、实时保存等</span><br><span class="line">    printl(format(&quot;[STR] Recording — frame %d&quot;, frame));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="10-使用流程"><a href="#10-使用流程" class="headerlink" title="10. 使用流程"></a>10. 使用流程</h2><h3 id="10-1-录制"><a href="#10-1-录制" class="headerlink" title="10.1 录制"></a>10.1 录制</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1. !str → 选择 &quot;录制&quot;</span><br><span class="line">2. 进行游戏操作</span><br><span class="line">3. !str → 选择 &quot;停止/重置&quot;</span><br><span class="line">4. !str → 选择 &quot;保存到文件&quot; → 输入文件名</span><br></pre></td></tr></table></figure>
+
+<h3 id="10-2-回放"><a href="#10-2-回放" class="headerlink" title="10.2 回放"></a>10.2 回放</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1. !str → 选择 &quot;加载文件&quot; → 输入文件名</span><br><span class="line">2. 设置起始帧/结束帧（可选）</span><br><span class="line">3. !str → 选择 &quot;继续/播放&quot;</span><br><span class="line">4. 回放过程中按 IN_ZOOM（默认右键）锁定视角，松开后平滑过渡回录制视角</span><br></pre></td></tr></table></figure>
+
+<h3 id="10-3-VScript-调用"><a href="#10-3-VScript-调用" class="headerlink" title="10.3 VScript 调用"></a>10.3 VScript 调用</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 录制</span><br><span class="line">ST_STR(hPlayer, 0);</span><br><span class="line">// ... 录制 N 帧 ...</span><br><span class="line">ST_STR_Save(hPlayer);</span><br><span class="line"></span><br><span class="line">// 回放</span><br><span class="line">ST_STR_LoadFile(hPlayer, &quot;mysave&quot;);</span><br><span class="line">ST_STR(hPlayer, 1);</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="11-注意事项"><a href="#11-注意事项" class="headerlink" title="11. 注意事项"></a>11. 注意事项</h2><ol>
+<li><strong>先加载再回放</strong>：调用 <code>ST_STR(hPlayer, 1)</code> 之前必须先用 <code>ST_STR_LoadFile</code> 加载文件</li>
+<li><strong>爬梯回放</strong>：插件自动处理爬梯帧的 <code>MOVETYPE_LADDER</code> 和方向向量，FakeClient 播放正常</li>
+<li><strong>按键释放</strong>：回放结束&#x2F;重置时自动调用 <code>ResetButton</code> 释放所有按键，防止 <code>+attack</code> 卡死</li>
+<li><strong>暂停状态</strong>：暂停时玩家位置被锁定在原点 (0, 0, 0)</li>
+<li><strong>自由视角</strong>：回放时按住右键（IN_ZOOM）锁定视角观察周围，松开后 10 tick 内平滑过渡回录制视角</li>
+<li><strong>Debug HUD 限制</strong>：HUD_MID_BOX 区域有裁剪限制，同时显示目标过多可能导致文字被裁剪</li>
+</ol>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/about" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/images/touming.png&quot;" data-lazy-src="/images/Ausnty.jpg" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/images/touming.png&quot;" data-lazy-src="/images/Ausnty.jpg" title="头像" alt="头像"></a><div class="post-copyright__author_name">Yusqual</div><div class="post-copyright__author_desc">生活明朗 万物可爱</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="https://yusqual.github.io/games/str_guide.html">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('https://yusqual.github.io/games/str_guide.html')">L4D2 STR说明文档</span></a></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://yusqual.github.io" target="_blank">Suyu</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/l4d2/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>l4d2<span class="tagsPageCount">2</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="/images/Ausnty.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/qt/daily.html"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/images/touming.png&quot;" data-lazy-src="/" onerror="onerror=null;src='/images/touming.png'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">daily</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#STR-Speedrun-TAS-Tools-%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3"><span class="toc-number">1.</span> <span class="toc-text">STR (Speedrun TAS Tools) 使用文档</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95"><span class="toc-number">1.1.</span> <span class="toc-text">目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%A6%82%E8%BF%B0"><span class="toc-number">1.2.</span> <span class="toc-text">1. 概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%AE%89%E8%A3%85%E4%B8%8E%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84"><span class="toc-number">1.3.</span> <span class="toc-text">2. 安装与文件结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%8E%A7%E5%88%B6%E5%8F%B0%E5%91%BD%E4%BB%A4"><span class="toc-number">1.4.</span> <span class="toc-text">3. 控制台命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E8%8F%9C%E5%8D%95"><span class="toc-number">1.4.1.</span> <span class="toc-text">3.1 菜单</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E5%BD%95%E5%88%B6%E4%B8%8E%E5%9B%9E%E6%94%BE"><span class="toc-number">1.4.2.</span> <span class="toc-text">3.2 录制与回放</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C"><span class="toc-number">1.4.3.</span> <span class="toc-text">3.3 文件操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-%E5%B8%A7%E4%B8%8E%E5%8F%82%E6%95%B0"><span class="toc-number">1.4.4.</span> <span class="toc-text">3.4 帧与参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-5-%E8%BD%A8%E8%BF%B9%E7%BB%98%E5%88%B6"><span class="toc-number">1.4.5.</span> <span class="toc-text">3.5 轨迹绘制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-6-%E5%85%B6%E4%BB%96"><span class="toc-number">1.4.6.</span> <span class="toc-text">3.6 其他</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-ConVar-%E9%85%8D%E7%BD%AE%E9%A1%B9"><span class="toc-number">1.5.</span> <span class="toc-text">4. ConVar 配置项</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-%E8%A1%8C%E4%B8%BA%E5%BC%80%E5%85%B3"><span class="toc-number">1.5.1.</span> <span class="toc-text">4.1 行为开关</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-%E5%9D%90%E6%A0%87%E6%98%A0%E5%B0%84"><span class="toc-number">1.5.2.</span> <span class="toc-text">4.2 坐标映射</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-VScript-%E8%A7%A6%E5%8F%91%E5%99%A8%EF%BC%88%E8%87%AA%E5%8A%A8%E5%BD%92%E9%9B%B6%EF%BC%89"><span class="toc-number">1.5.3.</span> <span class="toc-text">4.3 VScript 触发器（自动归零）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E8%8F%9C%E5%8D%95%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.6.</span> <span class="toc-text">5. 菜单系统</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-%E8%8F%9C%E5%8D%95%E6%B5%81%E7%A8%8B"><span class="toc-number">1.6.1.</span> <span class="toc-text">5.1 菜单流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-Debug-%E5%AD%90%E8%8F%9C%E5%8D%95"><span class="toc-number">1.6.2.</span> <span class="toc-text">5.2 Debug 子菜单</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-VScript-API"><span class="toc-number">1.7.</span> <span class="toc-text">6. VScript API</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-str-commands-nut"><span class="toc-number">1.7.1.</span> <span class="toc-text">6.1 str_commands.nut</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#6-1-1-%E5%BC%95%E5%85%A5%E6%96%B9%E5%BC%8F"><span class="toc-number">1.7.1.1.</span> <span class="toc-text">6.1.1 引入方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-1-2-%E6%A0%B8%E5%BF%83%E6%93%8D%E4%BD%9C"><span class="toc-number">1.7.1.2.</span> <span class="toc-text">6.1.2 核心操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-1-3-ConVar-%E8%AE%BE%E7%BD%AE"><span class="toc-number">1.7.1.3.</span> <span class="toc-text">6.1.3 ConVar 设置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-1-4-%E5%8F%82%E6%95%B0%E7%BA%A6%E5%AE%9A"><span class="toc-number">1.7.1.4.</span> <span class="toc-text">6.1.4 参数约定</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-1-5-%E5%85%B8%E5%9E%8B%E7%94%A8%E6%B3%95"><span class="toc-number">1.7.1.5.</span> <span class="toc-text">6.1.5 典型用法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2-str-extensions-nut"><span class="toc-number">1.7.2.</span> <span class="toc-text">6.2 str_extensions.nut</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#6-2-1-ST-TriggerTeleport"><span class="toc-number">1.7.2.1.</span> <span class="toc-text">6.2.1 ST_TriggerTeleport</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-STR-%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.8.</span> <span class="toc-text">7. STR 文件格式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#7-1-%E5%AD%98%E5%82%A8%E4%BD%8D%E7%BD%AE"><span class="toc-number">1.8.1.</span> <span class="toc-text">7.1 存储位置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-2-%E6%A0%BC%E5%BC%8F%E8%AF%B4%E6%98%8E"><span class="toc-number">1.8.2.</span> <span class="toc-text">7.2 格式说明</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-Debug-%E6%98%BE%E7%A4%BA"><span class="toc-number">1.9.</span> <span class="toc-text">8. Debug 显示</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#8-1-%E5%BC%80%E5%90%AF%E6%96%B9%E5%BC%8F"><span class="toc-number">1.9.1.</span> <span class="toc-text">8.1 开启方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-2-%E6%98%BE%E7%A4%BA%E5%86%85%E5%AE%B9"><span class="toc-number">1.9.2.</span> <span class="toc-text">8.2 显示内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-3-VScript-%E6%8A%80%E6%9C%AF%E7%BB%86%E8%8A%82"><span class="toc-number">1.9.3.</span> <span class="toc-text">8.3 VScript 技术细节</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-VScript-Forwards"><span class="toc-number">1.10.</span> <span class="toc-text">9. VScript Forwards</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E"><span class="toc-number">1.10.1.</span> <span class="toc-text">参数说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A6%E5%8F%91%E6%97%B6%E6%9C%BA"><span class="toc-number">1.10.2.</span> <span class="toc-text">触发时机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#VScript-%E4%BD%BF%E7%94%A8%E7%A4%BA%E4%BE%8B"><span class="toc-number">1.10.3.</span> <span class="toc-text">VScript 使用示例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-%E4%BD%BF%E7%94%A8%E6%B5%81%E7%A8%8B"><span class="toc-number">1.11.</span> <span class="toc-text">10. 使用流程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#10-1-%E5%BD%95%E5%88%B6"><span class="toc-number">1.11.1.</span> <span class="toc-text">10.1 录制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-2-%E5%9B%9E%E6%94%BE"><span class="toc-number">1.11.2.</span> <span class="toc-text">10.2 回放</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-3-VScript-%E8%B0%83%E7%94%A8"><span class="toc-number">1.11.3.</span> <span class="toc-text">10.3 VScript 调用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-number">1.12.</span> <span class="toc-text">11. 注意事项</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/games/str_guide.html" title="L4D2 STR说明文档">L4D2 STR说明文档</a><time datetime="2026-07-06T06:00:01.000Z" title="发表于 2026-07-06 14:00:01">2026-07-06</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/qt/daily.html" title="daily">daily</a><time datetime="2026-05-30T06:29:16.000Z" title="发表于 2026-05-30 14:29:16">2026-05-30</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/leetcode/notes_p4_sort.html" title="排序">排序</a><time datetime="2025-05-10T15:19:04.000Z" title="发表于 2025-05-10 23:19:04">2025-05-10</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/notes/notes_p3_mutex.html" title="锁">锁</a><time datetime="2025-04-04T05:24:59.000Z" title="发表于 2025-04-04 13:24:59">2025-04-04</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/notes/notes_p2_RBTree.html" title="红黑树">红黑树</a><time datetime="2025-03-31T12:50:27.000Z" title="发表于 2025-03-31 20:50:27">2025-03-31</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div id="workboard"><img class="workSituationImg boardsign" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/images/touming.png&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.0.4/img/badge/安知鱼-上班摸鱼中.svg" alt="距离月入25k也就还差一个大佬带我~" title="距离月入25k也就还差一个大佬带我~"/><div id="runtimeTextTip"></div></div><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" data-title="博客框架为Hexo_v5.4.0" title="博客框架为Hexo_v5.4.0"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/images/touming.png&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.1.5/img/badge/Frame-Hexo.svg" alt="博客框架为Hexo_v5.4.0"/></a><a class="github-badge" target="_blank" href="https://blog.anheyu.com/" style="margin-inline:5px" data-title="本站使用AnZhiYu主题" title="本站使用AnZhiYu主题"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/images/touming.png&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.9/img/Theme-AnZhiYu-2E67D3.svg" alt="本站使用AnZhiYu主题"/></a><a class="github-badge" target="_blank" href="https://github.com/" style="margin-inline:5px" data-title="本站项目由Github托管" title="本站项目由Github托管"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/images/touming.png&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.1.5/img/badge/Source-Github.svg" alt="本站项目由Github托管"/></a></p></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2025 - 2026 By <a class="footer-bar-link" href="/" title="Yusqual" target="_blank">Yusqual</a></div></div><div id="footer-type-tips"></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://github.com/anzhiyu-c/hexo-theme-anzhiyu" title="主题">主题</a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">7</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">3</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">3</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://blog.anheyu.com/" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/images/touming.png&quot;" data-lazy-src="/img/favicon.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://image.anheyu.com/" title="安知鱼图床"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/images/touming.png&quot;" data-lazy-src="https://image.anheyu.com/favicon.ico" alt="安知鱼图床"/><span class="back-menu-item-text">安知鱼图床</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li></ul></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/l4d2/" style="font-size: 0.88rem;">l4d2<sup>2</sup></a><a href="/tags/notes/" style="font-size: 0.88rem;">notes<sup>4</sup></a><a href="/tags/qt/" style="font-size: 0.88rem;">qt<sup>1</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="translateLink" type="button" title="简繁转换">繁</button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("01/20/2025 00:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `欢迎使用安知鱼!`,
+    `生活明朗, 万物可爱`,
+    `
+        
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+        
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2025 By 安知鱼 V1.6.14",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 Yusqual 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><script async="async">(function () {
+  var grt = new Date("01/20/2025 00:00:00"); //设置网站上线时间
+  var now = new Date();
+  var dnum;
+  var hnum;
+  var mnum;
+  var snum;
+  var nowHour;
+
+  // 计算并更新天数、小时数、分钟数和秒数
+  function updateTime() {
+    now = new Date(); // 更新 now 的值
+    nowHour = now.getHours(); // 更新 nowHour 的值
+    var days = (now - grt) / 1000 / 60 / 60 / 24;
+    dnum = Math.floor(days);
+    var hours = (now - grt) / 1000 / 60 / 60 - 24 * dnum;
+    hnum = Math.floor(hours);
+    if (String(hnum).length == 1) {
+      hnum = "0" + hnum;
+    }
+    var minutes = (now - grt) / 1000 / 60 - 24 * 60 * dnum - 60 * hnum;
+    mnum = Math.floor(minutes);
+    if (String(mnum).length == 1) {
+      mnum = "0" + mnum;
+    }
+    var seconds = (now - grt) / 1000 - 24 * 60 * 60 * dnum - 60 * 60 * hnum - 60 * mnum;
+    snum = Math.round(seconds);
+    if (String(snum).length == 1) {
+      snum = "0" + snum;
+    }
+  }
+
+  // 更新网页中显示的网站运行时间
+  function updateHtml() {
+    const footer = document.getElementById("footer");
+    if (!footer) return
+    let currentTimeHtml = "";
+    if (nowHour < 18 && nowHour >= 9) {
+      // 如果是上班时间，默认就是"安知鱼-上班摸鱼中.svg"图片，不需要更改
+      currentTimeHtml = `本站居然运行了 ${dnum} 天<span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span><i class='anzhiyufont anzhiyu-icon-heartbeat' style='color:red'></i>`;
+    } else {
+      // 如果是下班时间，插入"安知鱼-下班啦.svg"图片
+      let img = document.querySelector("#workboard .workSituationImg");
+      if (img != null) {
+        img.src = "https://npm.elemecdn.com/anzhiyu-blog@2.0.4/img/badge/安知鱼-下班啦.svg";
+        img.title = "下班了就该开开心心的玩耍，嘿嘿~";
+        img.alt = "下班了就该开开心心的玩耍，嘿嘿~";
+      }
+
+      currentTimeHtml = `本站居然运行了 ${dnum} 天<span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span><i class='anzhiyufont anzhiyu-icon-heartbeat' style='color:red'></i>`;
+    }
+
+    if (document.getElementById("runtimeTextTip")) {
+      document.getElementById("runtimeTextTip").innerHTML = currentTimeHtml;
+    }
+  }
+
+  setInterval(() => {
+    updateTime();
+    updateHtml();
+  }, 1000);
+})();</script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.cbd.int/mathjax@3.2.2/es5/tex-mml-chtml.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script><input type="hidden" name="page-type" id="page-type" value="post"></div><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script charset="UTF-8" src="https://cdn.cbd.int/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>
