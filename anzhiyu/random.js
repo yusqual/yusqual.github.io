@@ -1,3 +1,3 @@
-var posts=["/games/movement_reader_guide.html","/notes/notes_p1_highprecision.html","/qt/daily.html","/notes/notes_p3_mutex.html","/notes/notes_p2_RBTree.html","/leetcode/notes_p4_sort.html","/games/speedrun_ext.html","/games/speedrunner_tools_guide.html","/games/str_guide.html","/games/st_api_reference.html"];function toRandomPost(){
+var posts=["/games/movement_reader_guide.html","/notes/notes_p1_highprecision.html","/qt/daily.html","/notes/notes_p3_mutex.html","/notes/notes_p2_RBTree.html","/leetcode/notes_p4_sort.html","/games/speedrun_ext.html","/games/speedrunner_tools_guide.html","/games/str_guide.html","/games/st_api_reference.html","/games/str_commands_source.html","/games/str_extensions_source.html"];function toRandomPost(){
     pjax.loadUrl('/'+posts[Math.floor(Math.random() * posts.length)]);
   };
