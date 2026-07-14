@@ -1,0 +1,1155 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>TAS Kit 模块参考 | Suyu</title><meta name="keywords" content="l4d2"><meta name="author" content="Yusqual"><meta name="copyright" content="Yusqual"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#18171d"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="TAS Kit 模块参考"><meta name="application-name" content="TAS Kit 模块参考"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#18171d"><meta property="og:type" content="article"><meta property="og:title" content="TAS Kit 模块参考"><meta property="og:url" content="https://yusqual.github.io/games/l4d2/tas_kit/modules.html"><meta property="og:site_name" content="Suyu"><meta property="og:description" content="TAS Kit 模块参考目录 tools — 工具模块 1.1 全局数据表 1.2 生成函数 1.3 Common Boost 系统 1.4 物品管理 1.5 交互系统 (Take&amp;#x2F;Use) 1.6 传送 1.7 Auto Climb 1.8 Auto Boost 系统 1.9 Auto"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://yusqual.github.io/images/Ausnty.jpg"><meta property="article:author" content="Yusqual"><meta property="article:tag"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://yusqual.github.io/images/Ausnty.jpg"><meta name="description" content="TAS Kit 模块参考目录 tools — 工具模块 1.1 全局数据表 1.2 生成函数 1.3 Common Boost 系统 1.4 物品管理 1.5 交互系统 (Take&amp;#x2F;Use) 1.6 传送 1.7 Auto Climb 1.8 Auto Boost 系统 1.9 Auto"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="https://yusqual.github.io/games/l4d2/tas_kit/modules.html"><link rel="preconnect" href="//cdn.cbd.int"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: {"enable":true,"img":"https://linux.do/uploads/default/optimized/3X/7/3/7344591d7035ceeed5823f9a6eea7f93f5705438_2_1035x651.png"},
+  postHeadAiDescription: {"enable":true,"gptName":"AnZhiYu","mode":"local","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"xxxx","Referer":"https://xx.xx/"},
+  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w 不要走！再看看嘛！","backTitle":"♪(^∇^*)欢迎肥来！"},
+  LA51: undefined,
+  greetingBox: undefined,
+  twikooEnvId: '',
+  commentBarrageConfig:undefined,
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: false,
+  mainTone: undefined,
+  authorStatus: {"skills":null},
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: Yusqual","link":"链接: ","source":"来源: Suyu","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  shortcutKey: undefined,
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: 'Suyu',
+  title: 'TAS Kit 模块参考',
+  postAI: '',
+  pageFillDescription: 'TAS Kit 模块参考, 目录, 1. tools, 1.1 全局数据表, g_tItems, g_tTransitionLandmarks, 其他, 1.2 生成函数, SpawnItem, SpawnZombie, SpawnCommon x2F SpawnCommonWithBile x2F SpawnCommonForCB, SpawnTrigger, 1.3 Common Boost 系统, 1.4 物品管理, RemoveItemByName x2F RemoveItemWithin, 1.5 交互系统 (Takex2FUse), TakeItem x2F TakeNearestItem, UseEntity x2F UseNearestEntity, 1.6 传送, ScriptedTP, 1.7 Auto Climb, 1.8 Auto Boost 系统, AutoRocketJump, AutoBileBoost, AutoGrenadeBoost, 管理, 完成回调, 1.9 Auto Bile Breaker, 1.10 CI 录制x2F回放, 1.11 安全门, 1.12 调试与计时, 1.13 脚本化 Tank, 1.14 其他函数, 2. tls, 2.1 ConVars, 2.2 辅助函数, 2.3 Aimbot 系统, 2.4 Ragebot 系统, 2.5 Auto-Bhop 系统, 2.6 全体开关, 3. chat_commands, 3.1 系统命令, 3.2 调试命令, 3.3 工具命令, 3.4 TLS 命令, 3.5 完整命令列表, 4. finale_manager, Settings, 核心方法, 阶段回调, 相关的 Callbacks, 使用示例, 5. speedrunner_tools, 核心命令, 闲置x2F接管 (Speedrunner Tools convars), Movement Reader 控制, 玩家判断函数, 6. helper_utils, 地图数据, 地图属性检测, Trigger Editor, 7. autosb, 函数, 工作原理, 回调, 全局状态, 8. fillbot, 函数, 工作原理, 注册的事件钩子, 9. skipintro, 函数, __SkipIntro 支持的地图, 实现方式模块参考目录工具模块全局数据表生成函数系统物品管理交互系统传送系统录制回放安全门调试与计时脚本化其他函数辅助函数系统系统系统全体开关聊天命令系统命令调试命令工具命令命令完整命令列表终局管理命令封装地图辅助自动自动灌油跳过开场动画文件行最核心的功能模块提供物品僵尸生成自动拾取交互火箭跳胆汁跳手雷跳自动攀爬录制等功能全局数据表武器物品道具的完整定义表键为短名称值为武器示例物品示例物理道具示例包含全部武器近战投掷物药品和物理道具的定义地图过渡坐标数据用于跨地图的坐标转换每张地图的条目包含当前图原点下一图原点其他变量说明所有主武器数组可携带物理道具模型路径数组可交互实体数组门升级台按钮待自动打爆的胆汁抛射物队列生成函数中的短名称生成位置生成角度默认生成数量默认散布半径默认是否以物理道具形式生成默认实体默认返回生成的实体多个时返回最后一个生成一瓶药生成霰弹枪在单位半径内散布个土制炸弹以物理道具形式生成油桶短名称生成位置生成角度默认是否闲置默认是否猛冲默认是否快速生成默认返回生成的实体生成生成闲置生成朝向的生成普通感染者生成感染者死亡掉落胆汁生成用于的感染者名称位置半尺寸上限默认半尺寸下限默认触发时调用的函数名默认触发类型等默认输出名默认实体类名默认返回生成的实体玩家进入了区域系统利用普通感染者攻击动作来辅助加速的系统已生成的闲置感染者要攻击的目标玩家延迟攻击时间默认忽略距离限制默认返回是否成功触发工作流程在指定位置生成闲置感染者并注册到玩家开火时遍历按距离匹配最近的感染者设置为指定玩家感染者自动寻路攻击物品管理按名称移除所有匹配的实体返回移除数量移除所有自动霰弹枪移除所有物品武器升级道具移除指定位置半径内的所有物品返回移除数量交互系统自动拾取武器或物理道具函数会自动转动视角按下拾取指定物品自动拾取最近的物品仅拾取自动霰弹枪按拾取最近的物品自动使用交互实体开门使用升级台按按钮使用指定实体自动使用最近的实体参数说明参数默认值说明使用后是否恢复之前的视角是否将视角设为速度方向是否在找不到时自动查找最近目标传送要传送的传送目标跟随的领导者延迟时间默认秒是否是卡住传送模式默认传送模式重置指令保持指令移动到最近幸存者秒后传送到的位置立即卡住传送到最近幸存者自动攀爬梯子注册函数移除函数并清理状态控制攀爬方向向上向下系统三种自动助推火箭跳榴弹胆汁跳手雷跳执行的玩家发射角度目标检测半径默认使用距离检测默认是否蹲下默认指定目标则自动检测忽略地面上的玩家默认参数类似额外参数发射时是否跳跃默认发射俯仰角目标玩家数组默认是否蹲下默认发射时是否跳跃默认管理移除指定玩家的所有移除所有玩家的完成回调自动在空中打爆胆汁抛射物防止浪费注册函数移除函数录制回放录制普通感染者的生成位置用于精确复现开始录制停止录制并保存到从文件重新生成感染者安全门打开起始安全门注册秒强制保持开启同上关闭起始安全门关闭终点安全门调试与计时将当前场上所有感染者位置导出到文件高亮所有未拾取的物品全部物品仅高亮突击步枪计时相关聊天输出当前计时当前时间带前缀以格式输出获取值获取字符串脚本化添加脚本化生成点用于终局在事件中回调会将重新定位到这些预设坐标其他函数移除指定槽位的物品移除主武器移除副武器控制根据调节自动注册为文件行提供自动瞄准自动开火瞄准和自动连跳功能通过以下控制行为使用创建类型默认值说明总开关禁用全部瞄准最大距离是否发射射击音效是否穿墙瞄准是否允许随时瞄准不受武器冷却限制是否瞄准头部身体总开关总开关辅助函数位掩码检测返回为玩家预缓存所有相关音效发射当前武器的音效返回玩家是否可见目标射线检测返回枚举值不能射击有武器但不能立即射击可以射击获取实体瞄准位置根据类型和决定头部身体获取最近的可用目标返回系统自动将视角对准最近的感染者立即瞄准最近实体切换玩家的为重绑定在按下时瞄准按钮监听已注册对用户瞄准最近目标持续瞄准自动开火按住工作模式检测到瞄准目标计算头部身体位置转动视角发送射击音效按下攻击键系统在中每帧自动检测目标并瞄准开火与的区别不需要按键触发每帧自动执行系统在落地瞬间自动跳跃切换普通切换按键绑定按钮监听按住启动自动连跳全体开关文件行所有聊天命令的定义命令通过注册在数组中系统命令命令函数需要玩家说明否重启回合否执行速通重启否启用否切换到下一关卡是切换计时器显示是切换摔伤伤害报告秒是设置查看倒计时秒数使用示例在游戏中聊天输入立即重启速通重启倒计时设为秒关闭开启调试命令命令提供多个子命令子命令说明导航网格调试调用高亮物品传送调试编辑器开始录制停止并保存录制回放录制清除所有物品设置攀爬方向检测导出感染者位置工具命令命令说明打印当前位置转换到下一关卡的坐标射线检测瞄准的实体打印调用打印前位置的调用并放置标记高亮所有匹配名称的物品打印当前坐标角度速度导出所有感染者位置到文件执行传送切换自动灌油命令命令说明切换切换按键切换切换切换切换自动值设置跳跃时间系数完整命令列表命令参数需要玩家模块否否否否是是是秒是是是名称是子命令是模式是是否是是是是是是是值是文件行终局管理器用于在终局中检测控制生成数量阶段计时是否启用终局管理器是否重新定位终局最大数量阶段最少生成间隔阶段最少生成间隔核心方法计算圆形内的随机点计算沿直线方向的带偏移点重新定位自动在触发终局时调用阶段回调阶段编号阶段类型终局暂停阶段逃生阶段开始相关的终局开始终局暂停每个自定义阶段最后一只被击杀使用示例在中启用终局管理器添加生成点所有已击杀文件行将插件命令封装为函数需要安装插件核心命令发送客户端命令设置玩家名称设置队伍添加接管踢出多余客户端发起投票替换玩家自动挂机踢出回合结束后恢复闲置接管玩家替换控制录制播放停止录制停止播放分段文件名仅录制播放时需要播放时不传送仅播放时需要开始录制开始播放停止录制停止播放分段分割录制停止指定玩家的玩家判断函数获取的人类所有者网络但返回网络不是是否为有效的玩家实体文件行提供地图数据地图属性检测和编辑器地图数据所有张官方地图张战役起始地图张长距离攻击的地图张感染者地图地图属性检测自动检测从读取是否为官方地图是否为战役起始地图是否启用长距离攻击是否有感染者用于快速创建实体的可视化工具在玩家位置设置第一个第二个触发点通过或调用打印两个触发点构成的调用将累积的写入文件函数在触发点之间绘制调试框使用流程移动到触发区域的一个角落移动到对角自动计算并打印调用可将代码复制到中文件行自动当喷射酸液时自动计算弹跳时间并跳跃函数切换自动设置跳跃时间系数默认系数越小跳跃越早聊天命令切换自动值修改系数工作原理每帧检查是否有激活了技能检测变化计算与目标玩家的距离根据距离计算最佳跳跃时间在计算的时间点自动发送回调全局状态启用跳跃时间系数文件行自动灌油机器人用于终局中自动拾取油桶并浇入发电机函数切换自动灌油在肾上腺素使用时关闭开始停止浇油强制设置取消清除检查是否已被使用工作原理作为运行如果未持有油桶查找单位半径内最近的自动拾取如果持有油桶但未浇油查找单位半径内最近的转向检测浇油完成中断受阻事件注册的事件钩子如果拾取的是油桶自动开始浇油关闭停止浇油停止浇油停止浇油文件行跳过所有官方战役的开场动画函数主跳过函数在重启后调用通用跳过不依赖具体地图名支持的地图地图跳过的内容直升机离场音效救援直升机过场过场点视角过场点视角拖船动画过场演说者拖船段过场过场过场过场过场过场拖船点视角过场过场飞机残骸实现方式通过过场相关的实体等并在秒后调用和是通用回退方案当但地图不在上述列表中时使用',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2026-07-14 10:54:58',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://npm.elemecdn.com/anzhiyu-blog-static@1.0.4/img/avatar.jpg"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><a id="site-name" href="/" accesskey="h"><div class="title">Suyu</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li></ul></div></div></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" target="_blank"><img class="post-qr-code-img" alt="微信" src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" target="_blank"><img class="post-qr-code-img" alt="支付宝" src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/l4d2/" style="font-size: 1.05rem;">l4d2<sup>13</sup></a><a href="/tags/notes/" style="font-size: 1.05rem;">notes<sup>4</sup></a><a href="/tags/qt/" style="font-size: 1.05rem;">qt<sup>1</sup></a></div></div><hr/></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/07/"><span class="card-archive-list-date">七月 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">12</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/05/"><span class="card-archive-list-date">五月 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/05/"><span class="card-archive-list-date">五月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/04/"><span class="card-archive-list-date">四月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/03/"><span class="card-archive-list-date">三月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/01/"><span class="card-archive-list-date">一月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%85%B6%E4%BB%96/" itemprop="url">其他</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/l4d2/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>l4d2</span></a></span></div></div><h1 class="post-title" itemprop="name headline">TAS Kit 模块参考</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2026-07-14T04:00:04.000Z" title="发表于 2026-07-14 12:00:04">2026-07-14</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2026-07-14T02:54:58.710Z" title="更新于 2026-07-14 10:54:58">2026-07-14</time></span></div><div class="meta-secondline"><span class="post-meta-separator"></span><span class="post-meta-wordcount"><i class="anzhiyufont anzhiyu-icon-file-word post-meta-icon" title="文章字数"></i><span class="post-meta-label" title="文章字数">字数总计:</span><span class="word-count" title="文章字数">4.7k</span><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-clock post-meta-icon" title="阅读时长"></i><span class="post-meta-label" title="阅读时长">阅读时长:</span><span>18分钟</span></span><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为湖北"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>湖北</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src=""></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="https://yusqual.github.io/games/l4d2/tas_kit/modules.html"><header><a class="post-meta-categories" href="/categories/%E5%85%B6%E4%BB%96/" itemprop="url">其他</a><a href="/tags/l4d2/" tabindex="-1" itemprop="url">l4d2</a><h1 id="CrawlerTitle" itemprop="name headline">TAS Kit 模块参考</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">Yusqual</span><time itemprop="dateCreated datePublished" datetime="2026-07-14T04:00:04.000Z" title="发表于 2026-07-14 12:00:04">2026-07-14</time><time itemprop="dateCreated datePublished" datetime="2026-07-14T02:54:58.710Z" title="更新于 2026-07-14 10:54:58">2026-07-14</time></header><h1 id="TAS-Kit-模块参考"><a href="#TAS-Kit-模块参考" class="headerlink" title="TAS Kit 模块参考"></a>TAS Kit 模块参考</h1><h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ol>
+<li><a href="#1-tools">tools — 工具模块</a><ul>
+<li>1.1 <a href="#11-%E5%85%A8%E5%B1%80%E6%95%B0%E6%8D%AE%E8%A1%A8">全局数据表</a></li>
+<li>1.2 <a href="#12-%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0">生成函数</a></li>
+<li>1.3 <a href="#13-common-boost-%E7%B3%BB%E7%BB%9F">Common Boost 系统</a></li>
+<li>1.4 <a href="#14-%E7%89%A9%E5%93%81%E7%AE%A1%E7%90%86">物品管理</a></li>
+<li>1.5 <a href="#15-%E4%BA%A4%E4%BA%92%E7%B3%BB%E7%BB%9F-takeuse">交互系统 (Take&#x2F;Use)</a></li>
+<li>1.6 <a href="#16-%E4%BC%A0%E9%80%81">传送</a></li>
+<li>1.7 <a href="#17-auto-climb">Auto Climb</a></li>
+<li>1.8 <a href="#18-auto-boost-%E7%B3%BB%E7%BB%9F">Auto Boost 系统</a></li>
+<li>1.9 <a href="#19-auto-bile-breaker">Auto Bile Breaker</a></li>
+<li>1.10 <a href="#110-ci-%E5%BD%95%E5%88%B6%E5%9B%9E%E6%94%BE">CI 录制&#x2F;回放</a></li>
+<li>1.11 <a href="#111-%E5%AE%89%E5%85%A8%E9%97%A8">安全门</a></li>
+<li>1.12 <a href="#112-%E8%B0%83%E8%AF%95%E4%B8%8E%E8%AE%A1%E6%97%B6">调试与计时</a></li>
+<li>1.13 <a href="#113-%E8%84%9A%E6%9C%AC%E5%8C%96-tank">脚本化 Tank</a></li>
+<li>1.14 <a href="#114-%E5%85%B6%E4%BB%96%E5%87%BD%E6%95%B0">其他函数</a></li>
+</ul>
+</li>
+<li><a href="#2-tls">tls — Totally Legit Scripts</a><ul>
+<li>2.1 <a href="#21-convars">ConVars</a></li>
+<li>2.2 <a href="#22-%E8%BE%85%E5%8A%A9%E5%87%BD%E6%95%B0">辅助函数</a></li>
+<li>2.3 <a href="#23-aimbot-%E7%B3%BB%E7%BB%9F">Aimbot 系统</a></li>
+<li>2.4 <a href="#24-ragebot-%E7%B3%BB%E7%BB%9F">Ragebot 系统</a></li>
+<li>2.5 <a href="#25-auto-bhop-%E7%B3%BB%E7%BB%9F">Auto-Bhop 系统</a></li>
+<li>2.6 <a href="#26-%E5%85%A8%E4%BD%93%E5%BC%80%E5%85%B3">全体开关</a></li>
+</ul>
+</li>
+<li><a href="#3-chat_commands">chat_commands — 聊天命令</a><ul>
+<li>3.1 <a href="#31-%E7%B3%BB%E7%BB%9F%E5%91%BD%E4%BB%A4">系统命令</a></li>
+<li>3.2 <a href="#32-%E8%B0%83%E8%AF%95%E5%91%BD%E4%BB%A4">调试命令</a></li>
+<li>3.3 <a href="#33-%E5%B7%A5%E5%85%B7%E5%91%BD%E4%BB%A4">工具命令</a></li>
+<li>3.4 <a href="#34-tls-%E5%91%BD%E4%BB%A4">TLS 命令</a></li>
+<li>3.5 <a href="#35-%E5%AE%8C%E6%95%B4%E5%91%BD%E4%BB%A4%E5%88%97%E8%A1%A8">完整命令列表</a></li>
+</ul>
+</li>
+<li><a href="#4-finale_manager">finale_manager — 终局管理</a></li>
+<li><a href="#5-speedrunner_tools">speedrunner_tools — SM 命令封装</a></li>
+<li><a href="#6-helper_utils">helper_utils — 地图辅助</a></li>
+<li><a href="#7-autosb">autosb — 自动 Spitterboost</a></li>
+<li><a href="#8-fillbot">fillbot — 自动灌油</a></li>
+<li><a href="#9-skipintro">skipintro — 跳过开场动画</a></li>
+</ol>
+<hr>
+<h2 id="1-tools"><a href="#1-tools" class="headerlink" title="1. tools"></a>1. tools</h2><p><strong>文件</strong>：<a href="../scripts/vscripts/modules/tools.nut">modules&#x2F;tools.nut</a>（~1760 行）</p>
+<p>最核心的功能模块，提供物品&#x2F;僵尸&#x2F;Trigger 生成、Common Boost、自动拾取&#x2F;交互、Auto Boost（火箭跳&#x2F;胆汁跳&#x2F;手雷跳）、自动攀爬、CI 录制等功能。</p>
+<h3 id="1-1-全局数据表"><a href="#1-1-全局数据表" class="headerlink" title="1.1 全局数据表"></a>1.1 全局数据表</h3><h4 id="g-tItems"><a href="#g-tItems" class="headerlink" title="g_tItems"></a>g_tItems</h4><p>武器&#x2F;物品&#x2F;道具的完整定义表。键为短名称，值为 <code>&#123; classname, model &#125;</code>。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 武器示例</span></span><br><span class="line">g_tItems[<span class="string">&quot;autoshotgun&quot;</span>]   &lt;- &#123; classname = <span class="string">&quot;weapon_autoshotgun&quot;</span> &#125;</span><br><span class="line">g_tItems[<span class="string">&quot;pistol_magnum&quot;</span>] &lt;- &#123; classname = <span class="string">&quot;weapon_pistol_magnum&quot;</span> &#125;</span><br><span class="line">g_tItems[<span class="string">&quot;katana&quot;</span>]        &lt;- &#123; classname = <span class="string">&quot;weapon_melee&quot;</span>, model = <span class="string">&quot;models/weapons/melee/v_katana.htmll&quot;</span> &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 物品示例</span></span><br><span class="line">g_tItems[<span class="string">&quot;item4&quot;</span>]  &lt;- &#123; classname = <span class="string">&quot;weapon_pain_pills&quot;</span> &#125;</span><br><span class="line">g_tItems[<span class="string">&quot;item9&quot;</span>]  &lt;- &#123; classname = <span class="string">&quot;weapon_molotov&quot;</span> &#125;</span><br><span class="line">g_tItems[<span class="string">&quot;item10&quot;</span>] &lt;- &#123; classname = <span class="string">&quot;weapon_pipe_bomb&quot;</span> &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 物理道具示例</span></span><br><span class="line">g_tItems[<span class="string">&quot;colacan&quot;</span>]    &lt;- &#123; classname = <span class="string">&quot;weapon_cola_bottles&quot;</span>, model = <span class="string">&quot;models/w_models/weapons/w_cola.htmll&quot;</span> &#125;</span><br><span class="line">g_tItems[<span class="string">&quot;gascan&quot;</span>]     &lt;- &#123; classname = <span class="string">&quot;weapon_gascan&quot;</span>, model = <span class="string">&quot;models/props_junk/gascan001a.htmll&quot;</span> &#125;</span><br><span class="line">g_tItems[<span class="string">&quot;propanetank&quot;</span>] &lt;- &#123; classname = <span class="string">&quot;weapon_propanetank&quot;</span>, model = <span class="string">&quot;models/props_junk/propanecanister001a.htmll&quot;</span> &#125;</span><br></pre></td></tr></table></figure>
+
+<p>包含全部 L4D2 武器、近战、投掷物、药品和物理道具的定义。</p>
+<h4 id="g-tTransitionLandmarks"><a href="#g-tTransitionLandmarks" class="headerlink" title="g_tTransitionLandmarks"></a>g_tTransitionLandmarks</h4><p>地图过渡坐标数据，用于跨地图的坐标转换。每张地图的条目包含 <code>[当前图原点X, Y, Z, 下一图原点X, Y, Z]</code>。</p>
+<h4 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h4><table>
+<thead>
+<tr>
+<th>变量</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>g_aPrimaryWeaponList</code></td>
+<td>所有主武器 classname 数组</td>
+</tr>
+<tr>
+<td><code>g_aPropPhysicsModels</code></td>
+<td>可携带物理道具模型路径数组</td>
+</tr>
+<tr>
+<td><code>g_aUseEntitiesList</code></td>
+<td>可交互实体 classname 数组（门、升级台、按钮）</td>
+</tr>
+<tr>
+<td><code>g_aBilesToProcess</code></td>
+<td>待自动打爆的胆汁抛射物队列</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="1-2-生成函数"><a href="#1-2-生成函数" class="headerlink" title="1.2 生成函数"></a>1.2 生成函数</h3><h4 id="SpawnItem"><a href="#SpawnItem" class="headerlink" title="SpawnItem"></a>SpawnItem</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// sName:           g_tItems 中的短名称</span></span><br><span class="line"><span class="comment">// vecOrigin:       生成位置</span></span><br><span class="line"><span class="comment">// eAngles:         生成角度 (默认 null)</span></span><br><span class="line"><span class="comment">// iCount:          生成数量 (默认 1)</span></span><br><span class="line"><span class="comment">// flRadius:        散布半径 (默认 0)</span></span><br><span class="line"><span class="comment">// bPhysicsWeapon:  是否以物理道具形式生成 (默认 false)</span></span><br><span class="line"><span class="comment">// sTargetName:     实体 targetname (默认 &quot;task_ent_item&quot;)</span></span><br><span class="line"><span class="comment">// 返回:            生成的实体 (多个时返回最后一个)</span></span><br><span class="line"><span class="built_in">SpawnItem</span>(<span class="string">&quot;item4&quot;</span>, <span class="built_in">Vector</span>(<span class="number">100</span>, <span class="number">200</span>, <span class="number">50</span>));                         <span class="comment">// 生成一瓶药</span></span><br><span class="line"><span class="built_in">SpawnItem</span>(<span class="string">&quot;autoshotgun&quot;</span>, <span class="built_in">Vector</span>(<span class="number">500</span>, <span class="number">300</span>, <span class="number">60</span>), <span class="built_in">QAngle</span>(<span class="number">0</span>, <span class="number">90</span>, <span class="number">0</span>)); <span class="comment">// 生成霰弹枪</span></span><br><span class="line"><span class="built_in">SpawnItem</span>(<span class="string">&quot;item10&quot;</span>, pos, null, <span class="number">3</span>, <span class="number">30.0</span>);                          <span class="comment">// 在 30 单位半径内散布 3 个土制炸弹</span></span><br><span class="line"><span class="built_in">SpawnItem</span>(<span class="string">&quot;gascan&quot;</span>, pos, null, <span class="number">1</span>, <span class="number">0</span>, <span class="literal">true</span>);                       <span class="comment">// 以物理道具形式生成油桶</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="SpawnZombie"><a href="#SpawnZombie" class="headerlink" title="SpawnZombie"></a>SpawnZombie</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// sName:      zombie 短名称 (hunter, smoker, boomer, spitter, jockey, charger, tank, witch, witch_bride, infected)</span></span><br><span class="line"><span class="comment">// vecOrigin:  生成位置</span></span><br><span class="line"><span class="comment">// eAngles:    生成角度 (默认 null)</span></span><br><span class="line"><span class="comment">// bIdle:      是否闲置 (默认 false)</span></span><br><span class="line"><span class="comment">// bRush:      是否猛冲 (默认 false)</span></span><br><span class="line"><span class="comment">// bFastSpawn: 是否快速生成 (默认 true)</span></span><br><span class="line"><span class="comment">// 返回:       生成的实体</span></span><br><span class="line"><span class="built_in">SpawnZombie</span>(<span class="string">&quot;hunter&quot;</span>, <span class="built_in">Vector</span>(<span class="number">1000</span>, <span class="number">2000</span>, <span class="number">100</span>));  <span class="comment">// 生成 Hunter</span></span><br><span class="line"><span class="built_in">SpawnZombie</span>(<span class="string">&quot;tank&quot;</span>, pos, null, <span class="literal">true</span>);            <span class="comment">// 生成闲置 Tank</span></span><br><span class="line"><span class="built_in">SpawnZombie</span>(<span class="string">&quot;witch&quot;</span>, pos, <span class="built_in">QAngle</span>(<span class="number">0</span>, <span class="number">90</span>, <span class="number">0</span>));     <span class="comment">// 生成朝向 90° 的 Witch</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="SpawnCommon-SpawnCommonWithBile-SpawnCommonForCB"><a href="#SpawnCommon-SpawnCommonWithBile-SpawnCommonForCB" class="headerlink" title="SpawnCommon &#x2F; SpawnCommonWithBile &#x2F; SpawnCommonForCB"></a>SpawnCommon &#x2F; SpawnCommonWithBile &#x2F; SpawnCommonForCB</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 生成普通感染者</span></span><br><span class="line"><span class="built_in">SpawnCommon</span>(<span class="string">&quot;common_male_tankTop_jeans&quot;</span>, <span class="built_in">Vector</span>(<span class="number">1000</span>, <span class="number">2000</span>, <span class="number">100</span>), <span class="built_in">QAngle</span>(<span class="number">0</span>, <span class="number">90</span>, <span class="number">0</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">// 生成 CEDA 感染者（死亡掉落胆汁）</span></span><br><span class="line"><span class="built_in">SpawnCommonWithBile</span>(<span class="built_in">Vector</span>(<span class="number">1000</span>, <span class="number">2000</span>, <span class="number">100</span>), <span class="built_in">QAngle</span>(<span class="number">0</span>, <span class="number">90</span>, <span class="number">0</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">// 生成用于 Common Boost 的感染者</span></span><br><span class="line"><span class="built_in">SpawnCommonForCB</span>(vecPos, eAngles, <span class="number">0.5</span>, hTarget, <span class="literal">false</span>, <span class="string">&quot;my_cb_ent&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h4 id="SpawnTrigger"><a href="#SpawnTrigger" class="headerlink" title="SpawnTrigger"></a>SpawnTrigger</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// sName:      trigger 名称</span></span><br><span class="line"><span class="comment">// vecOrigin:  位置</span></span><br><span class="line"><span class="comment">// vecMaxs:    半尺寸上限 (默认 Vector(64, 64, 128))</span></span><br><span class="line"><span class="comment">// vecMins:    半尺寸下限 (默认 Vector(-64, -64, 0))</span></span><br><span class="line"><span class="comment">// sFunction:  触发时调用的函数名 (默认 &quot;OnTriggerTouch&quot;)</span></span><br><span class="line"><span class="comment">// iType:      触发类型 TR_CLIENTS / TR_EVERYTHING 等 (默认 TR_CLIENTS)</span></span><br><span class="line"><span class="comment">// sOutput:    输出名 (默认 &quot;OnStartTouch&quot;)</span></span><br><span class="line"><span class="comment">// sClass:     实体类名 (默认 &quot;trigger_multiple&quot;)</span></span><br><span class="line"><span class="comment">// 返回:       生成的 trigger 实体</span></span><br><span class="line"><span class="built_in">SpawnTrigger</span>(<span class="string">&quot;my_zone&quot;</span>, <span class="built_in">Vector</span>(<span class="number">1000</span>, <span class="number">2000</span>, <span class="number">128</span>), <span class="built_in">Vector</span>(<span class="number">32</span>, <span class="number">32</span>, <span class="number">64</span>), <span class="built_in">Vector</span>(<span class="number">-32</span>, <span class="number">-32</span>, <span class="number">0</span>), <span class="string">&quot;OnMyZoneTouch&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="function">function <span class="title">OnMyZoneTouch</span><span class="params">()</span> </span>&#123; <span class="built_in">printf</span>(<span class="string">&quot;玩家进入了区域！&quot;</span>); &#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="1-3-Common-Boost-系统"><a href="#1-3-Common-Boost-系统" class="headerlink" title="1.3 Common Boost 系统"></a>1.3 Common Boost 系统</h3><p>利用普通感染者攻击动作来辅助加速的系统。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// hEntity:        已生成的闲置感染者</span></span><br><span class="line"><span class="comment">// hPlayer:        要攻击的目标玩家</span></span><br><span class="line"><span class="comment">// flDelay:        延迟攻击时间 (默认 0.0)</span></span><br><span class="line"><span class="comment">// bIgnoreDistance: 忽略距离限制 (默认 false)</span></span><br><span class="line"><span class="comment">// 返回:           bool — 是否成功触发</span></span><br><span class="line">tCB.<span class="built_in">TriggerCI</span>(hInfected, hPlayer, <span class="number">0.5</span>);</span><br></pre></td></tr></table></figure>
+
+<p><strong>工作流程</strong>：</p>
+<ol>
+<li><code>SpawnCommonForCB()</code> 在指定位置生成闲置感染者并注册到 <code>tCB.aList</code></li>
+<li>玩家开火时 <code>OnWeaponFire</code> 遍历 <code>tCB.aList</code>，按距离匹配最近的感染者</li>
+<li><code>tCB.TriggerCI()</code> 设置 <code>m_hTarget</code> 为指定玩家，感染者自动寻路攻击</li>
+</ol>
+<hr>
+<h3 id="1-4-物品管理"><a href="#1-4-物品管理" class="headerlink" title="1.4 物品管理"></a>1.4 物品管理</h3><h4 id="RemoveItemByName-RemoveItemWithin"><a href="#RemoveItemByName-RemoveItemWithin" class="headerlink" title="RemoveItemByName &#x2F; RemoveItemWithin"></a>RemoveItemByName &#x2F; RemoveItemWithin</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 按名称移除所有匹配的实体，返回移除数量</span></span><br><span class="line"><span class="built_in">RemoveItemByName</span>(<span class="string">&quot;weapon_autoshotgun&quot;</span>);  <span class="comment">// 移除所有自动霰弹枪</span></span><br><span class="line"><span class="built_in">RemoveItemByName</span>(null);                   <span class="comment">// 移除所有物品（武器/升级/道具）</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 移除指定位置半径内的所有物品，返回移除数量</span></span><br><span class="line"><span class="built_in">RemoveItemWithin</span>(<span class="built_in">Vector</span>(<span class="number">1000</span>, <span class="number">2000</span>, <span class="number">100</span>), <span class="number">500.0</span>);</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="1-5-交互系统-Take-Use"><a href="#1-5-交互系统-Take-Use" class="headerlink" title="1.5 交互系统 (Take&#x2F;Use)"></a>1.5 交互系统 (Take&#x2F;Use)</h3><h4 id="TakeItem-TakeNearestItem"><a href="#TakeItem-TakeNearestItem" class="headerlink" title="TakeItem &#x2F; TakeNearestItem"></a>TakeItem &#x2F; TakeNearestItem</h4><p>自动拾取武器或物理道具。函数会自动转动视角、按下 <code>+use</code>。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 拾取指定物品</span></span><br><span class="line"><span class="built_in">TakeItem</span>(hPlayer, hWeapon);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 自动拾取最近的物品</span></span><br><span class="line"><span class="built_in">TakeNearestItem</span>(hPlayer);</span><br><span class="line"><span class="built_in">TakeNearestItem</span>(hPlayer, <span class="literal">true</span>, <span class="literal">false</span>, <span class="literal">true</span>, <span class="string">&quot;weapon_autoshotgun&quot;</span>);  <span class="comment">// 仅拾取自动霰弹枪</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 按 classname 拾取最近的物品</span></span><br><span class="line"><span class="built_in">TakeNearestItemByClassname</span>(hPlayer, <span class="string">&quot;weapon_pain_pills&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h4 id="UseEntity-UseNearestEntity"><a href="#UseEntity-UseNearestEntity" class="headerlink" title="UseEntity &#x2F; UseNearestEntity"></a>UseEntity &#x2F; UseNearestEntity</h4><p>自动使用&#x2F;交互实体（开门、使用升级台、按按钮）。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用指定实体</span></span><br><span class="line"><span class="built_in">UseEntity</span>(hPlayer, hDoor);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 自动使用最近的实体</span></span><br><span class="line"><span class="built_in">UseNearestEntity</span>(hPlayer);</span><br><span class="line"><span class="built_in">UseNearestEntityByClassname</span>(hPlayer, <span class="string">&quot;prop_door_rotating_checkpoint&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p><strong>参数说明</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>bSetPreviousAngles</code></td>
+<td><code>true</code></td>
+<td>使用后是否恢复之前的视角</td>
+</tr>
+<tr>
+<td><code>bSetVelocityDirectionAngles</code></td>
+<td><code>false</code></td>
+<td>是否将视角设为速度方向</td>
+</tr>
+<tr>
+<td><code>bFindNearestItem</code> &#x2F; <code>bFindNearestEntity</code></td>
+<td><code>true</code></td>
+<td>是否在找不到时自动查找最近目标</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="1-6-传送"><a href="#1-6-传送" class="headerlink" title="1.6 传送"></a>1.6 传送</h3><h4 id="ScriptedTP"><a href="#ScriptedTP" class="headerlink" title="ScriptedTP"></a>ScriptedTP</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// hPlayerFrom:    要传送的 bot</span></span><br><span class="line"><span class="comment">// hPlayerTo:      传送目标（跟随的领导者）</span></span><br><span class="line"><span class="comment">// flTime:         延迟时间 (默认 6.1 秒)</span></span><br><span class="line"><span class="comment">// bStuckTeleport: 是否是卡住传送模式 (默认 false)</span></span><br><span class="line"><span class="comment">// nMode:          传送模式</span></span><br><span class="line"><span class="comment">//   0 — 重置 bot 指令</span></span><br><span class="line"><span class="comment">//   1 — 保持 bot 指令</span></span><br><span class="line"><span class="comment">//   2 — 移动到最近幸存者</span></span><br><span class="line"><span class="built_in">ScriptedTP</span>(hBot, hLeader, <span class="number">3.0</span>);     <span class="comment">// 3 秒后传送 bot 到 leader 的位置</span></span><br><span class="line"><span class="built_in">ScriptedTP</span>(hBot, null, <span class="number">0</span>, <span class="literal">true</span>);    <span class="comment">// 立即卡住传送到最近幸存者</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="1-7-Auto-Climb"><a href="#1-7-Auto-Climb" class="headerlink" title="1.7 Auto Climb"></a>1.7 Auto Climb</h3><p>自动攀爬梯子。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">EnableAutoClimb</span>();   <span class="comment">// 注册 AutoClimb_Think tick 函数</span></span><br><span class="line"><span class="built_in">DisableAutoClimb</span>();  <span class="comment">// 移除 tick 函数并清理状态</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 控制攀爬方向</span></span><br><span class="line">g_iClimbDirection[hPlayer.<span class="built_in">GetEntityIndex</span>()] = <span class="number">1</span>;   <span class="comment">// 向上</span></span><br><span class="line">g_iClimbDirection[hPlayer.<span class="built_in">GetEntityIndex</span>()] = <span class="number">-1</span>;  <span class="comment">// 向下</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="1-8-Auto-Boost-系统"><a href="#1-8-Auto-Boost-系统" class="headerlink" title="1.8 Auto Boost 系统"></a>1.8 Auto Boost 系统</h3><p>三种自动助推：火箭跳（榴弹）、胆汁跳、手雷跳。</p>
+<h4 id="AutoRocketJump"><a href="#AutoRocketJump" class="headerlink" title="AutoRocketJump"></a>AutoRocketJump</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// hPlayer:                执行的玩家</span></span><br><span class="line"><span class="comment">// eAngles:                发射角度</span></span><br><span class="line"><span class="comment">// flRadius:               目标检测半径 (默认 61.0)</span></span><br><span class="line"><span class="comment">// bMethod2D:              使用 2D 距离检测 (默认 false)</span></span><br><span class="line"><span class="comment">// bDuck:                  是否蹲下 (默认 true)</span></span><br><span class="line"><span class="comment">// hTarget:                指定目标（null 则自动检测）</span></span><br><span class="line"><span class="comment">// bIgnorePlayersOnGround: 忽略地面上的玩家 (默认 false)</span></span><br><span class="line"><span class="built_in">AutoRocketJump</span>(hPlayer, <span class="built_in">QAngle</span>(<span class="number">-45</span>, <span class="number">90</span>, <span class="number">0</span>), <span class="number">61.0</span>, <span class="literal">false</span>, <span class="literal">true</span>);</span><br></pre></td></tr></table></figure>
+
+<h4 id="AutoBileBoost"><a href="#AutoBileBoost" class="headerlink" title="AutoBileBoost"></a>AutoBileBoost</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 参数类似 AutoRocketJump，额外参数：</span></span><br><span class="line"><span class="comment">// bJump: 发射时是否跳跃 (默认 false)</span></span><br><span class="line"><span class="built_in">AutoBileBoost</span>(hPlayer, <span class="built_in">QAngle</span>(<span class="number">-30</span>, <span class="number">45</span>, <span class="number">0</span>), <span class="number">80.0</span>, <span class="literal">false</span>, <span class="literal">true</span>, <span class="literal">false</span>);</span><br></pre></td></tr></table></figure>
+
+<h4 id="AutoGrenadeBoost"><a href="#AutoGrenadeBoost" class="headerlink" title="AutoGrenadeBoost"></a>AutoGrenadeBoost</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// flPitch:   发射俯仰角</span></span><br><span class="line"><span class="comment">// aTargets:  目标玩家数组 (默认 [])</span></span><br><span class="line"><span class="comment">// bDuck:     是否蹲下 (默认 true)</span></span><br><span class="line"><span class="comment">// bJump:     发射时是否跳跃 (默认 false)</span></span><br><span class="line"><span class="built_in">AutoGrenadeBoost</span>(hPlayer, <span class="number">-45.0</span>, [hTarget], <span class="literal">true</span>, <span class="literal">false</span>);</span><br></pre></td></tr></table></figure>
+
+<h4 id="管理"><a href="#管理" class="headerlink" title="管理"></a>管理</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">RemoveAutoBoost</span>(hPlayer);   <span class="comment">// 移除指定玩家的所有 auto boost</span></span><br><span class="line"><span class="built_in">RemoveAutoBoost</span>();          <span class="comment">// 移除所有玩家的 auto boost</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="完成回调"><a href="#完成回调" class="headerlink" title="完成回调"></a>完成回调</h4><ul>
+<li><code>::Callbacks.OnRocketJumpCompleted(player, booster, speed, speed2D)</code></li>
+<li><code>::Callbacks.OnBileBoostCompleted(player, booster, speed, speed2D)</code></li>
+</ul>
+<hr>
+<h3 id="1-9-Auto-Bile-Breaker"><a href="#1-9-Auto-Bile-Breaker" class="headerlink" title="1.9 Auto Bile Breaker"></a>1.9 Auto Bile Breaker</h3><p>自动在空中打爆胆汁抛射物（防止浪费）。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">EnableAutoBileBreaker</span>();   <span class="comment">// 注册 AutoBileBreaker_Think tick 函数</span></span><br><span class="line"><span class="built_in">DisableAutoBileBreaker</span>();  <span class="comment">// 移除 tick 函数</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="1-10-CI-录制-回放"><a href="#1-10-CI-录制-回放" class="headerlink" title="1.10 CI 录制&#x2F;回放"></a>1.10 CI 录制&#x2F;回放</h3><p>录制普通感染者的生成位置，用于精确复现。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 开始录制</span></span><br><span class="line"><span class="built_in">StartRecordingCI</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 停止录制并保存到 tas_kit/ci_recorder/&lt;sFileName&gt;.txt</span></span><br><span class="line"><span class="built_in">StopRecordingCI</span>(<span class="string">&quot;c1m1_run1&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 从文件重新生成感染者</span></span><br><span class="line"><span class="built_in">SpawnRecordedCI</span>(<span class="string">&quot;c1m1_run1&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="1-11-安全门"><a href="#1-11-安全门" class="headerlink" title="1.11 安全门"></a>1.11 安全门</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">OpenSafeRoomDoor</span>();          <span class="comment">// 打开起始安全门（注册 0.6 秒 tick 强制保持开启）</span></span><br><span class="line"><span class="built_in">OpenSafeRoomDoor</span>(<span class="literal">true</span>);      <span class="comment">// 同上</span></span><br><span class="line"><span class="built_in">CloseSafeRoomDoor</span>();         <span class="comment">// 关闭起始安全门</span></span><br><span class="line"><span class="built_in">CloseSafeRoomDoor</span>(<span class="literal">false</span>);    <span class="comment">// 关闭终点安全门</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="1-12-调试与计时"><a href="#1-12-调试与计时" class="headerlink" title="1.12 调试与计时"></a>1.12 调试与计时</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 将当前场上所有感染者/SI/Witch 位置导出到文件</span></span><br><span class="line"><span class="built_in">DumpInfected</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 高亮所有未拾取的物品</span></span><br><span class="line"><span class="built_in">DebugItems</span>();                 <span class="comment">// 全部物品</span></span><br><span class="line"><span class="built_in">DebugItems</span>(<span class="string">&quot;weapon_rifle&quot;</span>);   <span class="comment">// 仅高亮突击步枪</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 计时相关</span></span><br><span class="line"><span class="built_in">PrintCurrentTime</span>();                       <span class="comment">// 聊天输出当前计时</span></span><br><span class="line"><span class="built_in">PrintCurrentTime</span>(<span class="string">&quot;当前时间: &quot;</span>);           <span class="comment">// 带前缀</span></span><br><span class="line"><span class="built_in">PrintCurrentTime</span>(null, <span class="literal">true</span>);             <span class="comment">// 以 MM:SS 格式输出</span></span><br><span class="line">local flTime = <span class="built_in">GetCurrentTime</span>();          <span class="comment">// 获取 float 值</span></span><br><span class="line">local sTime = <span class="built_in">GetCurrentTime</span>(<span class="literal">true</span>);       <span class="comment">// 获取 MM:SS 字符串</span></span><br><span class="line"><span class="built_in">SetCurrentTime</span>(<span class="number">12.345</span>);</span><br><span class="line"><span class="built_in">SetPreviousSegmentTime</span>(<span class="number">60.0</span>);</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="1-13-脚本化-Tank"><a href="#1-13-脚本化-Tank" class="headerlink" title="1.13 脚本化 Tank"></a>1.13 脚本化 Tank</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 添加 Tank 脚本化生成点（用于终局）</span></span><br><span class="line"><span class="built_in">AddScriptedTankSpawn</span>(<span class="built_in">Vector</span>(<span class="number">1000</span>, <span class="number">2000</span>, <span class="number">100</span>));</span><br></pre></td></tr></table></figure>
+
+<p>在 <code>finale_start</code> 事件中，<code>OnTankSpawn</code> 回调会将 Tank 重新定位到这些预设坐标。</p>
+<hr>
+<h3 id="1-14-其他函数"><a href="#1-14-其他函数" class="headerlink" title="1.14 其他函数"></a>1.14 其他函数</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 移除指定槽位的物品</span></span><br><span class="line"><span class="built_in">RemoveInvSlot</span>(hPlayer, <span class="number">0</span>);   <span class="comment">// 移除主武器</span></span><br><span class="line"><span class="built_in">RemoveInvSlot</span>(hPlayer, <span class="number">1</span>);   <span class="comment">// 移除副武器</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 控制 LedgeHang</span></span><br><span class="line"><span class="built_in">EnableLedgeHang</span>(hPlayer);</span><br><span class="line"><span class="built_in">DisableLedgeHang</span>(hPlayer);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Tick: 根据 host_timescale 调节 sv_player_stuck_tolerance</span></span><br><span class="line"><span class="comment">// (自动注册为 OnTickFunction)</span></span><br><span class="line"><span class="built_in">TimescaleListener</span>();</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="2-tls"><a href="#2-tls" class="headerlink" title="2. tls"></a>2. tls</h2><p><strong>文件</strong>：<a href="../scripts/vscripts/modules/tls.nut">modules&#x2F;tls.nut</a>（~840 行）</p>
+<p>TLS &#x3D; “Totally Legit Scripts”。提供 Aimbot（自动瞄准）、Ragebot（自动开火瞄准）和 Auto-Bhop（自动连跳）功能。</p>
+<h3 id="2-1-ConVars"><a href="#2-1-ConVars" class="headerlink" title="2.1 ConVars"></a>2.1 ConVars</h3><p>TLS 通过以下 ConVar 控制行为（使用 <code>CreateConVar</code> 创建）：</p>
+<table>
+<thead>
+<tr>
+<th>ConVar</th>
+<th>类型</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>tls_aimbot</code></td>
+<td>int</td>
+<td>1</td>
+<td>Aimbot 总开关（0 禁用全部）</td>
+</tr>
+<tr>
+<td><code>tls_aimbot_radius</code></td>
+<td>float</td>
+<td>3000.0</td>
+<td>瞄准最大距离</td>
+</tr>
+<tr>
+<td><code>tls_aimbot_emit_shoot_sound</code></td>
+<td>int</td>
+<td>1</td>
+<td>是否发射射击音效</td>
+</tr>
+<tr>
+<td><code>tls_aimbot_ignore_obstacles</code></td>
+<td>int</td>
+<td>0</td>
+<td>是否穿墙瞄准</td>
+</tr>
+<tr>
+<td><code>tls_aim_anytime</code></td>
+<td>int</td>
+<td>0</td>
+<td>是否允许随时瞄准（不受武器冷却限制）</td>
+</tr>
+<tr>
+<td><code>tls_aim_to_head</code></td>
+<td>int</td>
+<td>1</td>
+<td>是否瞄准头部（0 &#x3D; 身体）</td>
+</tr>
+<tr>
+<td><code>tls_ragebot</code></td>
+<td>int</td>
+<td>1</td>
+<td>Ragebot 总开关</td>
+</tr>
+<tr>
+<td><code>tls_autobhop</code></td>
+<td>int</td>
+<td>1</td>
+<td>Auto-Bhop 总开关</td>
+</tr>
+</tbody></table>
+<h3 id="2-2-辅助函数"><a href="#2-2-辅助函数" class="headerlink" title="2.2 辅助函数"></a>2.2 辅助函数</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 位掩码检测</span></span><br><span class="line"><span class="built_in">BitInMask</span>(<span class="number">4</span>, <span class="number">6</span>);  <span class="comment">// 返回 1 (0100 &amp; 0110)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 为玩家预缓存所有 aimbot 相关音效</span></span><br><span class="line"><span class="built_in">PrecacheScriptSounds</span>(hPlayer);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 发射当前武器的音效</span></span><br><span class="line"><span class="built_in">EmitShootSound</span>(hPlayer);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 返回玩家是否可见目标（射线检测）</span></span><br><span class="line"><span class="built_in">IsPlayerCanSeeEntity</span>(hPlayer, hTarget, vecTargetPos);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 返回 eCanShoot 枚举值</span></span><br><span class="line"><span class="comment">// eCanShoot.False      — 不能射击</span></span><br><span class="line"><span class="comment">// eCanShoot.Relatively — 有武器但不能立即射击</span></span><br><span class="line"><span class="comment">// eCanShoot.True       — 可以射击</span></span><br><span class="line"><span class="built_in">IsPlayerCanShoot</span>(hPlayer);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取实体瞄准位置（根据 zombie 类型和 convar 决定头部/身体）</span></span><br><span class="line"><span class="built_in">GetEntityPosition</span>(hZombie, hZombie.<span class="built_in">GetClassname</span>());</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取最近的可用目标</span></span><br><span class="line"><span class="comment">// 返回 &#123; target = hEntity, position = Vector &#125;</span></span><br><span class="line"><span class="built_in">GetNearestEntity</span>(hPlayer);</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-3-Aimbot-系统"><a href="#2-3-Aimbot-系统" class="headerlink" title="2.3 Aimbot 系统"></a>2.3 Aimbot 系统</h3><p>Aimbot — 自动将视角对准最近的感染者。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 立即瞄准最近实体</span></span><br><span class="line"><span class="built_in">SetAnglesToNearestEntity</span>(hPlayer);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 切换玩家的 aimbot</span></span><br><span class="line"><span class="built_in">SwitchAimbot</span>(hPlayer);    <span class="comment">// 为 host 重绑定 MOUSE1</span></span><br><span class="line"><span class="built_in">SwitchAimbot2</span>(hPlayer);   <span class="comment">// variant 2（在按下 ATTACK 时瞄准）</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 按钮监听（已注册）</span></span><br><span class="line"><span class="comment">// IN_ATTACK — 对 aimbot2 用户瞄准最近目标</span></span><br><span class="line"><span class="comment">// IN_ALT2   — aimbot: 持续瞄准 + 自动开火（按住 ALT2）</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>Aimbot 工作模式</strong>：</p>
+<ol>
+<li>检测到瞄准目标 → 计算头部&#x2F;身体位置</li>
+<li><code>SetAnglesToNearestEntity(hPlayer)</code> → 转动视角</li>
+<li><code>EmitShootSound()</code> → 发送射击音效</li>
+<li><code>hPlayer.SendInput(IN_ATTACK)</code> → 按下攻击键</li>
+</ol>
+<h3 id="2-4-Ragebot-系统"><a href="#2-4-Ragebot-系统" class="headerlink" title="2.4 Ragebot 系统"></a>2.4 Ragebot 系统</h3><p>Ragebot — 在 <code>TLS_Think</code> 中每帧自动检测目标并瞄准开火。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">SwitchRageBot</span>(hPlayer);</span><br></pre></td></tr></table></figure>
+
+<p>Ragebot 与 Aimbot 的区别：Ragebot 不需要按键触发，每帧自动执行。</p>
+<h3 id="2-5-Auto-Bhop-系统"><a href="#2-5-Auto-Bhop-系统" class="headerlink" title="2.5 Auto-Bhop 系统"></a>2.5 Auto-Bhop 系统</h3><p>Auto-Bhop — 在落地瞬间自动跳跃。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">SwitchAutoBhop</span>(hPlayer);       <span class="comment">// 切换普通 auto-bhop</span></span><br><span class="line"><span class="built_in">SwitchHostAutoBhop</span>(hPlayer);   <span class="comment">// 切换 host 按键绑定 auto-bhop</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 按钮监听</span></span><br><span class="line"><span class="comment">// IN_ALT1 — Host 按住 ALT1 启动自动连跳</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-6-全体开关"><a href="#2-6-全体开关" class="headerlink" title="2.6 全体开关"></a>2.6 全体开关</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">EnableAutoBhopForEveryone</span>();    <span class="built_in">DisableAutoBhopForEveryone</span>();</span><br><span class="line"><span class="built_in">EnableAimbotForEveryone</span>();      <span class="built_in">DisableAimbotForEveryone</span>();</span><br><span class="line"><span class="built_in">EnableAimbot2ForEveryone</span>();     <span class="built_in">DisableAimbot2ForEveryone</span>();</span><br><span class="line"><span class="built_in">EnableRagebotForEveryone</span>();     <span class="built_in">DisableRagebotForEveryone</span>();</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="3-chat-commands"><a href="#3-chat-commands" class="headerlink" title="3. chat_commands"></a>3. chat_commands</h2><p><strong>文件</strong>：<a href="../scripts/vscripts/modules/chat_commands.nut">modules&#x2F;chat_commands.nut</a>（~500 行）</p>
+<p>所有 <code>!command</code> 聊天命令的定义。命令通过 <code>RegisterChatCommand()</code> 注册在 <code>g_Hooks.AdditionalClassMethodsInjected</code> 数组中。</p>
+<h3 id="3-1-系统命令"><a href="#3-1-系统命令" class="headerlink" title="3.1 系统命令"></a>3.1 系统命令</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>函数</th>
+<th>需要玩家</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>!rst</code></td>
+<td><code>RestartRound()</code></td>
+<td>否</td>
+<td>重启回合（<code>mp_restartgame 1</code>）</td>
+</tr>
+<tr>
+<td><code>!restart</code></td>
+<td><code>RestartSpeedrun_Cmd()</code></td>
+<td>否</td>
+<td>执行 TAS Kit 速通重启</td>
+</tr>
+<tr>
+<td><code>!changeon</code></td>
+<td><code>EnableChangeLevel()</code></td>
+<td>否</td>
+<td>启用 <code>info_changelevel</code></td>
+</tr>
+<tr>
+<td><code>!nextlevel</code></td>
+<td><code>ChangeLevel()</code></td>
+<td>否</td>
+<td>切换到下一关卡</td>
+</tr>
+<tr>
+<td><code>!hud</code></td>
+<td><code>ToggleHUD(hPlayer)</code></td>
+<td>是</td>
+<td>切换 HUD 计时器显示</td>
+</tr>
+<tr>
+<td><code>!fdmg</code></td>
+<td><code>ToggleFallDamage(hPlayer)</code></td>
+<td>是</td>
+<td>切换摔伤伤害报告</td>
+</tr>
+<tr>
+<td><code>!timer &lt;秒&gt;</code></td>
+<td><code>ChangeTimerValue(hPlayer, sValue)</code></td>
+<td>是</td>
+<td>设置&#x2F;查看倒计时秒数</td>
+</tr>
+</tbody></table>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用示例（在游戏中聊天输入）</span></span><br><span class="line">!rst              <span class="comment">// 立即重启</span></span><br><span class="line">!restart          <span class="comment">// 速通重启</span></span><br><span class="line">!timer <span class="number">5</span>          <span class="comment">// 倒计时设为 5 秒</span></span><br><span class="line">!hud              <span class="comment">// 关闭/开启 HUD</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="3-2-调试命令"><a href="#3-2-调试命令" class="headerlink" title="3.2 调试命令"></a>3.2 调试命令</h3><p><code>!dbg</code> 命令（<code>Debug_Cmd</code>）提供多个子命令：</p>
+<table>
+<thead>
+<tr>
+<th>子命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>!dbg nav</code></td>
+<td>导航网格调试</td>
+</tr>
+<tr>
+<td><code>!dbg items</code></td>
+<td>调用 <code>DebugItems()</code> 高亮物品</td>
+</tr>
+<tr>
+<td><code>!dbg tp</code></td>
+<td>传送调试</td>
+</tr>
+<tr>
+<td><code>!dbg trigger</code></td>
+<td>Trigger 编辑器</td>
+</tr>
+<tr>
+<td><code>!dbg start</code></td>
+<td>开始 CI 录制</td>
+</tr>
+<tr>
+<td><code>!dbg stop &lt;name&gt;</code></td>
+<td>停止并保存 CI 录制</td>
+</tr>
+<tr>
+<td><code>!dbg set &lt;name&gt;</code></td>
+<td>回放 CI 录制</td>
+</tr>
+<tr>
+<td><code>!dbg clear</code></td>
+<td>清除所有物品</td>
+</tr>
+<tr>
+<td><code>!dbg dir</code></td>
+<td>设置攀爬方向</td>
+</tr>
+<tr>
+<td><code>!dbg tr</code></td>
+<td>Trace 检测</td>
+</tr>
+<tr>
+<td><code>!dbg dump</code></td>
+<td>导出感染者位置</td>
+</tr>
+</tbody></table>
+<h3 id="3-3-工具命令"><a href="#3-3-工具命令" class="headerlink" title="3.3 工具命令"></a>3.3 工具命令</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>!transit</code></td>
+<td>打印当前位置转换到下一关卡的坐标</td>
+</tr>
+<tr>
+<td><code>!pick</code></td>
+<td>射线检测瞄准的实体，打印 <code>SpawnItem</code> 调用</td>
+</tr>
+<tr>
+<td><code>!trigger</code></td>
+<td>打印前位置的 <code>SpawnTrigger</code> 调用并放置标记</td>
+</tr>
+<tr>
+<td><code>!find &lt;name&gt;</code></td>
+<td>高亮所有匹配名称的物品</td>
+</tr>
+<tr>
+<td><code>!crds</code></td>
+<td>打印当前坐标、角度、速度</td>
+</tr>
+<tr>
+<td><code>!zdump</code></td>
+<td>导出所有感染者位置到文件</td>
+</tr>
+<tr>
+<td><code>!xclip &lt;mode&gt;</code></td>
+<td>执行 XClip 传送（fast&#x2F;exact&#x2F;double）</td>
+</tr>
+<tr>
+<td><code>!fillbot</code></td>
+<td>切换 FillBot 自动灌油</td>
+</tr>
+</tbody></table>
+<h3 id="3-4-TLS-命令"><a href="#3-4-TLS-命令" class="headerlink" title="3.4 TLS 命令"></a>3.4 TLS 命令</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>!bhop</code></td>
+<td>切换 Auto-Bhop</td>
+</tr>
+<tr>
+<td><code>!bhop2</code></td>
+<td>切换 Host 按键 Auto-Bhop</td>
+</tr>
+<tr>
+<td><code>!aimbot</code></td>
+<td>切换 Aimbot</td>
+</tr>
+<tr>
+<td><code>!aimbot2</code></td>
+<td>切换 Aimbot2</td>
+</tr>
+<tr>
+<td><code>!ragebot</code></td>
+<td>切换 Ragebot</td>
+</tr>
+<tr>
+<td><code>!autosb</code></td>
+<td>切换自动 Spitterboost</td>
+</tr>
+<tr>
+<td><code>!factor &lt;值&gt;</code></td>
+<td>设置 Spitterboost 跳跃时间系数</td>
+</tr>
+</tbody></table>
+<h3 id="3-5-完整命令列表"><a href="#3-5-完整命令列表" class="headerlink" title="3.5 完整命令列表"></a>3.5 完整命令列表</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>参数</th>
+<th>需要玩家</th>
+<th>模块</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>!rst</code></td>
+<td>—</td>
+<td>否</td>
+<td>chat_commands</td>
+</tr>
+<tr>
+<td><code>!restart</code></td>
+<td>—</td>
+<td>否</td>
+<td>chat_commands</td>
+</tr>
+<tr>
+<td><code>!changeon</code></td>
+<td>—</td>
+<td>否</td>
+<td>chat_commands</td>
+</tr>
+<tr>
+<td><code>!nextlevel</code></td>
+<td>—</td>
+<td>否</td>
+<td>chat_commands</td>
+</tr>
+<tr>
+<td><code>!transit</code></td>
+<td>—</td>
+<td>是</td>
+<td>chat_commands</td>
+</tr>
+<tr>
+<td><code>!hud</code></td>
+<td>—</td>
+<td>是</td>
+<td>tas_kit</td>
+</tr>
+<tr>
+<td><code>!fdmg</code></td>
+<td>—</td>
+<td>是</td>
+<td>tas_kit</td>
+</tr>
+<tr>
+<td><code>!timer</code></td>
+<td><code>&lt;秒&gt;</code></td>
+<td>是</td>
+<td>tas_kit</td>
+</tr>
+<tr>
+<td><code>!pick</code></td>
+<td>—</td>
+<td>是</td>
+<td>chat_commands</td>
+</tr>
+<tr>
+<td><code>!crds</code></td>
+<td>—</td>
+<td>是</td>
+<td>chat_commands</td>
+</tr>
+<tr>
+<td><code>!find</code></td>
+<td><code>&lt;名称&gt;</code></td>
+<td>是</td>
+<td>chat_commands</td>
+</tr>
+<tr>
+<td><code>!dbg</code></td>
+<td><code>&lt;子命令&gt;</code></td>
+<td>是</td>
+<td>chat_commands</td>
+</tr>
+<tr>
+<td><code>!xclip</code></td>
+<td><code>&lt;模式&gt;</code></td>
+<td>是</td>
+<td>chat_commands</td>
+</tr>
+<tr>
+<td><code>!trigger</code></td>
+<td>—</td>
+<td>是</td>
+<td>helper_utils</td>
+</tr>
+<tr>
+<td><code>!zdump</code></td>
+<td>—</td>
+<td>否</td>
+<td>tools</td>
+</tr>
+<tr>
+<td><code>!bhop</code></td>
+<td>—</td>
+<td>是</td>
+<td>tls</td>
+</tr>
+<tr>
+<td><code>!bhop2</code></td>
+<td>—</td>
+<td>是</td>
+<td>tls</td>
+</tr>
+<tr>
+<td><code>!aimbot</code></td>
+<td>—</td>
+<td>是</td>
+<td>tls</td>
+</tr>
+<tr>
+<td><code>!aimbot2</code></td>
+<td>—</td>
+<td>是</td>
+<td>tls</td>
+</tr>
+<tr>
+<td><code>!ragebot</code></td>
+<td>—</td>
+<td>是</td>
+<td>tls</td>
+</tr>
+<tr>
+<td><code>!fillbot</code></td>
+<td>—</td>
+<td>是</td>
+<td>fillbot</td>
+</tr>
+<tr>
+<td><code>!autosb</code></td>
+<td>—</td>
+<td>是</td>
+<td>autosb</td>
+</tr>
+<tr>
+<td><code>!factor</code></td>
+<td><code>&lt;值&gt;</code></td>
+<td>是</td>
+<td>autosb</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="4-finale-manager"><a href="#4-finale-manager" class="headerlink" title="4. finale_manager"></a>4. finale_manager</h2><p><strong>文件</strong>：<a href="../scripts/vscripts/modules/finale_manager.nut">modules&#x2F;finale_manager.nut</a>（~283 行）</p>
+<p>终局管理器，用于在终局中检测&#x2F;控制 CI 生成、Tank 数量、阶段计时。</p>
+<h3 id="Settings"><a href="#Settings" class="headerlink" title="Settings"></a>Settings</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">FinaleManager.Settings &lt;-</span><br><span class="line">&#123;</span><br><span class="line">    Enabled = <span class="literal">false</span>               <span class="comment">// 是否启用终局管理器</span></span><br><span class="line">    ChangePosition = <span class="literal">true</span>         <span class="comment">// 是否重新定位 CI</span></span><br><span class="line">    MaxTanksInFinale = <span class="number">2</span>          <span class="comment">// 终局最大 Tank 数量</span></span><br><span class="line">    PanicMinSpawnTime = <span class="number">3.066666</span>  <span class="comment">// Panic 阶段最少生成间隔</span></span><br><span class="line">    PauseMinSpawnTime = <span class="number">7.066666</span>  <span class="comment">// Pause 阶段最少生成间隔</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="核心方法"><a href="#核心方法" class="headerlink" title="核心方法"></a>核心方法</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 计算圆形内的随机点</span></span><br><span class="line">FinaleManager.<span class="built_in">CalculatePointsWithinCircle</span>(vecPos, flRadius, iPoints);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 计算沿直线方向的带偏移点</span></span><br><span class="line">FinaleManager.<span class="built_in">CalculatePointsByLinearDirection</span>(vecStart, vecEnd, iPoints, flMinAmplitude, flMaxAmplitude, bIncludeInitialVectors);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 重新定位 CI</span></span><br><span class="line">FinaleManager.<span class="built_in">SetCommonPosition</span>(hEntity, vecPos);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Hook finale trigger（自动在触发终局时调用）</span></span><br><span class="line">FinaleManager.<span class="built_in">HookTriggerFinale</span>();</span><br></pre></td></tr></table></figure>
+
+<h3 id="阶段回调"><a href="#阶段回调" class="headerlink" title="阶段回调"></a>阶段回调</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// iNum: 阶段编号 (int)</span></span><br><span class="line"><span class="comment">// iType: 阶段类型 (0=PANIC, 1=TANK, 2=DELAY, 3=SCRIPTED)</span></span><br><span class="line">FinaleManager.<span class="built_in">OnBeginCustomStage</span>(iNum, iType);</span><br><span class="line"></span><br><span class="line">FinaleManager.<span class="built_in">OnFinalePause</span>();        <span class="comment">// 终局暂停阶段</span></span><br><span class="line">FinaleManager.<span class="built_in">OnFinaleEscapeStarted</span>(); <span class="comment">// 逃生阶段开始</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="相关的-Callbacks"><a href="#相关的-Callbacks" class="headerlink" title="相关的 ::Callbacks"></a>相关的 ::Callbacks</h3><ul>
+<li><code>OnFinaleStart()</code> — 终局开始</li>
+<li><code>OnFinalePause()</code> — 终局暂停</li>
+<li><code>OnBeginCustomStage(iNum, iType)</code> — 每个自定义阶段</li>
+<li><code>OnLastTankKilled()</code> — 最后一只 Tank 被击杀</li>
+</ul>
+<h3 id="使用示例"><a href="#使用示例" class="headerlink" title="使用示例"></a>使用示例</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在 main.nut 中启用终局管理器</span></span><br><span class="line">::Callbacks.OnFinaleStart &lt;- <span class="built_in">function</span>()</span><br><span class="line">&#123;</span><br><span class="line">    FinaleManager.Settings.Enabled = <span class="literal">true</span>;</span><br><span class="line">    FinaleManager.Settings.MaxTanksInFinale = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 添加 Tank 生成点</span></span><br><span class="line">    <span class="built_in">AddScriptedTankSpawn</span>(<span class="built_in">Vector</span>(<span class="number">1000</span>, <span class="number">2000</span>, <span class="number">100</span>));</span><br><span class="line">    <span class="built_in">AddScriptedTankSpawn</span>(<span class="built_in">Vector</span>(<span class="number">1500</span>, <span class="number">2500</span>, <span class="number">100</span>));</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">::Callbacks.OnLastTankKilled &lt;- <span class="built_in">function</span>()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;所有 Tank 已击杀！&quot;</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="5-speedrunner-tools"><a href="#5-speedrunner-tools" class="headerlink" title="5. speedrunner_tools"></a>5. speedrunner_tools</h2><p><strong>文件</strong>：<a href="../scripts/vscripts/modules/speedrunner_tools.nut">modules&#x2F;speedrunner_tools.nut</a>（~230 行）</p>
+<p>将 SourceMod 插件命令封装为 VScript 函数。<strong>需要安装 Speedrunner Tools SM 插件</strong>。</p>
+<h3 id="核心命令"><a href="#核心命令" class="headerlink" title="核心命令"></a>核心命令</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 发送客户端命令</span></span><br><span class="line"><span class="built_in">ClientCommand</span>(hPlayer, <span class="string">&quot;say hello&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 设置玩家名称</span></span><br><span class="line"><span class="built_in">SetClientName</span>(hPlayer, <span class="string">&quot;MyBot&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 设置队伍（添加 bot、接管、踢出多余 bot、fake 客户端）</span></span><br><span class="line"><span class="built_in">SetTeam</span>(<span class="string">&quot;Nick&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 发起投票</span></span><br><span class="line"><span class="built_in">CallVote</span>(hPlayer, <span class="string">&quot;sm_vote map c1m1_hotel&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 替换玩家</span></span><br><span class="line"><span class="built_in">PlayerReplace</span>(hPlayerOld, hPlayerNew);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 自动挂机 + 踢出（回合结束后恢复）</span></span><br><span class="line"><span class="built_in">AutoKick</span>(hCaller, hPlayer);</span><br></pre></td></tr></table></figure>
+
+<h3 id="闲置-接管-Speedrunner-Tools-convars"><a href="#闲置-接管-Speedrunner-Tools-convars" class="headerlink" title="闲置&#x2F;接管 (Speedrunner Tools convars)"></a>闲置&#x2F;接管 (Speedrunner Tools convars)</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bMode: false = idle, true = idletake</span></span><br><span class="line"><span class="built_in">ST_Idle</span>(hPlayer, <span class="literal">false</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 玩家替换</span></span><br><span class="line"><span class="built_in">ST_PlayerReplace</span>(hPlayer, hPlayer2);</span><br></pre></td></tr></table></figure>
+
+<h3 id="Movement-Reader-控制"><a href="#Movement-Reader-控制" class="headerlink" title="Movement Reader 控制"></a>Movement Reader 控制</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// eMode: 0=录制, 1=播放, 2=停止录制, 3=停止播放, 4=分段</span></span><br><span class="line"><span class="comment">// sFileName: 文件名 (仅录制/播放时需要)</span></span><br><span class="line"><span class="comment">// bNoTeleport: 播放时不传送 (仅播放时需要)</span></span><br><span class="line"><span class="built_in">ST_MR</span>(hPlayer, <span class="number">0</span>, <span class="string">&quot;my_recording&quot;</span>);     <span class="comment">// 开始录制</span></span><br><span class="line"><span class="built_in">ST_MR</span>(hPlayer, <span class="number">1</span>, <span class="string">&quot;my_recording&quot;</span>);     <span class="comment">// 开始播放</span></span><br><span class="line"><span class="built_in">ST_MR</span>(hPlayer, <span class="number">2</span>);                      <span class="comment">// 停止录制</span></span><br><span class="line"><span class="built_in">ST_MR</span>(hPlayer, <span class="number">3</span>);                      <span class="comment">// 停止播放</span></span><br><span class="line"><span class="built_in">ST_MR</span>(hPlayer, <span class="number">4</span>);                      <span class="comment">// 分段（分割录制）</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">ST_MRStop</span>(hPlayer);                    <span class="comment">// 停止指定玩家的 MR</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="玩家判断函数"><a href="#玩家判断函数" class="headerlink" title="玩家判断函数"></a>玩家判断函数</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">GetOwner</span>(hBot);           <span class="comment">// 获取 bot 的人类所有者</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">IsFakeClient</span>(hPlayer);    <span class="comment">// BOT 网络 ID 但 IsPlayerABot() 返回 false</span></span><br><span class="line"><span class="built_in">IsHuman</span>(hPlayer);         <span class="comment">// 网络 ID 不是 &quot;BOT&quot;</span></span><br><span class="line"><span class="built_in">IsPlayer</span>(hPlayer);        <span class="comment">// 是否为有效的玩家实体</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="6-helper-utils"><a href="#6-helper-utils" class="headerlink" title="6. helper_utils"></a>6. helper_utils</h2><p><strong>文件</strong>：<a href="../scripts/vscripts/modules/helper_utils.nut">modules&#x2F;helper_utils.nut</a>（~250 行）</p>
+<p>提供地图数据、地图属性检测和 Trigger 编辑器。</p>
+<h3 id="地图数据"><a href="#地图数据" class="headerlink" title="地图数据"></a>地图数据</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 所有 67 张官方地图</span></span><br><span class="line">::g_aOfficialMaps = [<span class="string">&quot;c1m1_hotel&quot;</span>, <span class="string">&quot;c1m2_streets&quot;</span>, ...];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 14 张战役起始地图</span></span><br><span class="line">::g_aOfficialBeginMaps = [<span class="string">&quot;c1m1_hotel&quot;</span>, <span class="string">&quot;c2m1_highway&quot;</span>, ...];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 18 张长距离攻击的地图</span></span><br><span class="line">::g_aOfficialMapsWithLongestAggressiveDistance = [...];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 7 张 CEDA 感染者地图</span></span><br><span class="line">::g_aCEDAPopulationMaps = [...];</span><br></pre></td></tr></table></figure>
+
+<h3 id="地图属性检测"><a href="#地图属性检测" class="headerlink" title="地图属性检测"></a>地图属性检测</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 自动检测（从 SessionState.MapName 读取）：</span></span><br><span class="line">g_bOfficialMap                       <span class="comment">// 是否为官方地图</span></span><br><span class="line">g_bBeginMap                          <span class="comment">// 是否为战役起始地图</span></span><br><span class="line">g_bMapWithLongestAggressiveDistance  <span class="comment">// 是否启用长距离攻击</span></span><br><span class="line">g_bContainsCEDAPopulation            <span class="comment">// 是否有 CEDA 感染者</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Trigger-Editor"><a href="#Trigger-Editor" class="headerlink" title="Trigger Editor"></a>Trigger Editor</h3><p>用于快速创建 trigger 实体的可视化工具。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在 host 玩家位置设置第一个/第二个触发点</span></span><br><span class="line"><span class="comment">// (通过 !trigger 或 !dbg trigger 调用)</span></span><br><span class="line"><span class="built_in">SetTriggerPoint</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 打印两个触发点构成的 SpawnTrigger() 调用</span></span><br><span class="line"><span class="built_in">DumpTrigger</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 将累积的 trigger dump 写入文件</span></span><br><span class="line"><span class="built_in">DumpTriggersToFile</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// Tick 函数：在触发点之间绘制调试框</span></span><br><span class="line"><span class="built_in">DisplayTrigger</span>();</span><br></pre></td></tr></table></figure>
+
+<p><strong>使用流程</strong>：</p>
+<ol>
+<li>移动到触发区域的一个角落 → <code>!trigger</code></li>
+<li>移动到对角 → <code>!trigger</code></li>
+<li>自动计算并打印 <code>SpawnTrigger(&quot;name&quot;, origin, maxs, mins, ...)</code> 调用</li>
+<li>可将代码复制到 <code>main.nut</code> 中</li>
+</ol>
+<hr>
+<h2 id="7-autosb"><a href="#7-autosb" class="headerlink" title="7. autosb"></a>7. autosb</h2><p><strong>文件</strong>：<a href="../scripts/vscripts/modules/autosb.nut">modules&#x2F;autosb.nut</a>（~190 行）</p>
+<p>自动 Spitterboost——当 bot Spitter 喷射酸液时，自动计算弹跳时间并跳跃。</p>
+<h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 切换自动 Spitterboost</span></span><br><span class="line"><span class="built_in">SwitchAutoSB</span>(hPlayer);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 设置跳跃时间系数（默认 0.95）</span></span><br><span class="line"><span class="comment">// 系数越小，跳跃越早</span></span><br><span class="line"><span class="built_in">ChangeAutoSBFactor</span>(hPlayer, <span class="number">0.85</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 聊天命令</span></span><br><span class="line"><span class="comment">// !autosb  — 切换自动 Spitterboost</span></span><br><span class="line"><span class="comment">// !factor &lt;值&gt; — 修改系数</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h3><p><code>AutoSB_Think()</code> 每帧检查：</p>
+<ol>
+<li>是否有 bot Spitter 激活了 spit 技能（检测 <code>m_flSpecialStartTime</code> 变化）</li>
+<li>计算 Spitter 与目标玩家的距离</li>
+<li>根据距离计算最佳跳跃时间：<code>jumpTime = 0.333374 + (distance / 900) - (0.63333 * factor)</code></li>
+<li>在计算的时间点自动发送 <code>IN_JUMP</code></li>
+</ol>
+<h3 id="回调"><a href="#回调" class="headerlink" title="回调"></a>回调</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">::Callbacks.<span class="built_in">OnSpitterBoostCompleted</span>(player, spitter, flGainedSpeed, flGainedSpeed2D);</span><br></pre></td></tr></table></figure>
+
+<h3 id="全局状态"><a href="#全局状态" class="headerlink" title="全局状态"></a>全局状态</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">g_bAutoSB[hPlayer.<span class="built_in">GetEntityIndex</span>()] = <span class="literal">true</span>;   <span class="comment">// 启用</span></span><br><span class="line">g_flFactor[hPlayer.<span class="built_in">GetEntityIndex</span>()] = <span class="number">0.95</span>;   <span class="comment">// 跳跃时间系数</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="8-fillbot"><a href="#8-fillbot" class="headerlink" title="8. fillbot"></a>8. fillbot</h2><p><strong>文件</strong>：<a href="../scripts/vscripts/modules/fillbot.nut">modules&#x2F;fillbot.nut</a>（~145 行）</p>
+<p>自动灌油机器人——用于 scavenge 终局中自动拾取油桶并浇入发电机。</p>
+<h3 id="函数-1"><a href="#函数-1" class="headerlink" title="函数"></a>函数</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 切换自动灌油</span></span><br><span class="line"><span class="built_in">SwitchFillBot</span>(hPlayer);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在肾上腺素使用时关闭 Fillbot</span></span><br><span class="line"><span class="built_in">ActivateFillBot_OnAdrenalineUse</span>(hPlayer);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 开始/停止浇油</span></span><br><span class="line"><span class="built_in">StartPouring</span>(hPlayer);  <span class="comment">// 强制 IN_ATTACK，设置 is_pouring scope var</span></span><br><span class="line"><span class="built_in">StopPouring</span>(hPlayer);   <span class="comment">// 取消 IN_ATTACK，清除 is_pouring scope var</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 检查 point_prop_use_target 是否已被使用</span></span><br><span class="line"><span class="built_in">IsPropUseTargetUsed</span>(hEntity);</span><br></pre></td></tr></table></figure>
+
+<h3 id="工作原理-1"><a href="#工作原理-1" class="headerlink" title="工作原理"></a>工作原理</h3><p><code>FillBot_Think(hPlayer)</code> 作为 per-player tick 运行：</p>
+<ol>
+<li>如果未持有油桶 → 查找 105 单位半径内最近的 <code>weapon_gascan</code> → 自动拾取</li>
+<li>如果持有油桶但未浇油 → 查找 65 单位半径内最近的 <code>point_prop_use_target</code> → 转向 + <code>StartPouring()</code></li>
+<li>检测浇油完成&#x2F;中断&#x2F;受阻事件 → <code>StopPouring()</code></li>
+</ol>
+<h3 id="注册的事件钩子"><a href="#注册的事件钩子" class="headerlink" title="注册的事件钩子"></a>注册的事件钩子</h3><ul>
+<li><code>item_pickup</code> → 如果拾取的是油桶，自动开始浇油</li>
+<li><code>adrenaline_used</code> → 关闭 Fillbot</li>
+<li><code>gascan_pour_completed</code> → 停止浇油</li>
+<li><code>gascan_pour_interrupted</code> → 停止浇油</li>
+<li><code>gascan_pour_blocked</code> → 停止浇油</li>
+</ul>
+<hr>
+<h2 id="9-skipintro"><a href="#9-skipintro" class="headerlink" title="9. skipintro"></a>9. skipintro</h2><p><strong>文件</strong>：<a href="../scripts/vscripts/modules/skipintro.nut">modules&#x2F;skipintro.nut</a>（~178 行）</p>
+<p>跳过所有官方战役的开场动画。</p>
+<h3 id="函数-2"><a href="#函数-2" class="headerlink" title="函数"></a>函数</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 主跳过函数（在重启后调用）</span></span><br><span class="line">__SkipIntro();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 通用跳过（不依赖具体地图名）</span></span><br><span class="line"><span class="built_in">SkipIntro</span>();</span><br></pre></td></tr></table></figure>
+
+<h3 id="SkipIntro-支持的地图"><a href="#SkipIntro-支持的地图" class="headerlink" title="__SkipIntro 支持的地图"></a>__SkipIntro 支持的地图</h3><table>
+<thead>
+<tr>
+<th>地图</th>
+<th>跳过的内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>c1m1_hotel</code></td>
+<td>直升机离场音效、救援直升机、LCS 过场、fade</td>
+</tr>
+<tr>
+<td><code>c2m1_highway</code></td>
+<td>LCS 过场、fade、点视角</td>
+</tr>
+<tr>
+<td><code>c3m1_plankcountry</code></td>
+<td>LCS 过场、fade、点视角</td>
+</tr>
+<tr>
+<td><code>c4m1_milltown_a</code></td>
+<td>拖船动画、LCS 过场、fade</td>
+</tr>
+<tr>
+<td><code>c5m1_waterfront</code></td>
+<td>演说者、拖船、fade、2 段过场</td>
+</tr>
+<tr>
+<td><code>c6m1_riverbank</code></td>
+<td>LCS 过场、fade</td>
+</tr>
+<tr>
+<td><code>c7m1_docks</code></td>
+<td>LCS 过场、fade</td>
+</tr>
+<tr>
+<td><code>c8m1_apartment</code></td>
+<td>LCS 过场、fade</td>
+</tr>
+<tr>
+<td><code>c9m1_alleys</code></td>
+<td>LCS 过场、fade</td>
+</tr>
+<tr>
+<td><code>c10m1_caves</code></td>
+<td>LCS 过场、fade</td>
+</tr>
+<tr>
+<td><code>c11m1_greenhouse</code></td>
+<td>拖船、fade、点视角</td>
+</tr>
+<tr>
+<td><code>c12m1_hilltop</code></td>
+<td>LCS 过场、fade</td>
+</tr>
+<tr>
+<td><code>c13m1_alpinecreek</code></td>
+<td>LCS 过场、fade</td>
+</tr>
+<tr>
+<td><code>uf1_boulevard</code></td>
+<td>飞机残骸</td>
+</tr>
+</tbody></table>
+<h3 id="实现方式"><a href="#实现方式" class="headerlink" title="实现方式"></a>实现方式</h3><p>通过 <code>EntFire()</code> Kill 过场相关的实体（<code>lcs_intro</code>, <code>fade_intro</code>, <code>point_viewcontrol_survivor</code> 等），并在 0.1 秒后调用 <code>director.FinishIntro()</code> 和 <code>director.ReleaseSurvivorPositions()</code>。</p>
+<p><code>SkipIntro()</code> 是通用回退方案，当 <code>g_bBeginMap == true</code> 但地图不在上述列表中时使用。</p>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/about" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/images/touming.png&quot;" data-lazy-src="/images/Ausnty.jpg" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/images/touming.png&quot;" data-lazy-src="/images/Ausnty.jpg" title="头像" alt="头像"></a><div class="post-copyright__author_name">Yusqual</div><div class="post-copyright__author_desc">生活明朗 万物可爱</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="https://yusqual.github.io/games/l4d2/tas_kit/modules.html">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('https://yusqual.github.io/games/l4d2/tas_kit/modules.html')">TAS Kit 模块参考</span></a></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://yusqual.github.io" target="_blank">Suyu</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/l4d2/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>l4d2<span class="tagsPageCount">13</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="/images/Ausnty.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/games/l4d2/tas_kit/core_system.html"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/images/touming.png&quot;" data-lazy-src="/" onerror="onerror=null;src='/images/touming.png'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">TAS Kit 核心系统说明</div></div></a></div><div class="next-post pull-right"><a href="/games/l4d2/tas_kit/api_reference.html"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/images/touming.png&quot;" data-lazy-src="/" onerror="onerror=null;src='/images/touming.png'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">TAS Kit API 参考手册</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#TAS-Kit-%E6%A8%A1%E5%9D%97%E5%8F%82%E8%80%83"><span class="toc-number">1.</span> <span class="toc-text">TAS Kit 模块参考</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95"><span class="toc-number">1.1.</span> <span class="toc-text">目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-tools"><span class="toc-number">1.2.</span> <span class="toc-text">1. tools</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E5%85%A8%E5%B1%80%E6%95%B0%E6%8D%AE%E8%A1%A8"><span class="toc-number">1.2.1.</span> <span class="toc-text">1.1 全局数据表</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#g-tItems"><span class="toc-number">1.2.1.1.</span> <span class="toc-text">g_tItems</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#g-tTransitionLandmarks"><span class="toc-number">1.2.1.2.</span> <span class="toc-text">g_tTransitionLandmarks</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B6%E4%BB%96"><span class="toc-number">1.2.1.3.</span> <span class="toc-text">其他</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0"><span class="toc-number">1.2.2.</span> <span class="toc-text">1.2 生成函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#SpawnItem"><span class="toc-number">1.2.2.1.</span> <span class="toc-text">SpawnItem</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SpawnZombie"><span class="toc-number">1.2.2.2.</span> <span class="toc-text">SpawnZombie</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SpawnCommon-SpawnCommonWithBile-SpawnCommonForCB"><span class="toc-number">1.2.2.3.</span> <span class="toc-text">SpawnCommon &#x2F; SpawnCommonWithBile &#x2F; SpawnCommonForCB</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SpawnTrigger"><span class="toc-number">1.2.2.4.</span> <span class="toc-text">SpawnTrigger</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-Common-Boost-%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.2.3.</span> <span class="toc-text">1.3 Common Boost 系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-%E7%89%A9%E5%93%81%E7%AE%A1%E7%90%86"><span class="toc-number">1.2.4.</span> <span class="toc-text">1.4 物品管理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#RemoveItemByName-RemoveItemWithin"><span class="toc-number">1.2.4.1.</span> <span class="toc-text">RemoveItemByName &#x2F; RemoveItemWithin</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-5-%E4%BA%A4%E4%BA%92%E7%B3%BB%E7%BB%9F-Take-Use"><span class="toc-number">1.2.5.</span> <span class="toc-text">1.5 交互系统 (Take&#x2F;Use)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#TakeItem-TakeNearestItem"><span class="toc-number">1.2.5.1.</span> <span class="toc-text">TakeItem &#x2F; TakeNearestItem</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#UseEntity-UseNearestEntity"><span class="toc-number">1.2.5.2.</span> <span class="toc-text">UseEntity &#x2F; UseNearestEntity</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-6-%E4%BC%A0%E9%80%81"><span class="toc-number">1.2.6.</span> <span class="toc-text">1.6 传送</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#ScriptedTP"><span class="toc-number">1.2.6.1.</span> <span class="toc-text">ScriptedTP</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-7-Auto-Climb"><span class="toc-number">1.2.7.</span> <span class="toc-text">1.7 Auto Climb</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-8-Auto-Boost-%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.2.8.</span> <span class="toc-text">1.8 Auto Boost 系统</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#AutoRocketJump"><span class="toc-number">1.2.8.1.</span> <span class="toc-text">AutoRocketJump</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#AutoBileBoost"><span class="toc-number">1.2.8.2.</span> <span class="toc-text">AutoBileBoost</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#AutoGrenadeBoost"><span class="toc-number">1.2.8.3.</span> <span class="toc-text">AutoGrenadeBoost</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AE%A1%E7%90%86"><span class="toc-number">1.2.8.4.</span> <span class="toc-text">管理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%8C%E6%88%90%E5%9B%9E%E8%B0%83"><span class="toc-number">1.2.8.5.</span> <span class="toc-text">完成回调</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-9-Auto-Bile-Breaker"><span class="toc-number">1.2.9.</span> <span class="toc-text">1.9 Auto Bile Breaker</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-10-CI-%E5%BD%95%E5%88%B6-%E5%9B%9E%E6%94%BE"><span class="toc-number">1.2.10.</span> <span class="toc-text">1.10 CI 录制&#x2F;回放</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-11-%E5%AE%89%E5%85%A8%E9%97%A8"><span class="toc-number">1.2.11.</span> <span class="toc-text">1.11 安全门</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-12-%E8%B0%83%E8%AF%95%E4%B8%8E%E8%AE%A1%E6%97%B6"><span class="toc-number">1.2.12.</span> <span class="toc-text">1.12 调试与计时</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-13-%E8%84%9A%E6%9C%AC%E5%8C%96-Tank"><span class="toc-number">1.2.13.</span> <span class="toc-text">1.13 脚本化 Tank</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-14-%E5%85%B6%E4%BB%96%E5%87%BD%E6%95%B0"><span class="toc-number">1.2.14.</span> <span class="toc-text">1.14 其他函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-tls"><span class="toc-number">1.3.</span> <span class="toc-text">2. tls</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-ConVars"><span class="toc-number">1.3.1.</span> <span class="toc-text">2.1 ConVars</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E8%BE%85%E5%8A%A9%E5%87%BD%E6%95%B0"><span class="toc-number">1.3.2.</span> <span class="toc-text">2.2 辅助函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-Aimbot-%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.3.3.</span> <span class="toc-text">2.3 Aimbot 系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-Ragebot-%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.3.4.</span> <span class="toc-text">2.4 Ragebot 系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-Auto-Bhop-%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.3.5.</span> <span class="toc-text">2.5 Auto-Bhop 系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-6-%E5%85%A8%E4%BD%93%E5%BC%80%E5%85%B3"><span class="toc-number">1.3.6.</span> <span class="toc-text">2.6 全体开关</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-chat-commands"><span class="toc-number">1.4.</span> <span class="toc-text">3. chat_commands</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E7%B3%BB%E7%BB%9F%E5%91%BD%E4%BB%A4"><span class="toc-number">1.4.1.</span> <span class="toc-text">3.1 系统命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E8%B0%83%E8%AF%95%E5%91%BD%E4%BB%A4"><span class="toc-number">1.4.2.</span> <span class="toc-text">3.2 调试命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-%E5%B7%A5%E5%85%B7%E5%91%BD%E4%BB%A4"><span class="toc-number">1.4.3.</span> <span class="toc-text">3.3 工具命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-TLS-%E5%91%BD%E4%BB%A4"><span class="toc-number">1.4.4.</span> <span class="toc-text">3.4 TLS 命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-5-%E5%AE%8C%E6%95%B4%E5%91%BD%E4%BB%A4%E5%88%97%E8%A1%A8"><span class="toc-number">1.4.5.</span> <span class="toc-text">3.5 完整命令列表</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-finale-manager"><span class="toc-number">1.5.</span> <span class="toc-text">4. finale_manager</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Settings"><span class="toc-number">1.5.1.</span> <span class="toc-text">Settings</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E6%96%B9%E6%B3%95"><span class="toc-number">1.5.2.</span> <span class="toc-text">核心方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%98%B6%E6%AE%B5%E5%9B%9E%E8%B0%83"><span class="toc-number">1.5.3.</span> <span class="toc-text">阶段回调</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E7%9A%84-Callbacks"><span class="toc-number">1.5.4.</span> <span class="toc-text">相关的 ::Callbacks</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E7%A4%BA%E4%BE%8B"><span class="toc-number">1.5.5.</span> <span class="toc-text">使用示例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-speedrunner-tools"><span class="toc-number">1.6.</span> <span class="toc-text">5. speedrunner_tools</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E5%91%BD%E4%BB%A4"><span class="toc-number">1.6.1.</span> <span class="toc-text">核心命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%B2%E7%BD%AE-%E6%8E%A5%E7%AE%A1-Speedrunner-Tools-convars"><span class="toc-number">1.6.2.</span> <span class="toc-text">闲置&#x2F;接管 (Speedrunner Tools convars)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Movement-Reader-%E6%8E%A7%E5%88%B6"><span class="toc-number">1.6.3.</span> <span class="toc-text">Movement Reader 控制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%8E%A9%E5%AE%B6%E5%88%A4%E6%96%AD%E5%87%BD%E6%95%B0"><span class="toc-number">1.6.4.</span> <span class="toc-text">玩家判断函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-helper-utils"><span class="toc-number">1.7.</span> <span class="toc-text">6. helper_utils</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%B0%E5%9B%BE%E6%95%B0%E6%8D%AE"><span class="toc-number">1.7.1.</span> <span class="toc-text">地图数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%B0%E5%9B%BE%E5%B1%9E%E6%80%A7%E6%A3%80%E6%B5%8B"><span class="toc-number">1.7.2.</span> <span class="toc-text">地图属性检测</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Trigger-Editor"><span class="toc-number">1.7.3.</span> <span class="toc-text">Trigger Editor</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-autosb"><span class="toc-number">1.8.</span> <span class="toc-text">7. autosb</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E6%95%B0"><span class="toc-number">1.8.1.</span> <span class="toc-text">函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="toc-number">1.8.2.</span> <span class="toc-text">工作原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9E%E8%B0%83"><span class="toc-number">1.8.3.</span> <span class="toc-text">回调</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%A8%E5%B1%80%E7%8A%B6%E6%80%81"><span class="toc-number">1.8.4.</span> <span class="toc-text">全局状态</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-fillbot"><span class="toc-number">1.9.</span> <span class="toc-text">8. fillbot</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E6%95%B0-1"><span class="toc-number">1.9.1.</span> <span class="toc-text">函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-1"><span class="toc-number">1.9.2.</span> <span class="toc-text">工作原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8%E5%86%8C%E7%9A%84%E4%BA%8B%E4%BB%B6%E9%92%A9%E5%AD%90"><span class="toc-number">1.9.3.</span> <span class="toc-text">注册的事件钩子</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-skipintro"><span class="toc-number">1.10.</span> <span class="toc-text">9. skipintro</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E6%95%B0-2"><span class="toc-number">1.10.1.</span> <span class="toc-text">函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SkipIntro-%E6%94%AF%E6%8C%81%E7%9A%84%E5%9C%B0%E5%9B%BE"><span class="toc-number">1.10.2.</span> <span class="toc-text">__SkipIntro 支持的地图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F"><span class="toc-number">1.10.3.</span> <span class="toc-text">实现方式</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/games/l4d2/tas_kit/api_reference.html" title="TAS Kit API 参考手册">TAS Kit API 参考手册</a><time datetime="2026-07-14T04:00:05.000Z" title="发表于 2026-07-14 12:00:05">2026-07-14</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/games/l4d2/tas_kit/modules.html" title="TAS Kit 模块参考">TAS Kit 模块参考</a><time datetime="2026-07-14T04:00:04.000Z" title="发表于 2026-07-14 12:00:04">2026-07-14</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/games/l4d2/tas_kit/core_system.html" title="TAS Kit 核心系统说明">TAS Kit 核心系统说明</a><time datetime="2026-07-14T04:00:03.000Z" title="发表于 2026-07-14 12:00:03">2026-07-14</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/games/l4d2/tas_kit/index.html" title="TAS Kit 功能概览">TAS Kit 功能概览</a><time datetime="2026-07-14T04:00:02.000Z" title="发表于 2026-07-14 12:00:02">2026-07-14</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/games/l4d2/tas_kit/getting_started.html" title="TAS Kit 快速入门">TAS Kit 快速入门</a><time datetime="2026-07-14T04:00:01.000Z" title="发表于 2026-07-14 12:00:01">2026-07-14</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div id="workboard"><img class="workSituationImg boardsign" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/images/touming.png&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.0.4/img/badge/安知鱼-上班摸鱼中.svg" alt="距离月入25k也就还差一个大佬带我~" title="距离月入25k也就还差一个大佬带我~"/><div id="runtimeTextTip"></div></div><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" data-title="博客框架为Hexo_v5.4.0" title="博客框架为Hexo_v5.4.0"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/images/touming.png&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.1.5/img/badge/Frame-Hexo.svg" alt="博客框架为Hexo_v5.4.0"/></a><a class="github-badge" target="_blank" href="https://blog.anheyu.com/" style="margin-inline:5px" data-title="本站使用AnZhiYu主题" title="本站使用AnZhiYu主题"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/images/touming.png&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.9/img/Theme-AnZhiYu-2E67D3.svg" alt="本站使用AnZhiYu主题"/></a><a class="github-badge" target="_blank" href="https://github.com/" style="margin-inline:5px" data-title="本站项目由Github托管" title="本站项目由Github托管"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/images/touming.png&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.1.5/img/badge/Source-Github.svg" alt="本站项目由Github托管"/></a></p></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2025 - 2026 By <a class="footer-bar-link" href="/" title="Yusqual" target="_blank">Yusqual</a></div></div><div id="footer-type-tips"></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://github.com/anzhiyu-c/hexo-theme-anzhiyu" title="主题">主题</a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">18</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">3</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">3</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://blog.anheyu.com/" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/images/touming.png&quot;" data-lazy-src="/img/favicon.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://image.anheyu.com/" title="安知鱼图床"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/images/touming.png&quot;" data-lazy-src="https://image.anheyu.com/favicon.ico" alt="安知鱼图床"/><span class="back-menu-item-text">安知鱼图床</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li></ul></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/l4d2/" style="font-size: 0.88rem;">l4d2<sup>13</sup></a><a href="/tags/notes/" style="font-size: 0.88rem;">notes<sup>4</sup></a><a href="/tags/qt/" style="font-size: 0.88rem;">qt<sup>1</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("01/20/2025 00:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `欢迎使用安知鱼!`,
+    `生活明朗, 万物可爱`,
+    `
+        
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+        
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2025 By 安知鱼 V1.6.14",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 Yusqual 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><script async="async">(function () {
+  var grt = new Date("01/20/2025 00:00:00"); //设置网站上线时间
+  var now = new Date();
+  var dnum;
+  var hnum;
+  var mnum;
+  var snum;
+  var nowHour;
+
+  // 计算并更新天数、小时数、分钟数和秒数
+  function updateTime() {
+    now = new Date(); // 更新 now 的值
+    nowHour = now.getHours(); // 更新 nowHour 的值
+    var days = (now - grt) / 1000 / 60 / 60 / 24;
+    dnum = Math.floor(days);
+    var hours = (now - grt) / 1000 / 60 / 60 - 24 * dnum;
+    hnum = Math.floor(hours);
+    if (String(hnum).length == 1) {
+      hnum = "0" + hnum;
+    }
+    var minutes = (now - grt) / 1000 / 60 - 24 * 60 * dnum - 60 * hnum;
+    mnum = Math.floor(minutes);
+    if (String(mnum).length == 1) {
+      mnum = "0" + mnum;
+    }
+    var seconds = (now - grt) / 1000 - 24 * 60 * 60 * dnum - 60 * 60 * hnum - 60 * mnum;
+    snum = Math.round(seconds);
+    if (String(snum).length == 1) {
+      snum = "0" + snum;
+    }
+  }
+
+  // 更新网页中显示的网站运行时间
+  function updateHtml() {
+    const footer = document.getElementById("footer");
+    if (!footer) return
+    let currentTimeHtml = "";
+    if (nowHour < 18 && nowHour >= 9) {
+      // 如果是上班时间，默认就是"安知鱼-上班摸鱼中.svg"图片，不需要更改
+      currentTimeHtml = `本站居然运行了 ${dnum} 天<span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span><i class='anzhiyufont anzhiyu-icon-heartbeat' style='color:red'></i>`;
+    } else {
+      // 如果是下班时间，插入"安知鱼-下班啦.svg"图片
+      let img = document.querySelector("#workboard .workSituationImg");
+      if (img != null) {
+        img.src = "https://npm.elemecdn.com/anzhiyu-blog@2.0.4/img/badge/安知鱼-下班啦.svg";
+        img.title = "下班了就该开开心心的玩耍，嘿嘿~";
+        img.alt = "下班了就该开开心心的玩耍，嘿嘿~";
+      }
+
+      currentTimeHtml = `本站居然运行了 ${dnum} 天<span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span><i class='anzhiyufont anzhiyu-icon-heartbeat' style='color:red'></i>`;
+    }
+
+    if (document.getElementById("runtimeTextTip")) {
+      document.getElementById("runtimeTextTip").innerHTML = currentTimeHtml;
+    }
+  }
+
+  setInterval(() => {
+    updateTime();
+    updateHtml();
+  }, 1000);
+})();</script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.cbd.int/mathjax@3.2.2/es5/tex-mml-chtml.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script><input type="hidden" name="page-type" id="page-type" value="post"></div><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script charset="UTF-8" src="https://cdn.cbd.int/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>
